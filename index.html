@@ -1,0 +1,1895 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>SAMARTHA VASTU v34 - Architect Edition</title>
+
+    <!-- ═══ SECURITY HEADERS ═══ -->
+   
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- ═══ PWA META TAGS ═══ -->
+    <meta name="application-name" content="Samartha Vastu">
+    <meta name="description" content="Viswakarma Vastu Architect Edition — Padavinyasa, Ayadi, Devatha Stanas, Site Planning">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Samartha Vastu">
+    <meta name="msapplication-TileColor" content="#f59e0b">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- PWA Manifest (inline via data URI — no external file needed) -->
+   
+
+    <!-- Apple touch icon (inline SVG as data URI) -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='36' fill='%23f59e0b'/><text x='90' y='125' font-size='100' font-weight='900' text-anchor='middle' fill='white' font-family='sans-serif'>V</text></svg>">
+    <!-- Font Awesome 6.0.0 with Subresource Integrity -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" 
+          integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" 
+          crossorigin="anonymous" 
+          referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body class="h-screen flex flex-col overflow-hidden relative">
+
+    <!-- ══ SAMARTHA VASTU — WELCOME SCREEN ══ -->
+    <div id="passwordOverlay" class="fixed inset-0 z-[200] flex flex-col items-center justify-center overflow-y-auto"
+         style="background-color:#0a0a0c;background-image:radial-gradient(circle at center,#1a1500 0%,#0a0a0c 70%);">
+
+        <!-- Gold ring mandala background -->
+        <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(80vw,80vh);height:min(80vw,80vh);opacity:0.08;pointer-events:none;z-index:0;display:flex;align-items:center;justify-content:center;">
+            <div style="width:100%;height:100%;border:1px solid #c59b3d;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                <div style="width:80%;height:80%;border:1px solid #c59b3d;border-radius:50%;transform:rotate(45deg);"></div>
+            </div>
+        </div>
+
+        <!-- Splash fonts — preconnect for fast loading, system fallbacks for offline -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Noto+Sans+Telugu&display=swap" crossorigin>
+        <style>
+            .splash-serif { font-family: 'Cinzel', 'Palatino Linotype', 'Palatino', 'Book Antiqua', 'Georgia', serif; }
+            .splash-telugu { font-family: 'Noto Sans Telugu', 'Gautami', 'Vani', 'Arial Unicode MS', sans-serif; }
+            .splash-gold-text { background:linear-gradient(to bottom,#fde08b,#c59b3d); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+            .splash-btn { display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border-radius:12px;background:#151515;cursor:pointer;transition:all 0.2s;text-align:left;width:100%; }
+            .splash-btn:hover { background:#1c1c1c; }
+        </style>
+
+        <!-- Main Card -->
+        <div class="relative z-10 w-full mx-auto py-6 px-4" style="max-width:420px;">
+
+            <!-- Icon -->
+            <div style="display:flex;flex-direction:column;align-items:center;position:relative;z-index:10;padding-top:16px;">
+                <div style="width:80px;height:80px;border-radius:14px;background:linear-gradient(135deg,#2a220b,#110e05);border:1px solid rgba(197,155,61,0.5);display:flex;align-items:center;justify-content:center;margin-bottom:20px;position:relative;">
+                    <i class="fa-regular fa-compass" style="color:#d4af37;font-size:26px;position:absolute;left:12px;top:12px;"></i>
+                    <i class="fa-solid fa-scroll" style="color:#d4af37;font-size:20px;position:absolute;right:12px;bottom:12px;"></i>
+                </div>
+
+                <!-- Title -->
+                <h1 class="splash-serif splash-gold-text" style="font-size:26px;font-weight:700;letter-spacing:0.18em;text-align:center;margin:0 0 4px;">SAMARTHA VASTU</h1>
+                <p class="splash-telugu" style="color:#c59b3d;font-size:16px;margin:0 0 4px;text-align:center;">సమర్థ వాస్తు</p>
+                <p style="font-size:9px;letter-spacing:0.22em;color:#a38032;text-transform:uppercase;text-align:center;font-weight:600;margin:0 0 16px;">Viswakarma Padavinyasa &bull; Architect Edition v34</p>
+
+                <!-- Sanskrit sloka -->
+                <div style="text-align:center;margin-bottom:4px;">
+                    <p style="color:#d4af37;font-size:18px;font-weight:500;font-family:serif;margin:0 0 4px;">यत्र वास्तु तत्र लक्ष्मी</p>
+                    <p style="font-size:10px;color:#6b7280;font-style:italic;margin:0;">"Where Vastu is, Lakshmi resides"</p>
+                </div>
+            </div>
+
+            <!-- Splash loading panel -->
+            <div id="splashPanel" style="padding:20px 0;text-align:center;">
+                <div style="display:inline-flex;align-items:center;gap:8px;font-size:10px;color:#4b5563;">
+                    <span style="width:6px;height:6px;border-radius:50%;background:#c59b3d;display:inline-block;animation:pulse 1.5s infinite;"></span>
+                    Loading Padavinyasa Engine...
+                </div>
+                <style>@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}</style>
+            </div>
+
+            <!-- Action buttons — shown after splash -->
+            <div id="welcomeActions" class="hidden">
+                <p style="font-size:9px;text-align:center;color:#6b7280;text-transform:uppercase;letter-spacing:0.2em;margin:0 0 14px;font-weight:600;">What would you like to do?</p>
+
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+
+                    <button class="splash-btn" onclick="doWelcome('new')" title="Start a new Vastu plan"
+                        style="border:1px solid rgba(34,197,94,0.35);"
+                        onmouseover="this.style.borderColor='rgba(34,197,94,0.75)';this.style.boxShadow='0 0 14px rgba(34,197,94,0.12)'"
+                        onmouseout="this.style.borderColor='rgba(34,197,94,0.35)';this.style.boxShadow='none'">
+                        <i class="fa-regular fa-file-lines" style="color:#22c55e;font-size:16px;margin-top:2px;flex-shrink:0;"></i>
+                        <div>
+                            <div style="font-size:12px;font-weight:600;color:#e5e7eb;">New Project</div>
+                            <div style="font-size:10px;color:#6b7280;margin-top:1px;">Fresh canvas</div>
+                        </div>
+                    </button>
+
+                    <button class="splash-btn" onclick="doWelcome('open')" title="Open a saved project"
+                        style="border:1px solid rgba(6,182,214,0.35);"
+                        onmouseover="this.style.borderColor='rgba(6,182,214,0.75)';this.style.boxShadow='0 0 14px rgba(6,182,214,0.12)'"
+                        onmouseout="this.style.borderColor='rgba(6,182,214,0.35)';this.style.boxShadow='none'">
+                        <i class="fa-regular fa-folder-open" style="color:#06b6d4;font-size:16px;margin-top:2px;flex-shrink:0;"></i>
+                        <div>
+                            <div style="font-size:12px;font-weight:600;color:#e5e7eb;">Open Project</div>
+                            <div style="font-size:10px;color:#6b7280;margin-top:1px;">Saved plans</div>
+                        </div>
+                    </button>
+
+                    <button class="splash-btn" onclick="doWelcome('import')" title="Import a .json project file"
+                        style="border:1px solid rgba(16,185,129,0.35);"
+                        onmouseover="this.style.borderColor='rgba(16,185,129,0.75)';this.style.boxShadow='0 0 14px rgba(16,185,129,0.12)'"
+                        onmouseout="this.style.borderColor='rgba(16,185,129,0.35)';this.style.boxShadow='none'">
+                        <i class="fa-solid fa-download" style="color:#10b981;font-size:16px;margin-top:2px;flex-shrink:0;"></i>
+                        <div>
+                            <div style="font-size:12px;font-weight:600;color:#e5e7eb;">Import Plan</div>
+                            <div style="font-size:10px;color:#6b7280;margin-top:1px;">Load .json file</div>
+                        </div>
+                    </button>
+
+                    <button class="splash-btn" onclick="doWelcome('guide')" title="Open User Guide"
+                        style="border:1px solid rgba(168,85,247,0.35);"
+                        onmouseover="this.style.borderColor='rgba(168,85,247,0.75)';this.style.boxShadow='0 0 14px rgba(168,85,247,0.12)'"
+                        onmouseout="this.style.borderColor='rgba(168,85,247,0.35)';this.style.boxShadow='none'">
+                        <i class="fa-solid fa-book-open" style="color:#a855f7;font-size:16px;margin-top:2px;flex-shrink:0;"></i>
+                        <div>
+                            <div style="font-size:12px;font-weight:600;color:#e5e7eb;">User Guide</div>
+                            <div style="font-size:10px;color:#6b7280;margin-top:1px;">Help &amp; tutorial</div>
+                        </div>
+                    </button>
+
+                </div>
+
+                <!-- Continue session — gold accent -->
+                <button onclick="doWelcome('continue')" title="Continue last session"
+                    style="width:100%;padding:11px;border-radius:12px;border:1px solid rgba(197,155,61,0.3);background:linear-gradient(to right,#1a1505,#241c05);color:#d4af37;font-size:11px;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:500;"
+                    onmouseover="this.style.borderColor='rgba(197,155,61,0.7)';this.style.boxShadow='0 0 14px rgba(197,155,61,0.15)'"
+                    onmouseout="this.style.borderColor='rgba(197,155,61,0.3)';this.style.boxShadow='none'">
+                    <i class="fa-solid fa-rotate-right" style="font-size:10px;"></i>
+                    Continue Last Session
+                </button>
+
+                <!-- Footer -->
+                <div style="margin-top:18px;text-align:center;">
+                    <div style="display:flex;align-items:center;justify-content:center;gap:8px;font-size:10px;color:#6b7280;margin-bottom:6px;">
+                        <i class="fa-solid fa-language" style="color:#c59b3d;font-size:11px;"></i>
+                        Available in 6 Languages
+                    </div>
+                    <p style="font-size:9px;color:#374151;text-align:center;">Viswakarma Vastu Padavinyasa System &bull; Works Offline &bull; PWA<br>
+                      <a href="https://vssomarajupalli-lgtm.github.io/samarthavastu-app/privacy.html" target="_blank" rel="noopener" style="color:#6b7280;text-decoration:underline;font-size:8px;">Privacy Policy</a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="saveToast" class="toast">Action Successful!</div>
+
+    <!-- Keyboard Shortcuts Modal -->
+    <div id="shortcutsModal" class="fixed inset-0 bg-slate-950/80 items-center justify-center backdrop-blur-sm" style="display:none;z-index:9500;" onclick="if(event.target===this)this.style.display='none'">
+        <div class="bg-slate-900 border border-slate-700 p-5 rounded-xl shadow-2xl max-w-[92vw] w-96" style="max-height:85vh;overflow-y:auto;">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-sm font-black text-amber-400"><i class="fa-solid fa-keyboard mr-2"></i>Keyboard Shortcuts</h2>
+                <button onclick="document.getElementById('shortcutsModal').style.display='none'" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+            <!-- Group: History -->
+            <div class="text-[8px] text-slate-500 font-bold uppercase tracking-wider mb-1.5">History</div>
+            <div class="space-y-1 text-[11px] mb-3">
+                <div class="flex justify-between py-1 border-b border-slate-800"><span class="text-slate-400">Undo</span><kbd class="bg-slate-800 text-white px-2 py-0.5 rounded font-mono text-[10px]">Ctrl+Z</kbd></div>
+                <div class="flex justify-between py-1 border-b border-slate-800"><span class="text-slate-400">Redo</span><kbd class="bg-slate-800 text-white px-2 py-0.5 rounded font-mono text-[10px]">Ctrl+Y</kbd></div>
+                <div class="flex justify-between py-1 border-b border-slate-800"><span class="text-slate-400">Save Project</span><kbd class="bg-slate-800 text-white px-2 py-0.5 rounded font-mono text-[10px]">Ctrl+S</kbd></div>
+            </div>
+            <!-- Group: Drawing Tools -->
+            <div class="text-[8px] text-slate-500 font-bold uppercase tracking-wider mb-1.5">Drawing Tools</div>
+            <div class="space-y-1 text-[11px] mb-3">
+                <div class="flex justify-between py-1 border-b border-slate-800"><span class="text-slate-400">Wall Tool (draw walls)</span><kbd class="bg-slate-800 text-amber-300 px-2 py-0.5 rounded font-mono text-[10px]">W</kbd></div>
+                <div class="flex justify-between py-1 border-b border-slate-800"><span class="text-slate-400">Measure Tool</span><kbd class="bg-slate-800 text-amber-300 px-2 py-0.5 rounded font-mono text-[10px]">M</kbd></div>
+                <div class="flex justify-between py-1 border-b border-slate-800"><span class="text-slate-400">Rectangle Tool</span><kbd class="bg-slate-800 text-amber-300 px-2 py-0.5 rounded font-mono text-[10px]">R</kbd></div>
+                <div class="flex justify-between py-1 border-b border-slate-800"><span class="text-slate-400">Add Text Label</span><kbd class="bg-slate-800 text-amber-300 px-2 py-0.5 rounded font-mono text-[10px]">T</kbd></div>
+                <div class="flex justify-between py-1 border-b border-slate-800"><span class="text-slate-400">Cancel Active Tool</span><kbd class="bg-slate-800 text-white px-2 py-0.5 rounded font-mono text-[10px]">Esc</kbd></div>
+            </div>
+            <!-- Group: Canvas -->
+            <div class="text-[8px] text-slate-500 font-bold uppercase tracking-wider mb-1.5">Canvas & View</div>
+            <div class="space-y-1 text-[11px] mb-3">
+                <div class="flex justify-between py-1 border-b border-slate-800"><span class="text-slate-400">Zoom In / Out</span><kbd class="bg-slate-800 text-white px-2 py-0.5 rounded font-mono text-[10px]">+ / −</kbd></div>
+                <div class="flex justify-between py-1 border-b border-slate-800"><span class="text-slate-400">Reset Zoom &amp; Position</span><kbd class="bg-slate-800 text-white px-2 py-0.5 rounded font-mono text-[10px]">0</kbd></div>
+                <div class="flex justify-between py-1 border-b border-slate-800"><span class="text-slate-400">Zoom with scroll wheel</span><kbd class="bg-slate-800 text-white px-2 py-0.5 rounded font-mono text-[10px]">Mouse Wheel</kbd></div>
+                <div class="flex justify-between py-1 border-b border-slate-800"><span class="text-slate-400">Toggle Grid</span><kbd class="bg-slate-800 text-white px-2 py-0.5 rounded font-mono text-[10px]">G</kbd></div>
+            </div>
+            <!-- Group: Rooms -->
+            <div class="text-[8px] text-slate-500 font-bold uppercase tracking-wider mb-1.5">Room Selection</div>
+            <div class="space-y-1 text-[11px]">
+                <div class="flex justify-between py-1 border-b border-slate-800"><span class="text-slate-400">Delete Selected Room</span><kbd class="bg-slate-800 text-rose-300 px-2 py-0.5 rounded font-mono text-[10px]">Del</kbd></div>
+                <div class="flex justify-between py-1 border-b border-slate-800"><span class="text-slate-400">Nudge selected room</span><kbd class="bg-slate-800 text-white px-2 py-0.5 rounded font-mono text-[10px]">Arrow Keys</kbd></div>
+                <div class="flex justify-between py-1"><span class="text-slate-400">Click room on canvas</span><kbd class="bg-slate-800 text-white px-2 py-0.5 rounded font-mono text-[10px]">Select</kbd></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="customModal" class="fixed inset-0 bg-slate-950/80 items-center justify-center backdrop-blur-sm" style="display:none;z-index:9600;">
+        <div class="bg-slate-900 border border-slate-700 p-6 rounded-xl shadow-2xl w-80 text-center">
+            <div class="text-4xl mb-3 text-amber-400"><i class="fa-solid fa-circle-exclamation"></i></div>
+            <h3 id="customModalTitle" class="text-lg font-black text-white mb-2">Confirm</h3>
+            <p id="customModalText" class="text-xs text-slate-300 mb-4"></p>
+            <input type="text" id="customModalInput" class="w-full bg-slate-800 border border-slate-600 text-white px-3 py-2 rounded text-sm mb-6 hidden focus:border-amber-500">
+            <div class="flex justify-center gap-3">
+                <button id="customModalCancel" class="px-4 py-2 rounded bg-slate-700 text-white text-xs font-bold hidden">Cancel</button>
+                <button id="customModalConfirm" class="px-4 py-2 rounded bg-amber-600 text-white text-xs font-bold hover:bg-amber-500">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Samartha Vastu - Expert Consultation Modal -->
+    <div id="contactModal" onclick="if(event.target===this)this.style.display='none';" class="fixed inset-0 bg-slate-950/95 items-center justify-center backdrop-blur-sm overflow-y-auto" style="display:none;z-index:10000;">
+        <div class="bg-slate-900 border border-amber-600/30 rounded-xl shadow-2xl w-[480px] max-w-[95vw] my-6" style="background:linear-gradient(135deg,#0f172a,#1a1a2e);">
+
+            <!-- Header -->
+            <div class="flex justify-between items-center p-5 border-b border-amber-600/20" style="background:linear-gradient(135deg,rgba(245,158,11,0.15),rgba(234,88,12,0.10));border-radius:0.75rem 0.75rem 0 0;">
+                <div>
+                    <h2 class="text-base font-black text-amber-400"data-i18n="consultTitle">🙏 Vastu - Expert Consultation</h2>
+                    <p class="text-[9px] text-slate-400 mt-0.5"data-i18n="consultSub">Samartha Vastu — Services & Contact Info</p>
+                </div>
+                <button onclick="document.getElementById('contactModal').style.display='none';" class="text-slate-400 hover:text-white w-7 h-7 flex items-center justify-center rounded-lg hover:bg-slate-700 transition"><i class="fa-solid fa-xmark text-sm"></i></button>
+            </div>
+
+            <!-- Scrollable Content -->
+            <div class="px-5 pb-5 space-y-4 overflow-y-auto" style="max-height:75vh;">
+
+                <!-- Welcome Banner -->
+                <div class="mt-4 rounded-lg p-4 text-center border border-amber-600/40" style="background:linear-gradient(135deg,rgba(245,158,11,0.12),rgba(234,88,12,0.08));">
+                    <div class="text-xl mb-1">🙏</div>
+                    <h3 id="consultWelcome" class="text-[13px] font-black text-amber-300 leading-tight">Welcome to Samartha Vastu</h3>
+                    <div class="mt-2 text-[10px] font-black text-white">SVSN Raju M.A.</div>
+                    <div class="text-[9px] text-amber-400/80">(Astrology &amp; Vastu Shastra)</div>
+                    <div class="text-[9px] text-slate-400">Potti Sreeramulu Telugu University, Hyderabad</div>
+                    <p class="mt-2 text-[9px] text-slate-300 leading-relaxed">
+                        Through this channel, I bring you factual, scientifically analyzed insights into Vastu Shastra and Astrology.
+                    </p>
+                </div>
+
+                <!-- Advanced Online Services -->
+                <div class="rounded-lg p-3 border border-sky-700/30" style="background:rgba(14,116,144,0.1);">
+                    <h4 class="text-[11px] font-black text-sky-300 mb-3"data-i18n="advServices">🌟 Advanced Online Services</h4>
+                    <p class="text-[9px] text-slate-400 mb-3 leading-relaxed">No matter where you are in the world, you can access highly accurate Vastu consultations for your home or business.</p>
+
+                    <div class="space-y-2.5">
+                        <!-- Google Earth -->
+                        <div class="flex gap-2.5 items-start">
+                            <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 bg-emerald-700 text-[11px]">🌐</div>
+                            <div>
+                                <div class="text-[10px] font-black text-emerald-300">Google Earth Pro Analysis</div>
+                                <div class="text-[9px] text-slate-400 leading-relaxed">Using Google Earth Pro satellite view, we analyze your property with 100% accuracy — exact directional degrees, distant street thrusts (Veedhi Potu), and surrounding environment impact.</div>
+                            </div>
+                        </div>
+                        <!-- Zoom & WhatsApp -->
+                        <div class="flex gap-2.5 items-start">
+                            <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 bg-green-700 text-[11px]">💻</div>
+                            <div>
+                                <div class="text-[10px] font-black text-green-300">Zoom &amp; WhatsApp Consultations</div>
+                                <div class="text-[9px] text-slate-400 leading-relaxed">Share your floor plan via WhatsApp and join a face-to-face Zoom video call to get all your questions answered and doubts cleared.</div>
+                            </div>
+                        </div>
+                        <!-- Plan Corrections -->
+                        <div class="flex gap-2.5 items-start">
+                            <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 bg-amber-700 text-[11px]">🏡</div>
+                            <div>
+                                <div class="text-[10px] font-black text-amber-300">Plan Corrections &amp; Remedies</div>
+                                <div class="text-[9px] text-slate-400 leading-relaxed mt-0.5">
+                                    <span class="text-sky-300 font-bold">Pre-Construction:</span> Identifying and correcting flaws in your floor plan before building begins.<br>
+                                    <span class="text-rose-300 font-bold">Post-Construction:</span> Simple, highly effective remedies for existing homes using colors and minor adjustments — strictly without any demolition.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission & Philosophy -->
+                <div class="rounded-lg p-3 border border-purple-700/30" style="background:rgba(88,28,135,0.15);">
+                    <h4 class="text-[11px] font-black text-purple-300 mb-2"data-i18n="mission">🌟 Our Mission &amp; Philosophy</h4>
+                    <p class="text-[10px] font-bold text-emerald-300 mb-2">"To eliminate the fear surrounding Vastu."</p>
+                    <div class="space-y-1.5">
+                        <div class="flex gap-2 items-start text-[9px] text-slate-300">
+                            <span class="text-rose-400 flex-shrink-0">🚫</span>
+                            <span><span class="font-bold text-white">Awareness Over Fear:</span> Many Vastu experts frighten people with imaginary flaws. Vastu is not meant to cause panic — it is the "Science of Architecture" designed to align the five natural elements (Panchabhootas) in our favor.</span>
+                        </div>
+                        <div class="flex gap-2 items-start text-[9px] text-slate-300">
+                            <span class="text-sky-400 flex-shrink-0">🔬</span>
+                            <span><span class="font-bold text-white">Scientific Approach:</span> Setting aside outdated superstitions, I explain Vastu using modern science and logic tailored for today's world.</span>
+                        </div>
+                        <div class="flex gap-2 items-start text-[9px] text-slate-300">
+                            <span class="text-emerald-400 flex-shrink-0">✅</span>
+                            <span><span class="font-bold text-white">Simple Solutions:</span> No need to tear down the home you built with hard-earned money. Budget-friendly, logical solutions to enhance positive energy in your space.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Divider + Connect -->
+                <div class="border-t border-slate-700/50 pt-3">
+                    <h4 class="text-[11px] font-black text-amber-400 mb-3 text-center"data-i18n="connectUs">👇 Connect With Us / Contact For Consultations 👇</h4>
+
+                    <div class="space-y-2">
+                        <!-- WhatsApp Direct -->
+                        <a href="https://wa.me/918919395559" target="_blank" rel="noopener noreferrer"
+                           class="w-full flex items-center gap-3 rounded-lg p-2.5 transition border border-green-700/40 hover:border-green-500/60" style="background:rgba(22,101,52,0.2);">
+                            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-green-600">
+                                <i class="fa-brands fa-whatsapp text-white text-[15px]"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-[10px] font-black text-green-300">📱 WhatsApp Consultation (Direct Chat)</div>
+                                <div class="text-[9px] text-slate-400">+91 8919 395 559</div>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-500"></i>
+                        </a>
+
+                        <!-- WhatsApp Channel -->
+                        <a href="https://bit.ly/samarthavastutips" target="_blank" rel="noopener noreferrer"
+                           class="w-full flex items-center gap-3 rounded-lg p-2.5 transition border border-green-800/40 hover:border-green-600/60" style="background:rgba(20,83,45,0.2);">
+                            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-green-700">
+                                <i class="fa-brands fa-whatsapp text-white text-[15px]"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-[10px] font-black text-green-300">📢 Join Our WhatsApp Channel</div>
+                                <div class="text-[9px] text-slate-400">Regular Vastu tips &amp; updates</div>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-500"></i>
+                        </a>
+
+                        <!-- YouTube -->
+                        <a href="https://www.youtube.com/@samarthavastu999" target="_blank" rel="noopener noreferrer"
+                           class="w-full flex items-center gap-3 rounded-lg p-2.5 transition border border-red-700/40 hover:border-red-500/60" style="background:rgba(127,29,29,0.2);">
+                            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-red-600">
+                                <i class="fa-brands fa-youtube text-white text-[15px]"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-[10px] font-black text-red-300">▶️ Subscribe on YouTube</div>
+                                <div class="text-[9px] text-slate-400">@samarthavastu999</div>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-500"></i>
+                        </a>
+
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/samarthavastu999/" target="_blank" rel="noopener noreferrer"
+                           class="w-full flex items-center gap-3 rounded-lg p-2.5 transition border border-pink-700/40 hover:border-pink-500/60" style="background:rgba(131,24,67,0.2);">
+                            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#f59e0b,#ec4899);">
+                                <i class="fa-brands fa-instagram text-white text-[15px]"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-[10px] font-black text-pink-300">📸 Follow on Instagram</div>
+                                <div class="text-[9px] text-slate-400">@samarthavastu999</div>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-500"></i>
+                        </a>
+
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/samarthavastu999" target="_blank" rel="noopener noreferrer"
+                           class="w-full flex items-center gap-3 rounded-lg p-2.5 transition border border-blue-700/40 hover:border-blue-500/60" style="background:rgba(30,58,138,0.2);">
+                            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-blue-600">
+                                <i class="fa-brands fa-facebook text-white text-[15px]"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-[10px] font-black text-blue-300">📘 Follow on Facebook</div>
+                                <div class="text-[9px] text-slate-400">/samarthavastu999</div>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-500"></i>
+                        </a>
+
+                        <!-- Telegram -->
+                        <a href="https://t.me/samarthavastu999" target="_blank" rel="noopener noreferrer"
+                           class="w-full flex items-center gap-3 rounded-lg p-2.5 transition border border-sky-700/40 hover:border-sky-500/60" style="background:rgba(12,74,110,0.2);">
+                            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-sky-600">
+                                <i class="fa-brands fa-telegram text-white text-[15px]"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-[10px] font-black text-sky-300">✈️ Join our Telegram</div>
+                                <div class="text-[9px] text-slate-400">@samarthavastu999</div>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-500"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Closing -->
+                <div class="rounded-lg p-3 text-center border border-amber-700/30 mt-2" style="background:rgba(120,53,15,0.15);">
+                    <p class="text-[10px] text-amber-300 font-bold italic">यत्र वास्तु तत्र लक्ष्मी</p>
+                    <p class="text-[9px] text-slate-400 mt-1">Contact us for expert Vastu and Astrology consultations for homes, offices, factories, and real estate ventures!</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="projectManagerModal" class="fixed inset-0 bg-slate-950/80 items-center justify-center backdrop-blur-sm" style="display:none;z-index:9500;">
+        <div class="bg-slate-900 border border-slate-700 p-5 rounded-xl shadow-2xl w-96 max-w-[90vw]">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-black text-amber-400"><i class="fa-solid fa-folder-open mr-2"></i> Projects Manager</h2>
+                <button onclick="window.toggleProjectManager()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+            <div class="flex gap-2 mb-4">
+                <button onclick="window.saveNewProject()" class="flex-1 bg-emerald-700 hover:bg-emerald-600 text-white font-bold py-2 rounded-lg text-xs"><i class="fa-solid fa-floppy-disk mr-2"></i> Save</button>
+                <button onclick="window.exportProject()" class="flex-1 bg-blue-700 hover:bg-blue-600 text-white font-bold py-2 rounded-lg text-xs"><i class="fa-solid fa-download mr-2"></i> Export</button>
+                <label class="flex-1 bg-purple-700 hover:bg-purple-600 text-white font-bold py-2 rounded-lg text-xs cursor-pointer flex justify-center items-center">
+                    <i class="fa-solid fa-upload mr-2"></i> Import 
+                    <input type="file" accept=".json" class="hidden" onchange="window.importProject(event)">
+                </label>
+            </div>
+            <div id="projectList" class="space-y-2 max-h-60 overflow-y-auto pr-2"></div>
+        </div>
+    </div>
+
+    <!-- ── MOBILE HEADER BAR (44px, replaces full desktop header on mobile) ── -->
+    <div id="mobHeader" style="display:none;">
+        <!-- App icon + title (hidden on canvas via .mob-logo-icon / .mob-title-block CSS) -->
+        <div class="mob-logo-icon" style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#f59e0b,#ea580c);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i class="fa-solid fa-drafting-compass" style="color:white;font-size:14px;"></i>
+        </div>
+        <div class="mob-title-block" style="flex:1;min-width:0;overflow:hidden;">
+            <div style="font-size:11px;font-weight:900;color:#f59e0b;letter-spacing:0.05em;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">SAMARTHA VASTU</div>
+            <div id="mobHeaderClientName" style="font-size:9px;color:#fbbf24;font-weight:700;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;display:none;"></div>
+            <div id="mobFloorLabel" style="font-size:9px;color:#64748b;font-weight:600;white-space:nowrap;">GF · <span id="footer-version">v34</span></div>
+        </div>
+        <!-- Undo / Redo -->
+        <button onclick="window.undo()" style="width:44px;height:44px;border-radius:6px;background:#1e293b;border:1px solid #334155;color:#94a3b8;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;touch-action:manipulation;pointer-events:auto;position:relative;z-index:100000;" title="Undo">
+            <i class="fa-solid fa-rotate-left" style="font-size:13px;"></i>
+        </button>
+        <button onclick="window.redo()" style="width:44px;height:44px;border-radius:6px;background:#1e293b;border:1px solid #334155;color:#94a3b8;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;touch-action:manipulation;pointer-events:auto;position:relative;z-index:100000;" title="Redo">
+            <i class="fa-solid fa-rotate-right" style="font-size:13px;"></i>
+        </button>
+        <!-- Zoom fit -->
+        <button onclick="state.scale=0.8;state.offsetX=0;state.offsetY=0;window.draw();" style="width:44px;height:44px;border-radius:6px;background:#1e293b;border:1px solid #334155;color:#94a3b8;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;touch-action:manipulation;pointer-events:auto;position:relative;z-index:100000;" title="Fit">
+            <i class="fa-solid fa-compress" style="font-size:13px;"></i>
+        </button>
+        <!-- Mobile Health Score (compact ring) -->
+        <div id="mobScorePill" style="display:flex;align-items:center;gap:4px;background:rgba(15,23,42,0.9);border:1px solid rgba(34,197,94,0.3);border-radius:7px;padding:3px 7px 3px 4px;flex-shrink:0;pointer-events:none;">
+            <svg viewBox="0 0 64 64" style="width:22px;height:22px;flex-shrink:0;">
+                <circle cx="32" cy="32" r="26" fill="none" stroke="#1e293b" stroke-width="9"/>
+                <circle id="scoreRingMob" cx="32" cy="32" r="26" fill="none" stroke="#22c55e" stroke-width="9" stroke-linecap="round"
+                    stroke-dasharray="163.4" stroke-dashoffset="0"
+                    style="transition:stroke-dashoffset 0.8s ease,stroke 0.5s ease;transform-origin:center;transform:rotate(-90deg);"/>
+            </svg>
+            <span id="auditScoreMob" style="font-size:11px;font-weight:900;color:#22c55e;font-family:ui-monospace,monospace;line-height:1;">100%</span>
+        </div>
+        <!-- Mobile Header Delete button — hidden by default, appears when object selected -->
+        <button id="mobHdrDeleteBtn" onclick="window.mobDeleteSelected();"
+            style="display:none;width:44px;height:44px;border-radius:6px;background:rgba(220,38,38,0.85);border:1px solid #991b1b;color:#fff;font-size:14px;flex-shrink:0;touch-action:manipulation;pointer-events:auto;position:relative;z-index:100000;align-items:center;justify-content:center;cursor:pointer;"
+            title="Delete selected object">
+            <i class="fa-solid fa-trash-can"></i>
+        </button>
+        <!-- 🖼️ Blueprint Upload — mobile header -->
+        <button onclick="window.triggerBlueprintUpload();"
+            style="width:36px;height:36px;border-radius:8px;background:rgba(99,102,241,0.18);border:1px solid rgba(99,102,241,0.45);color:#a5b4fc;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;touch-action:manipulation;pointer-events:auto;position:relative;z-index:100000;"
+            title="Upload blueprint image as background tracing layer">
+            <i class="fa-solid fa-image" style="font-size:14px;"></i>
+        </button>
+        <!-- Menu button -->
+        <button onclick="document.getElementById('mobMenuOverlay').style.display='flex';" style="width:36px;height:36px;border-radius:8px;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.4);color:#f59e0b;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;" title="Menu">
+            <i class="fa-solid fa-bars" style="font-size:15px;"></i>
+        </button>
+    </div>
+
+    <!-- ── MOBILE FULL MENU OVERLAY ── -->
+    <div id="mobMenuOverlay" onclick="if(event.target===this)this.style.display='none';" style="display:none;position:fixed;top:0;left:0;right:0;bottom:54px;background:rgba(0,0,0,0.65);z-index:9998;flex-direction:column;">
+        <div id="mobMenuPanel">
+
+            <!-- ═══ STICKY BAR: Undo · Fit · Redo — always visible ═══ -->
+            <div class="mob-sticky-bar">
+                <button class="msb-btn" onclick="window.undo&&window.undo();" title="Undo">
+                    <i class="fa-solid fa-rotate-left"></i> Undo
+                </button>
+                <button class="msb-btn" onclick="state.scale=0.8;state.offsetX=0;state.offsetY=0;window.draw();" title="Fit to Screen">
+                    <i class="fa-solid fa-compress"></i> Fit
+                </button>
+                <button class="msb-btn" onclick="window.redo&&window.redo();" title="Redo">
+                    <i class="fa-solid fa-rotate-right"></i> Redo
+                </button>
+                <button class="msb-btn" onclick="document.getElementById('mobMenuOverlay').style.display='none';" style="flex:0.6;background:rgba(239,68,68,0.15);border-color:rgba(239,68,68,0.35);color:#f87171;" title="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- ═══ 5-TAB PILL NAVIGATION ═══ -->
+            <div class="mob-tab-nav">
+                <button class="mob-tab-pill mtab-active" data-mtab="design"    onclick="_mobSwitchTab('design')">✏ Design</button>
+                <button class="mob-tab-pill"              data-mtab="ayadi"    onclick="_mobSwitchTab('ayadi')">🔢 Ayadi</button>
+                <button class="mob-tab-pill"              data-mtab="view"     onclick="_mobSwitchTab('view')">👁 View</button>
+                <button class="mob-tab-pill"              data-mtab="output"   onclick="_mobSwitchTab('output')">📤 Output</button>
+                <button class="mob-tab-pill"              data-mtab="system"   onclick="_mobSwitchTab('system')">⚙ System</button>
+            </div>
+
+            <!-- ═══ SCROLLABLE CONTENT AREA ═══ -->
+            <div class="mob-tab-content">
+
+                <!-- ─── TAB: DESIGN ─── -->
+                <div id="mobTab-design" class="mob-tab-panel mtab-active">
+    <div class="mob-panel-section">✏ Draw Tools</div>
+    <div style="display:flex;align-items:center;gap:5px;flex-wrap:nowrap;overflow-x:auto;padding-bottom:8px;border-bottom:1px solid #1e293b;margin-bottom:2px;scrollbar-width:none;">
+        <button id="mob-wallBtn" title="Wall & Measure" onclick="window.setActiveTool&&window.setActiveTool('wall');document.getElementById('mobMenuOverlay').style.display='none';window.mobShowCanvas&&window.mobShowCanvas();" style="flex-shrink:0;width:auto;padding:0 10px;height:40px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:#cbd5e1;font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px;touch-action:manipulation;transition:all 0.15s;"><i class="fa-solid fa-pen-ruler"></i><span>Wall &amp; Measure</span></button>
+        <button id="mob-rectBtn" title="Rectangle" onclick="window.setActiveTool&&window.setActiveTool('rect');document.getElementById('mobMenuOverlay').style.display='none';window.mobShowCanvas&&window.mobShowCanvas();" style="flex-shrink:0;width:40px;height:40px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:#22d3ee;font-size:15px;display:flex;align-items:center;justify-content:center;touch-action:manipulation;transition:all 0.15s;"><i class="fa-solid fa-vector-square"></i></button>
+        <button id="mob-textBtn" title="Text Label" onclick="window.addTextLabel&&window.addTextLabel();document.getElementById('mobMenuOverlay').style.display='none';" style="flex-shrink:0;width:40px;height:40px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:#fbbf24;font-size:15px;display:flex;align-items:center;justify-content:center;touch-action:manipulation;transition:all 0.15s;"><i class="fa-solid fa-font"></i></button>
+        <!-- Calculator button -->
+        <button title="Vastu Calculator" onclick="window.openCalc&&window.openCalc();document.getElementById('mobMenuOverlay').style.display='none';" style="flex-shrink:0;width:40px;height:40px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:#a5b4fc;font-size:15px;display:flex;align-items:center;justify-content:center;touch-action:manipulation;"><i class="fa-solid fa-calculator"></i></button>
+    </div>
+    <!-- RMRC Ink accordion -->
+    <div style="border:1px solid #9a3412;border-radius:8px;margin-top:6px;overflow:hidden;">
+        <button onclick="var p=document.getElementById('mob-rmrc-panel');p.style.display=p.style.display==='none'?'block':'none';this.querySelector('i.fa-chevron-down').style.transform=p.style.display==='none'?'rotate(0deg)':'rotate(180deg)';"
+            style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:rgba(234,88,12,0.15);border:none;color:#fb923c;font-size:12px;font-weight:700;cursor:pointer;touch-action:manipulation;">
+            <span><i class="fa-solid fa-pen-nib" style="margin-right:7px;"></i>🖊 RMRC Ink Tools</span>
+            <i class="fa-solid fa-chevron-down" style="font-size:10px;transition:transform 0.2s;"></i>
+        </button>
+        <div id="mob-rmrc-panel" style="display:none;padding:10px;background:#0f172a;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                <button id="mob-inkBtn" title="RMRC Ink" onclick="window.setActiveTool&&window.setActiveTool('ink');document.getElementById('mobMenuOverlay').style.display='none';window.mobShowCanvas&&window.mobShowCanvas();" style="flex:1;height:38px;border-radius:7px;border:1px solid #9a3412;background:rgba(234,88,12,0.2);color:#fb923c;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:6px;touch-action:manipulation;transition:all 0.15s;"><i class="fa-solid fa-pen-nib"></i> Ink ON/OFF</button>
+                <button title="Clear Ink" onclick="window.clearInkLines&&window.clearInkLines();" style="flex:1;height:38px;border-radius:7px;border:1px solid #334155;background:#1e293b;color:#f87171;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:6px;touch-action:manipulation;"><i class="fa-solid fa-eraser"></i> Clear</button>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+                <span style="font-size:11px;color:#64748b;font-weight:700;flex-shrink:0;">Colour:</span>
+                <select id="mob-inkColorSelect" style="flex:1;height:36px;background:#1e293b;border:1px solid #9a3412;color:#fb923c;font-size:14px;border-radius:7px;padding:0 8px;touch-action:manipulation;" onchange="window.setInkColor&&window.setInkColor(this.value);var d=document.getElementById('inkColorSelect');if(d)d.value=this.value;">
+                    <option value="#ef4444">🔴 Red</option>
+                    <option value="#3b82f6">🔵 Blue</option>
+                    <option value="#22c55e">🟢 Green</option>
+                    <option value="#f59e0b">🟡 Amber</option>
+                    <option value="#0f172a">⚫ Black</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="mob-panel-section">⚡ Auto Tools</div>
+    <div class="mob-panel-row">
+        <button class="mob-panel-btn" onclick="window.autoLayout&&window.autoLayout();document.getElementById('mobMenuOverlay').style.display='none';"><i class="fa-solid fa-wand-magic-sparkles"></i>Auto Layout</button>
+        <button class="mob-panel-btn" onclick="window.autoPlaceGates&&window.autoPlaceGates();document.getElementById('mobMenuOverlay').style.display='none';"><i class="fa-solid fa-door-open"></i>Auto Gate</button>
+        <button class="mob-panel-btn" onclick="state.snap=!state.snap;showToast(state.snap?'Snap ON':'Snap OFF');" style="color:#34d399;"><i class="fa-solid fa-magnet"></i>Snap</button>
+    </div>
+
+    <div class="mob-panel-section" style="color:#f59e0b;">🛣 Road / Gate</div>
+    <div class="mob-panel-row" style="flex-direction:column;gap:8px;">
+        <label style="display:flex;align-items:center;gap:8px;font-size:11px;color:#cbd5e1;background:#1e293b;padding:8px 12px;border-radius:7px;border:1px solid #334155;cursor:pointer;">
+            <input type="checkbox" id="mob-showRoadToggle" style="width:16px;height:16px;touch-action:manipulation;" onchange="var d=document.getElementById('showRoadToggle');if(d){d.checked=this.checked;d.dispatchEvent(new Event('change'));}"> Show Road on Canvas
+        </label>
+        <div style="display:flex;gap:8px;align-items:center;">
+            <select id="mob-roadDirSelect" style="flex:1;background:#1e293b;border:1px solid #475569;color:#f8fafc;font-size:16px;border-radius:6px;padding:8px;touch-action:manipulation;" onchange="var d=document.getElementById('roadDirSelect');if(d){d.value=this.value;d.dispatchEvent(new Event('change'));}">
+                <option value="East">East Road</option>
+                <option value="West">West Road</option>
+                <option value="North">North Road</option>
+                <option value="South">South Road</option>
+            </select>
+            <div style="display:flex;align-items:center;background:#1e293b;border:1px solid #475569;border-radius:6px;padding:0 8px;height:44px;gap:4px;flex-shrink:0;">
+                <span style="font-size:9px;color:#64748b;font-weight:700;">W</span>
+                <input type="number" inputmode="decimal" step="any" id="mob-roadWidthInput" value="30" style="width:44px;background:transparent;border:none;color:white;font-size:16px;font-weight:700;text-align:center;outline:none;touch-action:manipulation;" onchange="var d=document.getElementById('roadWidthInput');if(d){d.value=this.value;d.dispatchEvent(new Event('change'));}">
+                <span style="font-size:9px;color:#475569;">FT</span>
+            </div>
+        </div>
+    </div>
+    <div class="mob-panel-section" style="color:#f59e0b;">🚪 Main Entrance (Dwara)</div>
+    <div class="mob-panel-row">
+        <select id="mob-dwaraSelect" style="background:#0f172a;border:1px solid rgba(245,158,11,0.5);color:#fbbf24;font-size:16px;font-weight:700;border-radius:6px;padding:8px 10px;width:100%;outline:none;touch-action:manipulation;" onchange="var d=document.getElementById('dwaraSelect');if(d){d.value=this.value;d.dispatchEvent(new Event('change'));}else{state.selectedDwara=this.value;window.draw&&window.draw();window.saveLocal&&window.saveLocal();}">
+            <option value="">-- Select Auspicious Dwara --</option>
+            <option value="Jayanta">East - Jayanta (2) ★</option>
+            <option value="Mahendra">East - Mahendra (3) ★</option>
+            <option value="Vitatha">South - Vitatha (10) ★</option>
+            <option value="Gruhakshat">South - Gruhakshat (11) ★</option>
+            <option value="Sugriva">West - Sugriva (18) ★</option>
+            <option value="Pushpadanta">West - Pushpadanta (19) ★</option>
+            <option value="Mukhya">North - Mukhya (26) ★</option>
+            <option value="Bhallata">North - Bhallata (27) ★</option>
+        </select>
+    </div>
+    <!-- Floor UI hidden: single-page canvas mode — data structure intact -->
+    <div style="display:none;">
+        <div class="mob-panel-section" style="color:#818cf8;">🏠 Floor</div>
+        <div class="mob-panel-row">
+            <button onclick="window.switchFloor&&window.switchFloor(0);showToast('Ground Floor');" style="flex:1;padding:10px;border-radius:7px;border:1px solid #4f46e5;background:rgba(79,70,229,0.3);color:#c7d2fe;font-size:11px;font-weight:700;">🏠 GF</button>
+            <button onclick="window.switchFloor&&window.switchFloor(1);showToast('First Floor');" style="flex:1;padding:10px;border-radius:7px;border:1px solid #334155;background:#1e293b;color:#94a3b8;font-size:11px;font-weight:700;">🏢 1F</button>
+            <button onclick="window.clearRooms&&window.clearRooms();" style="padding:10px 14px;border-radius:7px;border:1px solid #7f1d1d;background:rgba(127,29,29,0.3);color:#f87171;font-size:11px;font-weight:700;"><i class="fa-solid fa-trash"></i></button>
+        </div>
+    </div>
+    <div class="mob-panel-section" style="color:#818cf8;">🛋 Add Rooms</div>
+    <div class="mob-panel-row">
+        <button class="mob-panel-btn" onclick="window.addRoom&&window.addRoom('Master Bed');" style="background:#3730a3;border-color:#4f46e5;color:#c7d2fe;">Master Bed</button>
+        <button class="mob-panel-btn" onclick="window.addRoom&&window.addRoom('Bedroom 2');" style="background:#374151;color:#e2e8f0;">Bed Room</button>
+        <button class="mob-panel-btn" onclick="window.addRoom&&window.addRoom('Kitchen');" style="background:#7c2d12;color:#fed7aa;">Kitchen</button>
+        <button class="mob-panel-btn" onclick="window.addRoom&&window.addRoom('Puja');" style="background:#713f12;color:#fef08a;">Puja</button>
+        <button class="mob-panel-btn" onclick="window.addRoom&&window.addRoom('Toilet');" style="background:#7f1d1d;color:#fca5a5;">Toilet</button>
+        <button class="mob-panel-btn" onclick="window.addRoom&&window.addRoom('Hall');" style="background:#134e4a;color:#99f6e4;">Hall</button>
+        <button class="mob-panel-btn" onclick="window.addRoom&&window.addRoom('Dining');" style="background:#78350f;color:#fde68a;">Dining</button>
+        <button class="mob-panel-btn" onclick="window.addRoom&&window.addRoom('Staircase');" style="background:#374151;color:#cbd5e1;">Staircase</button>
+    </div>
+    <div class="mob-panel-section" style="color:#60a5fa;">📍 Markers &amp; Site</div>
+    <div class="mob-panel-row">
+        <button class="mob-panel-btn" onclick="window.addMarker&&window.addMarker('Borewell');" style="background:rgba(37,99,235,0.3);border-color:#1d4ed8;color:#93c5fd;">💧 Borewell</button>
+        <button class="mob-panel-btn" onclick="window.addMarker&&window.addMarker('Septic Tank');" style="background:rgba(87,83,78,0.3);border-color:#57534e;color:#d6d3d1;">🕳 Septic</button>
+        <button class="mob-panel-btn" onclick="window.addMarker&&window.addMarker('Outside Staircase');" style="background:rgba(51,65,85,0.5);color:#94a3b8;">↑↓ Stair(Out)</button>
+        <button class="mob-panel-btn" onclick="window.addSiteGate&&window.addSiteGate();" style="background:rgba(180,83,9,0.3);border-color:#b45309;color:#fcd34d;">🚪 Main Gate</button>
+    </div>
+</div>
+
+                <!-- ─── TAB: AYADI ─── -->
+                <div id="mobTab-ayadi" class="mob-tab-panel">
+    <div class="mob-area-strip">
+        <div class="mob-area-cell">
+            <div class="mob-area-label">📐 Site Area</div>
+            <div class="mob-area-value" id="mob-siteAreaSqft">–</div>
+            <div class="mob-area-sub" id="mob-siteAreaSqyd">–</div>
+        </div>
+        <div class="mob-area-cell">
+            <div class="mob-area-label">🏠 Built Area</div>
+            <div class="mob-area-value" id="mob-builtAreaSqft">–</div>
+            <div class="mob-area-sub" id="mob-builtAreaSqyd">–</div>
+        </div>
+    </div>
+    <div id="mob-liveAayaBanner" style="display:flex;align-items:center;justify-content:space-between;background:rgba(6,95,70,0.2);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:8px 12px;margin-bottom:8px;">
+        <span style="font-size:10px;color:#64748b;font-weight:700;text-transform:uppercase;">Live Aaya</span>
+        <span id="mob-liveAayaName" style="font-size:13px;font-weight:900;color:#34d399;font-family:ui-monospace,monospace;">–</span>
+        <span id="mob-liveAayaStatus" style="font-size:10px;font-weight:700;color:#f59e0b;">–</span>
+    </div>
+    <div class="mob-panel-section">⚡ Auto Apply Aaya</div>
+    <div class="mob-panel-row">
+        <button class="mob-panel-btn" onclick="window.applyAutoAaya(1);setTimeout(window._mobSyncAyadiReadouts,80);" style="border-color:#065f46;background:rgba(6,95,70,0.3);color:#34d399;">Dhwaja ★</button>
+        <button class="mob-panel-btn" onclick="window.applyAutoAaya(3);setTimeout(window._mobSyncAyadiReadouts,80);" style="border-color:#7f1d1d;background:rgba(127,29,29,0.3);color:#f87171;">Simha</button>
+        <button class="mob-panel-btn" onclick="window.applyAutoAaya(5);setTimeout(window._mobSyncAyadiReadouts,80);" style="border-color:#1e3a8a;background:rgba(30,58,138,0.3);color:#60a5fa;">Vrusha</button>
+        <button class="mob-panel-btn" onclick="window.applyAutoAaya(7);setTimeout(window._mobSyncAyadiReadouts,80);" style="border-color:#581c87;background:rgba(88,28,135,0.3);color:#c084fc;">Gaja</button>
+    </div>
+    <div class="mob-panel-section" style="color:#a78bfa;">🔢 Live Nava/Shad Vargulu</div>
+    <div class="mob-nava-grid" id="mob-navaGrid">
+        <div class="mob-nava-cell mob-nava-yoni" id="mob-nava-yoni-cell">
+            <span class="mob-nava-label">1. Ayam (Yoni)</span>
+            <span class="mob-nava-value" id="mob-nava-yoni">–</span>
+        </div>
+        <div class="mob-nava-cell mob-viswakarma-only" id="mob-nava-income-cell">
+            <span class="mob-nava-label">2. Income (Dr)</span>
+            <span class="mob-nava-value" id="mob-nava-income">–</span>
+        </div>
+        <div class="mob-nava-cell" id="mob-nava-debt-cell">
+            <span class="mob-nava-label">3. Debt (Ru)</span>
+            <span class="mob-nava-value" id="mob-nava-debt">–</span>
+        </div>
+        <div class="mob-nava-cell">
+            <span class="mob-nava-label">4. Star</span>
+            <span class="mob-nava-value" id="mob-nava-star">–</span>
+        </div>
+        <div class="mob-nava-cell">
+            <span class="mob-nava-label">5. Varam</span>
+            <span class="mob-nava-value" id="mob-nava-varam">–</span>
+        </div>
+        <div class="mob-nava-cell">
+            <span class="mob-nava-label">6. Tithi</span>
+            <span class="mob-nava-value" id="mob-nava-tithi">–</span>
+        </div>
+        <div class="mob-nava-cell">
+            <span class="mob-nava-label">7. Age (Ay)</span>
+            <span class="mob-nava-value" id="mob-nava-age">–</span>
+        </div>
+        <div class="mob-nava-cell mob-viswakarma-only" id="mob-nava-yoga-cell">
+            <span class="mob-nava-label">8. Yoga</span>
+            <span class="mob-nava-value" id="mob-nava-yoga">–</span>
+        </div>
+        <div class="mob-nava-cell mob-viswakarma-only" id="mob-nava-karana-cell">
+            <span class="mob-nava-label">9. Karana</span>
+            <span class="mob-nava-value" id="mob-nava-karana">–</span>
+        </div>
+    </div>
+    <div class="mob-panel-section" style="color:#f59e0b;margin-top:10px;">🧭 True North (°N)</div>
+    <div class="mob-panel-row">
+        <div style="display:flex;align-items:center;background:#1e293b;border:1px solid #334155;border-radius:7px;padding:0 12px;height:48px;gap:8px;width:100%;">
+            <span style="font-size:10px;color:#64748b;font-weight:700;flex-shrink:0;">North °</span>
+            <input type="number" inputmode="decimal" step="any" id="mob-degreeInput" value="0" style="flex:1;background:transparent;border:none;color:#f59e0b;font-size:20px;font-weight:900;text-align:center;outline:none;" oninput="var d=document.getElementById('degreeInput');if(d){d.value=this.value;window.updateDegree&&window.updateDegree(this.value);}">
+            <span style="font-size:10px;color:#64748b;">°N</span>
+        </div>
+    </div>
+    <div class="mob-panel-section" style="color:#60a5fa;">⚙ Ayadi Shastra Mode</div>
+    <div class="mob-panel-row" style="flex-direction:column;gap:8px;">
+        <div style="display:flex;gap:8px;">
+            <label style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:10px;border-radius:7px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:11px;font-weight:700;">
+                <input type="radio" id="mob-shastra-vk" name="mob-shastra" value="viswakarma" checked onchange="window.updateAyadiSettings&&window.updateAyadiSettings('shastra','viswakarma');window._mobSyncAyadiReadouts&&window._mobSyncAyadiReadouts();"> Viswakarma
+            </label>
+            <label style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:10px;border-radius:7px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:11px;font-weight:700;">
+                <input type="radio" id="mob-shastra-mm" name="mob-shastra" value="mayamata" onchange="window.updateAyadiSettings&&window.updateAyadiSettings('shastra','mayamata');window._mobSyncAyadiReadouts&&window._mobSyncAyadiReadouts();"> Mayamata
+            </label>
+        </div>
+    </div>
+    <div style="height:40px;flex-shrink:0;" aria-hidden="true"></div>
+</div>
+
+                <!-- ─── TAB: VIEW ─── -->
+                <div id="mobTab-view" class="mob-tab-panel">
+                    <div class="mob-panel-section">👁 Canvas Layers</div>
+                    <div class="mob-panel-row">
+                        <button class="mob-panel-btn" onclick="state.showGrid=!state.showGrid;window.draw();window.saveLocal();showToast(state.showGrid?'Grid ON':'Grid OFF');" style="color:#94a3b8;"><i class="fa-solid fa-table-cells-large"></i>Grid</button>
+                        <button class="mob-panel-btn" onclick="state.show16Zones=!state.show16Zones;window.draw();window.saveLocal();showToast(state.show16Zones?'Zone Clr ON':'Zone Clr OFF');" style="color:#60a5fa;"><i class="fa-solid fa-layer-group"></i>Zone Clr</button>
+                        <button class="mob-panel-btn" onclick="state.showZoneLines=!state.showZoneLines;var cb=document.getElementById('showZoneLines');if(cb)cb.checked=state.showZoneLines;window.draw();window.saveLocal();showToast(state.showZoneLines?'Zone Lines ON':'Zone Lines OFF');" style="color:#93c5fd;"><i class="fa-solid fa-circle-nodes"></i>Zone Lines</button>
+                        <button class="mob-panel-btn" onclick="state.xray=!state.xray;window.draw();window.saveLocal();showToast(state.xray?'X-Ray ON':'X-Ray OFF');" style="color:#a78bfa;"><i class="fa-solid fa-eye"></i>X-Ray</button>
+                        <button class="mob-panel-btn" onclick="state.showPlotDeities=!state.showPlotDeities;window.draw();window.saveLocal();showToast(state.showPlotDeities?'Devathas ON':'Devathas OFF');" style="color:#fbbf24;"><i class="fa-solid fa-om"></i>Devathas</button>
+                        <button class="mob-panel-btn" onclick="state.showSiteDeities=!state.showSiteDeities;window.draw();window.saveLocal();showToast(state.showSiteDeities?'Site Dev ON':'Site Dev OFF');" style="color:#f59e0b;"><i class="fa-solid fa-border-all"></i>Site Dev</button>
+                        <button class="mob-panel-btn" onclick="state.showDimensions=!state.showDimensions;window.draw();window.saveLocal();showToast(state.showDimensions?'Dims ON':'Dims OFF');" style="color:#34d399;"><i class="fa-solid fa-ruler-combined"></i>Dims</button>
+    
+                        
+                        <button class="mob-panel-btn" onclick="state.showSunPath=!state.showSunPath;window.draw();window.saveLocal();showToast(state.showSunPath?'Sun Path ON':'Sun Path OFF');" style="color:#fde047;"><i class="fa-solid fa-sun"></i>Sun Path</button>
+                        <button class="mob-panel-btn" onclick="window.toggleDevataZoneLines&&window.toggleDevataZoneLines();" style="color:#4ade80;border-color:#065f46;background:rgba(6,95,70,0.2);"><i class="fa-solid fa-border-none"></i>Zone Lines</button>
+                        <input type="checkbox" id="devataZoneToggle" checked
+       onchange="window.toggleDevataZoneMode(this.checked)">
+<span id="devataZoneModeLabel">Devata Zone Mode: ON</span>
+</label>
+                    </div>
+                    <div class="mob-panel-section">☀️ Sun Path — City</div>
+                    <div class="mob-panel-row">
+                        <select id="mobSunCitySelect" onchange="state.sunCity=this.value;var dc=document.getElementById('sunCitySelectSite');if(dc)dc.value=this.value;window.draw();window.saveLocal();" style="background:#1e293b;border:1px solid #475569;color:#fde047;font-size:16px;border-radius:6px;padding:8px 10px;width:100%;cursor:pointer;touch-action:manipulation;">
+                            <option>Hyderabad</option><option>Chennai</option><option>Mumbai</option><option>Delhi</option><option>Bangalore</option><option>Kolkata</option><option>Ahmedabad</option><option>Pune</option><option>Visakhapatnam</option><option>Vijayawada</option><option>Tirupati</option><option>Kochi</option><option>Coimbatore</option><option>Madurai</option><option>Surat</option><option>Jaipur</option><option>Lucknow</option><option>Bhopal</option><option>Nagpur</option><option>Indore</option><option>Patna</option><option>Bhubaneswar</option><option>Raipur</option><option>Chandigarh</option><option>Dehradun</option><option>Amritsar</option><option>Varanasi</option><option>Agra</option><option>Nashik</option><option>Aurangabad</option>
+                        </select>
+                    </div>
+                    <div class="mob-panel-section">🎨 Zone Opacity</div>
+                    <div class="mob-panel-row" style="flex-direction:column;gap:6px;padding:4px 0;">
+                        <div style="display:flex;align-items:center;justify-content:space-between;width:100%;">
+                            <span style="font-size:11px;color:#60a5fa;font-weight:700;">Zone Colour Intensity</span>
+                            <span id="mobZoneOpacityVal" style="font-size:12px;font-weight:900;color:#f8fafc;min-width:32px;text-align:right;">40%</span>
+                        </div>
+                        <input type="range" id="mobZoneOpacity" min="0.1" max="1" step="0.05" value="0.4"
+                            style="width:100%;accent-color:#3b82f6;height:6px;border-radius:3px;cursor:pointer;touch-action:none;"
+                            oninput="state.zoneOpacity=parseFloat(this.value);document.getElementById('mobZoneOpacityVal').textContent=Math.round(this.value*100)+'%';var dr=document.querySelector('input[onchange*=zoneOpacity]');if(dr)dr.value=this.value;window.draw();">
+                    </div>
+                    <div class="mob-panel-section">🌐 Language</div>
+                    <div class="mob-panel-row">
+                        <select id="mobLangSelect" onchange="window.setAppLanguage&&window.setAppLanguage(this.value);var gl=document.getElementById('globalLangSelect');if(gl)gl.value=this.value;" style="background:#1e293b;border:1px solid #475569;color:#f8fafc;font-size:16px;border-radius:6px;padding:8px 10px;width:100%;cursor:pointer;touch-action:manipulation;">
+                            <option value="en">🇬🇧 English</option>
+                            <option value="te">తె Telugu</option>
+                            <option value="hi">हि Hindi</option>
+                            <option value="kn">ಕ Kannada</option>
+                            <option value="ta">த Tamil</option>
+                            <option value="ml">മ Malayalam</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- ─── TAB: OUTPUT ─── -->
+                <div id="mobTab-output" class="mob-tab-panel">
+                    <div class="mob-panel-section">📤 Export</div>
+                    <div class="mob-panel-row">
+                        <button class="mob-panel-btn" onclick="window.exportImage&&window.exportImage();document.getElementById('mobMenuOverlay').style.display='none';"><i class="fa-solid fa-camera"></i>Save Image</button>
+                        <button class="mob-panel-btn" onclick="window.exportProject&&window.exportProject();document.getElementById('mobMenuOverlay').style.display='none';" style="color:#34d399;border-color:#065f46;"><i class="fa-solid fa-floppy-disk"></i>Save .json</button>
+                        <button class="mob-panel-btn" onclick="window.exportDXF&&window.exportDXF();document.getElementById('mobMenuOverlay').style.display='none';" style="color:#fb923c;"><i class="fa-solid fa-drafting-compass"></i>DXF / AutoCAD</button>
+                    </div>
+                    <div class="mob-panel-section">📨 Share</div>
+                    <div class="mob-panel-row">
+                        <button class="mob-panel-btn" onclick="window.shareViaWhatsApp&&window.shareViaWhatsApp();document.getElementById('mobMenuOverlay').style.display='none';" style="border-color:#15803d;background:rgba(21,128,61,0.2);color:#4ade80;"><i class="fa-brands fa-whatsapp"></i>WhatsApp</button>
+                        <button class="mob-panel-btn" onclick="window.shareViaEmail&&window.shareViaEmail();document.getElementById('mobMenuOverlay').style.display='none';" style="border-color:#1d4ed8;background:rgba(29,78,216,0.2);color:#60a5fa;"><i class="fa-solid fa-envelope"></i>Email</button>
+                        <button class="mob-panel-btn" onclick="window.copyProjectToClipboard&&window.copyProjectToClipboard();document.getElementById('mobMenuOverlay').style.display='none';" style="border-color:#6d28d9;background:rgba(139,92,246,0.15);color:#a78bfa;"><i class="fa-solid fa-copy"></i>Copy Text</button>
+                    </div>
+                    <div class="mob-panel-section">🖨 Print</div>
+                    <div class="mob-panel-row">
+                        <button class="mob-panel-btn" onclick="typeof window.generateReport==='function'&&window.generateReport();document.getElementById('mobMenuOverlay').style.display='none';" style="border-color:#92400e;background:rgba(146,64,14,0.2);color:#fbbf24;"><i class="fa-solid fa-print"></i>Print Vastu PDF</button>
+                        <button class="mob-panel-btn" onclick="window.openUserGuide&&window.openUserGuide();document.getElementById('mobMenuOverlay').style.display='none';" style="border-color:#6d28d9;background:rgba(109,40,217,0.2);color:#a78bfa;"><i class="fa-solid fa-book-open"></i>User Guide</button>
+                        <button class="mob-panel-btn" onclick="(function(){var l=(document.getElementById('globalLangSelect')||{}).value||'en';var u={en:'https://vssomarajupalli-lgtm.github.io/samarthavastu_mobile-app/consult_en.pdf',te:'https://vssomarajupalli-lgtm.github.io/samarthavastu_mobile-app/consult_te.pdf',hi:'https://vssomarajupalli-lgtm.github.io/samarthavastu_mobile-app/consult_hi.pdf',kn:'https://vssomarajupalli-lgtm.github.io/samarthavastu_mobile-app/consult_kn.pdf',ta:'https://vssomarajupalli-lgtm.github.io/samarthavastu_mobile-app/consult_ta.pdf',ml:'https://vssomarajupalli-lgtm.github.io/samarthavastu_mobile-app/consult_ml.pdf'};window.open(u[l]||u.en,'_blank');})();document.getElementById('mobMenuOverlay').style.display='none';" style="border-color:rgba(245,158,11,0.5);background:linear-gradient(135deg,#92400e,#78350f);color:#fbbf24;">🙏 Consult PDF</button>
+                    </div>
+                    <div class="mob-panel-section">⭐ Feedback</div>
+                    <div class="mob-panel-row">
+                        <button class="mob-panel-btn" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdnadqSdmc3CDW_rWFq7kvgYebmQmQilYlvfyS8qg8nuw1Nvg/viewform','_blank');document.getElementById('mobMenuOverlay').style.display='none';" style="color:#fbbf24;border-color:#92400e;background:rgba(234,179,8,0.1);"><i class="fa-solid fa-star"></i>Give Feedback</button>
+                    </div>
+                </div>
+
+                <!-- ─── TAB: SYSTEM ─── -->
+                <div id="mobTab-system" class="mob-tab-panel">
+                    <div class="mob-panel-section" style="color:#f59e0b;">👤 Client Details</div>
+<div class="mob-panel-row" style="flex-direction:column;gap:6px;">
+    <input type="text" id="mob-clientName" placeholder="Client Name" style="width:100%;background:#1e293b;border:1px solid #475569;border-radius:6px;color:#fbbf24;font-size:16px;font-weight:700;padding:10px 12px;outline:none;" onchange="state.clientName=this.value;window.saveLocal&&window.saveLocal();var d=document.getElementById('clientName');if(d)d.value=this.value;window.syncMobHeaderClientName&&window.syncMobHeaderClientName();">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+        <input type="text" id="mob-clientPlace" placeholder="Place" style="background:#1e293b;border:1px solid #475569;border-radius:6px;color:#e2e8f0;font-size:16px;padding:10px 12px;outline:none;" onchange="state.clientPlace=this.value;window.saveLocal&&window.saveLocal();var d=document.getElementById('clientPlace');if(d)d.value=this.value;">
+        <input type="text" id="mob-clientPhone" placeholder="Phone" style="background:#1e293b;border:1px solid #475569;border-radius:6px;color:#e2e8f0;font-size:16px;padding:10px 12px;outline:none;" onchange="state.clientPhone=this.value;window.saveLocal&&window.saveLocal();var d=document.getElementById('clientPhone');if(d)d.value=this.value;">
+    </div>
+</div>
+                    <div class="mob-panel-section">📁 Project Files</div>
+                    <div class="mob-panel-row">
+                        <button class="mob-panel-btn" onclick="document.getElementById('mobMenuOverlay').style.display='none';window.toggleProjectManager&&window.toggleProjectManager();" style="border-color:#581c87;background:rgba(88,28,135,0.3);color:#c084fc;"><i class="fa-solid fa-folder-open"></i>Projects</button>
+                        <button class="mob-panel-btn" onclick="document.getElementById('mobMenuOverlay').style.display='none';(function(){var i=document.createElement('input');i.type='file';i.accept='.json';i.onchange=function(e){var f=e.target.files[0];if(!f)return;var r=new FileReader();r.onload=function(ev){try{var p=JSON.parse(ev.target.result);Object.assign(state,p);if(typeof window.migrateToFloors==='function')window.migrateToFloors();state.isLShape=false;window.updateFromInputs();renderItemList();renderShapeList();window.draw();window.saveLocal();window.syncMobHeaderClientName&&window.syncMobHeaderClientName();showToast('Project imported ✅');}catch(ex){alert('Invalid file.');}};r.readAsText(f);};i.click();})();" style="color:#34d399;border-color:#065f46;"><i class="fa-solid fa-file-import"></i>Import</button>
+                        <button class="mob-panel-btn" onclick="document.getElementById('mobMenuOverlay').style.display='none';window.resetOldData&&window.resetOldData();" style="border-color:#7f1d1d;background:rgba(127,29,29,0.2);color:#f87171;"><i class="fa-solid fa-rotate-left"></i>Reset All</button>
+                    </div>
+                    <div class="mob-panel-section">↩ History</div>
+                    <div class="mob-panel-row">
+                        <button class="mob-panel-btn" onclick="window.undo&&window.undo();document.getElementById('mobMenuOverlay').style.display='none';"><i class="fa-solid fa-rotate-left"></i>Undo</button>
+                        <button class="mob-panel-btn" onclick="window.redo&&window.redo();document.getElementById('mobMenuOverlay').style.display='none';"><i class="fa-solid fa-rotate-right"></i>Redo</button>
+                        <button class="mob-panel-btn" onclick="window.undoWall&&window.undoWall();document.getElementById('mobMenuOverlay').style.display='none';" style="color:#f87171;"><i class="fa-solid fa-eraser"></i>Undo Wall</button>
+                    </div>
+                    <div class="mob-panel-section">📚 Resources</div>
+                    <div class="mob-panel-row">
+                        <button class="mob-panel-btn" onclick="window.openUserGuide&&window.openUserGuide();document.getElementById('mobMenuOverlay').style.display='none';" style="color:#34d399;border-color:#065f46;"><i class="fa-solid fa-book"></i>User Guide</button>
+                        <button class="mob-panel-btn" onclick="window.openLearningGuide&&window.openLearningGuide();document.getElementById('mobMenuOverlay').style.display='none';" style="color:#c084fc;border-color:#4c1d95;"><i class="fa-solid fa-graduation-cap"></i>Learning Guide</button>
+                        <button class="mob-panel-btn" onclick="window.openWhyDifferent&&window.openWhyDifferent();document.getElementById('mobMenuOverlay').style.display='none';" style="color:#a78bfa;border-color:#4c1d95;"><i class="fa-solid fa-star"></i>Why Different</button>
+                        <button class="mob-panel-btn" onclick="var s=document.getElementById('shortcutsModal');if(s)s.style.display='flex';document.getElementById('mobMenuOverlay').style.display='none';" style="color:#94a3b8;"><i class="fa-solid fa-keyboard"></i>Shortcuts</button>
+                    </div>
+                    <div class="mob-panel-section">🙏 Expert Consultation</div>
+                    <div class="mob-panel-row">
+                        <button class="mob-panel-btn" onclick="document.getElementById('contactModal')&&(document.getElementById('contactModal').style.display='flex');document.getElementById('mobMenuOverlay').style.display='none';" style="border-color:rgba(245,158,11,0.5);background:linear-gradient(135deg,#92400e,#78350f);color:#fbbf24;width:100%;justify-content:center;">
+                            <i class="fa-solid fa-handshake"></i> Contact Samartha Vastu
+                        </button>
+                    </div>
+                </div>
+
+            </div><!-- end mob-tab-content -->
+        </div><!-- end mobMenuPanel -->
+    </div><!-- end mobMenuOverlay -->
+
+    <header class="bg-slate-900 border-b border-slate-800 shrink-0 z-40 shadow-xl" style="overflow:visible;">
+        <!-- Row 1: Logo + Undo/Redo + Live Aaya + Project Tools + Print -->
+        <div class="flex items-center justify-between gap-2 px-3 py-2 border-b border-slate-800/60 flex-wrap" style="padding-left:16px;padding-right:16px;">
+            <div id="desktopHeaderLeft" class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-600 rounded-lg flex items-center justify-center text-white font-black text-lg shadow-lg shrink-0">V</div>
+                <div class="hidden md:block self-center">
+                    <h1 class="text-sm font-black text-white leading-none">SAMARTHA VASTU</h1>
+                    <span class="text-[9px] text-slate-400 font-mono uppercase tracking-tighter"><span id="header-version">v34</span> | ARCHITECT EDITION</span>
+                </div>
+                <div class="flex items-center gap-1 border-x border-slate-700 px-2 mx-1">
+                    <button onclick="window.undo()" class="top-btn bg-slate-800 text-slate-300 hover:bg-slate-700 px-2" title="Undo (Ctrl+Z)"><i class="fa-solid fa-rotate-left"></i></button>
+                    <button onclick="state.scale=1;state.offsetX=0;state.offsetY=0;window.draw();" title="Fit to Screen (reset zoom)" class="top-btn bg-slate-800 text-slate-300 hover:bg-slate-700 px-2" title="Fit to Screen (reset zoom)"><i class="fa-solid fa-compress"></i></button>
+                    <button onclick="window.redo()" class="top-btn bg-slate-800 text-slate-300 hover:bg-slate-700 px-2" title="Redo (Ctrl+Y)"><i class="fa-solid fa-rotate-right"></i></button>
+                </div>
+                <div class="flex items-center gap-1.5 bg-slate-800 border border-slate-700 rounded-lg px-3 py-1 shadow-inner" style="flex-wrap:nowrap;">
+                    <span class="text-[10px] font-bold text-slate-300 uppercase shrink-0">LIVE AAYA:</span>
+                    <span id="headerLiveAaya" class="text-sm font-black text-amber-400 leading-none mr-2 shrink-0">-</span>
+                    <button onclick="window.applyAutoAaya(1)" class="top-btn bg-emerald-900/40 text-emerald-400 hover:bg-emerald-800/60 px-1.5 py-1" title="Set house dimensions for Dhwaja Yoni (best)" style="min-height:30px;">Dhwaja</button>
+                    <button onclick="window.applyAutoAaya(3)" class="top-btn bg-red-900/40 text-red-400 hover:bg-red-800/60 px-1.5 py-1" title="Set house dimensions for Simha Yoni" style="min-height:30px;">Simha</button>
+                    <button onclick="window.applyAutoAaya(5)" class="top-btn bg-blue-900/40 text-blue-400 hover:bg-blue-800/60 px-1.5 py-1" title="Set house dimensions for Vrusha Yoni" style="min-height:30px;">Vrusha</button>
+                    <button onclick="window.applyAutoAaya(7)" class="top-btn bg-purple-900/40 text-purple-400 hover:bg-purple-800/60 px-1.5 py-1" title="Set house dimensions for Gaja Yoni" style="min-height:30px;">Gaja</button>
+                </div>
+                <!-- ── DESKTOP SCORE STRIP — hidden on mobile, shown via @media min-width:768px ── -->
+                <div id="scoreStrip" style="display:none;align-items:center;gap:7px;background:rgba(15,23,42,0.9);border:1px solid rgba(34,197,94,0.25);border-radius:8px;padding:3px 10px 3px 6px;flex-shrink:0;cursor:default;" title="Vastu Health Score">
+                    <svg viewBox="0 0 64 64" style="width:28px;height:28px;flex-shrink:0;">
+                        <circle cx="32" cy="32" r="26" fill="none" stroke="#1e293b" stroke-width="8"/>
+                        <circle id="scoreRingHeader" cx="32" cy="32" r="26" fill="none" stroke="#22c55e" stroke-width="8" stroke-linecap="round" stroke-dasharray="163.4" stroke-dashoffset="0" style="transition:stroke-dashoffset 0.8s ease,stroke 0.5s ease;transform-origin:center;transform:rotate(-90deg);"/>
+                    </svg>
+                    <div style="display:flex;flex-direction:column;line-height:1.15;">
+                        <span style="font-size:9px;color:#475569;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;">Score</span>
+                        <span id="auditScoreHeader" style="font-size:14px;font-weight:900;color:#22c55e;font-family:ui-monospace,monospace;">100%</span>
+                    </div>
+                </div>
+            </div><!-- end #desktopHeaderLeft -->
+
+            <!-- ═══ DESKTOP HEADER CENTER — Snap only (Auto Gate + Sun Path moved to Site Tools dropdown) ═══ -->
+            <div id="desktopHeaderCenter" style="display:flex;gap:8px;justify-content:center;align-items:center;flex:1 1 auto;min-width:0;flex-wrap:wrap;">
+                <button onclick="state.snap=!state.snap;let sb=document.getElementById('snapBtn');if(sb)sb.classList.toggle('btn-active',state.snap);this.classList.toggle('btn-active',state.snap);showToast(state.snap?'Snap ON':'Snap OFF');"
+                    id="snapBtnCenter" class="top-btn bg-slate-800 text-slate-300 border border-slate-600 hover:bg-slate-700"
+                    title="Toggle Snap to Grid">
+                    <i class="fa-solid fa-magnet mr-1"></i> Snap
+                </button>
+            </div>
+
+            <div class="flex items-center gap-1.5 flex-wrap" style="flex-shrink:0;">
+
+                <!-- GROUP 1: FILE — Projects + New + Import -->
+                <div class="relative" id="fileMenuContainer">
+                    <button onclick="document.getElementById('fileDropdown').classList.toggle('hidden');document.getElementById('exportDropdown').classList.add('hidden');document.getElementById('resourcesDropdown').classList.add('hidden');"
+                        class="top-btn bg-slate-700 hover:bg-slate-600 text-white border border-slate-600 flex items-center gap-1.5"
+                        title="File — Projects, Import, Reset">
+                        <i class="fa-solid fa-folder text-purple-400"></i>
+                        <span class="hidden sm:inline font-bold">File</span>
+                        <i class="fa-solid fa-chevron-down text-[8px] opacity-60"></i>
+                    </button>
+                    <div id="fileDropdown" style="z-index:9999;" class="hidden absolute left-0 top-full mt-1.5 w-52 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl z-[500] overflow-hidden">
+                        <div class="px-3 py-1.5 border-b border-slate-800">
+                            <span class="text-[8px] text-slate-500 font-bold uppercase tracking-wider">Project Management</span>
+                        </div>
+                        <button onclick="window.toggleProjectManager();document.getElementById('fileDropdown').classList.add('hidden');"
+                            class="w-full flex items-center gap-2.5 px-3 py-2.5 hover:bg-slate-800 text-left transition">
+                            <i class="fa-solid fa-folder-open text-purple-400 w-4"></i>
+                            <div><div class="text-[11px] font-bold text-white">Open / Save Projects</div><div class="text-[9px] text-slate-500">Manage all saved plans</div></div>
+                        </button>
+                        <button onclick="(function(){let i=document.createElement('input');i.type='file';i.accept='.json';i.onchange=e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=ev=>{try{let p=JSON.parse(ev.target.result);Object.assign(state,p);if(typeof window.migrateToFloors==='function')window.migrateToFloors();state.isLShape=false;window.updateFromInputs();renderItemList();renderShapeList();window.draw();window.saveLocal();window.syncMobHeaderClientName&&window.syncMobHeaderClientName();showToast('Project imported ✅');}catch(ex){alert('Invalid file.');}};r.readAsText(f);};i.click();})();document.getElementById('fileDropdown').classList.add('hidden');"
+                            class="w-full flex items-center gap-2.5 px-3 py-2.5 hover:bg-slate-800 text-left transition">
+                            <i class="fa-solid fa-file-import text-emerald-400 w-4"></i>
+                            <div><div class="text-[11px] font-bold text-white">Import Plan</div><div class="text-[9px] text-slate-500">Load .json project file</div></div>
+                        </button>
+                        <div class="border-t border-slate-800 mt-1 pt-1">
+                            <button onclick="window.resetOldData();document.getElementById('fileDropdown').classList.add('hidden');"
+                                class="w-full flex items-center gap-2.5 px-3 py-2.5 hover:bg-red-900/30 text-left transition">
+                                <i class="fa-solid fa-rotate-left text-rose-400 w-4"></i>
+                                <div><div class="text-[11px] font-bold text-rose-300">Reset Data</div><div class="text-[9px] text-slate-500">Clear and start fresh</div></div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GROUP 2: EXPORT + PRINT -->
+                <div class="relative" id="exportMenuContainer">
+                    <button onclick="document.getElementById('exportDropdown').classList.toggle('hidden');document.getElementById('fileDropdown').classList.add('hidden');document.getElementById('resourcesDropdown').classList.add('hidden');"
+                        class="top-btn bg-slate-700 hover:bg-slate-600 text-white border border-slate-600 flex items-center gap-1.5"
+                        title="Export — Image, DXF, Print PDF">
+                        <i class="fa-solid fa-share-from-square text-sky-400"></i>
+                        <span class="hidden sm:inline font-bold">Export</span>
+                        <i class="fa-solid fa-chevron-down text-[8px] opacity-60"></i>
+                    </button>
+                    <div id="exportDropdown" style="z-index:9999;" class="hidden absolute left-0 top-full mt-1.5 w-56 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl z-[500] overflow-hidden">
+                        <div class="px-3 py-1.5 border-b border-slate-800">
+                            <span class="text-[8px] text-slate-500 font-bold uppercase tracking-wider">Export & Print</span>
+                        </div>
+                        <button onclick="window.exportImage();document.getElementById('exportDropdown').classList.add('hidden');"
+                            class="w-full flex items-center gap-2.5 px-3 py-2.5 hover:bg-slate-800 text-left transition">
+                            <i class="fa-solid fa-camera text-sky-400 w-4"></i>
+                            <div><div class="text-[11px] font-bold text-white">Floor Plan Image</div><div class="text-[9px] text-slate-500">Save as PNG — share via WhatsApp</div></div>
+                        </button>
+                        <button onclick="window.exportDXF();document.getElementById('exportDropdown').classList.add('hidden');"
+                            class="w-full flex items-center gap-2.5 px-3 py-2.5 hover:bg-slate-800 text-left transition">
+                            <i class="fa-solid fa-drafting-compass text-orange-400 w-4"></i>
+                            <div><div class="text-[11px] font-bold text-white">AutoCAD DXF</div><div class="text-[9px] text-slate-500">Open in AutoCAD, FreeCAD</div></div>
+                        </button>
+                        <div class="border-t border-slate-800 mt-1 pt-1 px-3 pb-2">
+                            <div class="border-t border-slate-800 mt-1 pt-2">
+                            <div class="text-[8px] text-slate-500 font-bold uppercase tracking-wider mb-1.5">Print Report</div>
+                            <div class="flex items-center gap-2 mb-1">
+                                <i class="fa-solid fa-language text-slate-500 text-[10px]"></i>
+                                <span class="text-[8px] text-slate-400">Language: </span>
+                                <span id="exportLangLabel" class="text-[9px] font-bold text-amber-400">English</span>
+                                <span class="text-[8px] text-slate-600 ml-auto">(change in header)</span>
+                            </div>
+                            <button onclick="window.generateReport();setTimeout(()=>document.getElementById('exportDropdown').classList.add('hidden'),300);"
+                                class="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-white font-bold text-[10px]"
+                                style="background:linear-gradient(90deg,#0d9488,#0891b2);" title="Print full Padavinyasa Vastu Report in selected language">
+                                <i class="fa-solid fa-print"></i> Print Vastu Report PDF
+                            </button>
+                        </div>
+                        </div>
+                        <!-- Feedback button -->
+                        <div style="border-top:1px solid rgba(51,65,85,0.6);margin-top:4px;padding-top:4px;">
+                            <button onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdnadqSdmc3CDW_rWFq7kvgYebmQmQilYlvfyS8qg8nuw1Nvg/viewform','_blank');document.getElementById('resourcesDropdown').classList.add('hidden');"
+                                class="w-full flex items-center gap-3 rounded-lg p-2.5 transition hover:bg-slate-800 text-left border-none bg-transparent cursor-pointer">
+                                <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(234,179,8,0.15);">
+                                    <i class="fa-solid fa-star text-yellow-400 text-[11px]"></i>
+                                </div>
+                                <div>
+                                    <div class="text-[11px] font-bold text-yellow-300">Give Feedback</div>
+                                    <div class="text-[9px] text-slate-400">Help us improve — 2 minutes</div>
+                                </div>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-500 ml-auto"></i>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- DIVIDER -->
+                <div style="width:2px;background:linear-gradient(to bottom,transparent,#f59e0b,transparent);flex-shrink:0;align-self:stretch;min-height:24px;margin:0 3px;border-radius:2px;opacity:0.7;"></div>
+
+                <!-- GROUP 3: NAVAVARGULU (standalone — important) -->
+                <!-- ── ℹ️ Help Guide — prominent header button ── -->
+                <button onclick="window.openUserGuide && window.openUserGuide();"
+                    class="top-btn border hover:brightness-110"
+                    style="background:rgba(99,102,241,0.22);color:#c7d2fe;border-color:rgba(99,102,241,0.55);font-size:11px;font-weight:800;letter-spacing:0.03em;"
+                    title="Open User Guide — Quick Start, tools reference, keyboard shortcuts">
+                    <i class="fa-solid fa-circle-question" style="font-size:13px;"></i>
+                    <span>Help</span>
+                </button>
+                <button onclick="window.toggleNavavargulu()" title="View Ayadi Navavargulu — 9 astrological parameters" class="top-btn bg-amber-700 hover:bg-amber-600 text-white shadow-lg">
+                    <i class="fa-solid fa-calculator mr-1"></i>
+                    <span class="hidden sm:inline">Vargas</span>
+                </button>
+
+                <!-- DIVIDER -->
+                <div style="width:2px;background:linear-gradient(to bottom,transparent,#f59e0b,transparent);flex-shrink:0;align-self:stretch;min-height:24px;margin:0 3px;border-radius:2px;opacity:0.7;"></div>
+
+                <!-- GROUP 4: RESOURCES DROPDOWN — Most important for users -->
+                <div class="relative" id="resourcesMenuContainer">
+                    <button onclick="document.getElementById('resourcesDropdown').classList.toggle('hidden');document.getElementById('fileDropdown').classList.add('hidden');document.getElementById('exportDropdown').classList.add('hidden');"
+                        class="top-btn text-white shadow-lg flex items-center gap-1.5 border border-amber-600/50"
+                        style="background:linear-gradient(135deg,#92400e,#78350f);"
+                        title="Resources — Learning Guide, Why Different, User Guide">
+                        <i class="fa-solid fa-book-open text-amber-400"></i>
+                        <span class="hidden sm:inline font-bold text-amber-200"data-i18n="resources">Resources</span>
+                        <i class="fa-solid fa-chevron-down text-[8px] opacity-60"></i>
+                    </button>
+                    <div id="resourcesDropdown" style="z-index:9999;" class="hidden absolute right-0 top-full mt-1.5 w-64 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl z-[500] overflow-hidden">
+                        <!-- Why Different — highlighted -->
+                        <div style="background:linear-gradient(135deg,#1e1b4b,#0f172a);border-bottom:1px solid #4c1d95;">
+                            <button onclick="window.openWhyDifferent();document.getElementById('resourcesDropdown').classList.add('hidden');"
+                                class="w-full flex items-center gap-2.5 px-3 py-3 hover:bg-purple-900/30 text-left transition">
+                                <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#7c3aed,#4f46e5);">
+                                    <i class="fa-solid fa-star text-white text-[11px]"></i>
+                                </div>
+                                <div>
+                                    <div class="text-[11px] font-black text-amber-300"data-i18n="whyDiff">Why We Are Different</div>
+                                    <div class="text-[9px] text-slate-400"data-i18n="whyDiffSub">Specialities · Sakkhi proof · Slokas</div>
+                                </div>
+                            </button>
+                        </div>
+                        <!-- Learning Guide -->
+                        <div class="px-3 pt-2 pb-1 border-t border-slate-800">
+                            <span class="text-[8px] text-slate-500 font-bold uppercase tracking-wider" data-i18n="guidesHelp">📚 Guides & Help</span>
+                        </div>
+                        <button onclick="window.openLearningGuide();document.getElementById('resourcesDropdown').classList.add('hidden');"
+                            class="w-full flex items-center gap-2.5 px-3 py-2.5 hover:bg-slate-800 text-left transition border-b border-slate-800">
+                            <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-violet-900">
+                                <i class="fa-solid fa-graduation-cap text-violet-300 text-[11px]"></i>
+                            </div>
+                            <div>
+                                <div class="text-[11px] font-bold text-white"data-i18n="learningGuide">Learning Guide</div>
+                                <div class="text-[9px] text-slate-400"data-i18n="learningGuideSub">Complete Viswakarma Vastu reference</div>
+                            </div>
+                        </button>
+                        <!-- User Guide -->
+                        <button onclick="window.openUserGuide();document.getElementById('resourcesDropdown').classList.add('hidden');"
+                            class="w-full flex items-center gap-2.5 px-3 py-2.5 hover:bg-slate-800 text-left transition border-b border-slate-800">
+                            <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-emerald-900">
+                                <i class="fa-solid fa-book text-emerald-300 text-[11px]"></i>
+                            </div>
+                            <div>
+                                <div class="text-[11px] font-bold text-white"data-i18n="userGuide">User Guide</div>
+                                <div class="text-[9px] text-slate-400"data-i18n="userGuideSub">How to use the software</div>
+                            </div>
+                        </button>
+                        <!-- Keyboard Shortcuts -->
+                        <button onclick="var s=document.getElementById('shortcutsModal');s.style.display='flex';document.getElementById('resourcesDropdown').classList.add('hidden');"
+                            class="w-full flex items-center gap-2.5 px-3 py-2.5 hover:bg-slate-800 text-left transition">
+                            <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-slate-800">
+                                <i class="fa-solid fa-keyboard text-slate-400 text-[11px]"></i>
+                            </div>
+                            <div>
+                                <div class="text-[11px] font-bold text-white"data-i18n="shortcuts">Keyboard Shortcuts</div>
+                                <div class="text-[9px] text-slate-400"data-i18n="shortcutsSub">Ctrl+Z, W, M, R, G, +/-, Del...</div>
+                            </div>
+                        </button>
+
+                    </div>
+                </div>
+
+                <!-- DIVIDER -->
+                <div style="width:2px;background:linear-gradient(to bottom,transparent,#f59e0b,transparent);flex-shrink:0;align-self:stretch;min-height:24px;margin:0 3px;border-radius:2px;opacity:0.7;"></div>
+
+                <!-- LANGUAGE SELECTOR (Row 1) -->
+                <div class="flex items-center gap-1.5">
+                    <i class="fa-solid fa-language text-slate-400 text-[11px]"></i>
+                    <select id="globalLangSelect"
+                        onchange="window.setAppLanguage(this.value)"
+                        class="bg-slate-800 border border-slate-600 text-white text-[9px] font-bold py-1 px-1.5 rounded outline-none h-7"
+                        title="App Language — affects User Guide, Print Report, and UI">
+                        <option value="en">🇬🇧 EN</option>
+                        <option value="te">తె</option>
+                        <option value="hi">हि</option>
+                        <option value="kn">ಕ</option>
+                        <option value="ta">த</option>
+                        <option value="ml">മ</option>
+                    </select>
+                </div>
+
+                <!-- DIVIDER -->
+                <div style="width:2px;background:linear-gradient(to bottom,transparent,#f59e0b,transparent);flex-shrink:0;align-self:stretch;min-height:24px;margin:0 3px;border-radius:2px;opacity:0.7;"></div>
+
+                <!-- CONSULT BUTTON (Row 1) -->
+                <button onclick="const _cl=(document.getElementById('globalLangSelect')&&document.getElementById('globalLangSelect').value)||localStorage.getItem('lang')||(state&&state.lang)||'en'; const _cu={en:'https://vssomarajupalli-lgtm.github.io/samarthavastu_mobile-app/consult_en.pdf',te:'https://vssomarajupalli-lgtm.github.io/samarthavastu_mobile-app/consult_te.pdf',hi:'https://vssomarajupalli-lgtm.github.io/samarthavastu_mobile-app/consult_hi.pdf',kn:'https://vssomarajupalli-lgtm.github.io/samarthavastu_mobile-app/consult_kn.pdf',ta:'https://vssomarajupalli-lgtm.github.io/samarthavastu_mobile-app/consult_ta.pdf',ml:'https://vssomarajupalli-lgtm.github.io/samarthavastu_mobile-app/consult_ml.pdf'}; window.open(_cu[_cl]||_cu.en,'_blank')"
+                    class="top-btn flex items-center gap-1.5 border border-amber-500/70 text-white shadow-lg"
+                    style="background:linear-gradient(135deg,#f59e0b,#ea580c);"
+                    title="Samartha Vastu — Expert Consultation & Contact">
+                    <i class="fa-solid fa-handshake text-white"></i>
+                    <span class="hidden sm:inline font-bold text-white" data-i18n="consultBtn">🙏 Consult</span>
+                </button>
+
+            </div>
+        <!-- Row 2: Drawing Tools — 3 Groups -->
+        <div class="flex items-center gap-2 px-3 py-1.5 flex-wrap bg-slate-950/30 border-t border-slate-800/40" style="position:relative;overflow:visible;z-index:50;padding-left:16px;padding-right:16px;">
+
+            <!-- GROUP 1: DRAW TOOLS -->
+            <div class="flex items-center gap-1">
+                <span style="font-size:9px;color:#f59e0b;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-right:3px;opacity:0.9;">✏ Draw</span>
+                <button onclick="window.addTextLabel()" class="top-btn bg-slate-800 text-amber-400 border border-slate-700 hover:bg-slate-700" title="Add Custom Text"><i class="fa-solid fa-font"></i> <span>Text</span></button>
+                <button id="wallBtn" onclick="window.setActiveTool('wall')" class="top-btn bg-slate-800 text-slate-300 border border-slate-600 hover:bg-slate-700" title="Wall & Measure — click points to draw walls and measure distances"><i class="fa-solid fa-pen-ruler"></i> <span>Wall &amp; Measure</span></button>
+                <button onclick="window.undoWall()" class="top-btn bg-slate-800 text-rose-400 border border-slate-600 hover:bg-slate-700" title="Erase Last Wall"><i class="fa-solid fa-eraser"></i> <span>Undo Wall</span></button>
+                <button id="rectBtn" onclick="window.setActiveTool('rect')" class="top-btn bg-slate-800 text-cyan-400 border border-slate-600 hover:bg-slate-700" title="Draw Separation Rectangle"><i class="fa-solid fa-vector-square"></i> <span>Rect</span></button>
+                <button id="inkBtn" onclick="window.toggleInkTool()" class="top-btn border hover:brightness-110" style="display:none;" title="RMRC"><i class="fa-solid fa-pen-nib"></i> <span>RMRC</span></button>
+                
+                <!-- Calculator button -->
+                <button onclick="window.openCalc()" class="top-btn bg-slate-800 text-indigo-300 border border-slate-600 hover:bg-slate-700" title="Vastu Calculator — standard math + Feet/Inches to Sq.Yards (Gajam)"><i class="fa-solid fa-calculator"></i> <span>Calc</span></button>
+            </div>
+
+            <!-- DIVIDER -->
+            <div style="width:2px;height:24px;background:linear-gradient(to bottom,transparent,#f59e0b,transparent);flex-shrink:0;border-radius:2px;margin:0 2px;opacity:0.8;"></div>
+
+            <!-- GROUP 2: SITE TOOLS (Advanced dropdown — Sun Path, Auto Gate, RMRC Ink, Ink Colour, Clear Ink) -->
+            <div class="flex items-center gap-1" id="siteToolsContainer" style="position:relative;">
+                <span style="font-size:9px;color:#f59e0b;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-right:3px;opacity:0.9;">🛠 Site</span>
+                <button id="siteToolsBtn" onclick="document.getElementById('siteToolsDropdown').classList.toggle('hidden');document.getElementById('viewSettingsDropdown').classList.add('hidden');"
+                    class="top-btn bg-slate-800 text-amber-400 border border-amber-800/60 hover:bg-slate-700 flex items-center gap-1"
+                    title="Site Tools — Sun Path, Auto Gate, Ink Marker">
+                    <i class="fa-solid fa-layer-group mr-1"></i><span class="text-[9px]">Site Tools</span>
+                    <i class="fa-solid fa-chevron-down text-[7px] opacity-60"></i>
+                </button>
+                <div id="siteToolsDropdown" class="absolute left-0 top-full mt-2 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl p-3 hidden" style="z-index:9999;min-width:220px;">
+                    <!-- Auto Gate -->
+                    <button onclick="window.autoPlaceGates();document.getElementById('siteToolsDropdown').classList.add('hidden');"
+                        class="w-full flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-slate-800 text-emerald-300 text-[10px] font-bold mb-1 transition">
+                        <i class="fa-solid fa-door-open w-4"></i> Auto Gate
+                    </button>
+                    <!-- Sun Path toggle -->
+                    <label class="w-full flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-slate-800 text-yellow-300 text-[10px] font-bold mb-1 cursor-pointer transition">
+                        <input type="checkbox" id="sunPathToggleCenter" onchange="state.showSunPath=this.checked;let st=document.getElementById('sunPathToggle');if(st)st.checked=this.checked;window.draw();window.saveLocal();" class="w-3.5 h-3.5">
+                        <i class="fa-solid fa-sun w-4"></i> ☀️ Sun Path
+                    </label>
+                    <!-- Sun City select -->
+                    <div class="px-2 pb-2 border-b border-slate-700 mb-2">
+                        <select id="sunCitySelectSite" onchange="state.sunCity=this.value;var mc=document.getElementById('mobSunCitySelect');if(mc)mc.value=this.value;window.draw();window.saveLocal();" class="w-full bg-slate-800 border border-slate-600 text-slate-300 text-[9px] rounded p-1 outline-none mt-1">
+                            <option>Hyderabad</option><option>Chennai</option><option>Mumbai</option><option>Delhi</option><option>Bangalore</option><option>Kolkata</option><option>Ahmedabad</option><option>Pune</option><option>Visakhapatnam</option><option>Vijayawada</option><option>Tirupati</option><option>Kochi</option><option>Coimbatore</option><option>Madurai</option><option>Surat</option><option>Jaipur</option><option>Lucknow</option><option>Bhopal</option><option>Nagpur</option><option>Indore</option><option>Patna</option><option>Bhubaneswar</option><option>Raipur</option><option>Chandigarh</option><option>Dehradun</option><option>Amritsar</option><option>Varanasi</option><option>Agra</option><option>Nashik</option><option>Aurangabad</option>
+                        </select>
+                    </div>
+                    <!-- RMRC Ink toggle -->
+                    <button id="inkBtnSite" onclick="window.toggleInkTool();this.classList.toggle('bg-orange-900/40',state.isInking);"
+                        class="w-full flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-slate-800 text-orange-300 text-[10px] font-bold mb-1 transition">
+                        <i class="fa-solid fa-pen-nib w-4"></i> RMRC Ink Marker
+                    </button>
+                    <!-- Ink colour -->
+                    <div class="flex items-center gap-2 px-2 py-1 mb-1">
+                        <span class="text-[9px] text-slate-400 font-bold">Ink Colour:</span>
+                        <select id="inkColorSelect" title="Marker colour" class="flex-1 bg-slate-800 border border-slate-600 text-slate-200 text-[9px] rounded p-1 outline-none cursor-pointer" onchange="window.setInkColor(this.value)">
+                          <option value="#ef4444">🔴 Red</option>
+                          <option value="#3b82f6">🔵 Blue</option>
+                          <option value="#22c55e">🟢 Green</option>
+                          <option value="#f59e0b">🟡 Amber</option>
+                          <option value="#0f172a">⚫ Black</option>
+                        </select>
+                    </div>
+                    <!-- Clear Ink -->
+                    <button onclick="window.clearInkLines();document.getElementById('siteToolsDropdown').classList.add('hidden');"
+                        class="w-full flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-red-900/30 text-rose-400 text-[10px] font-bold transition">
+                        <i class="fa-solid fa-eraser w-4"></i> Clear All Ink
+                    </button>
+                </div>
+            </div>
+
+            <!-- DIVIDER -->
+            <div style="width:2px;height:24px;background:linear-gradient(to bottom,transparent,#3b82f6,transparent);flex-shrink:0;border-radius:2px;margin:0 2px;opacity:0.8;"></div>
+
+            <!-- DIVIDER -->
+            <div style="width:2px;height:24px;background:linear-gradient(to bottom,transparent,#3b82f6,transparent);flex-shrink:0;border-radius:2px;margin:0 2px;opacity:0.8;"></div>
+
+            <!-- GROUP 3: VIEW (Canvas display toggles) -->
+            <div class="flex items-center gap-1" id="viewSettingsContainer" style="position:relative;">
+                <span style="font-size:9px;color:#38bdf8;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-right:3px;opacity:0.9;">👁 View</span>
+                <!-- Quick toggles -->
+                <button onclick="state.showGrid=!state.showGrid;let cb=document.querySelector('input[onchange*=\'showGrid\']');if(cb)cb.checked=state.showGrid;window.draw();window.saveLocal();" title="Toggle Grid Lines" class="text-[9px] font-black px-1.5 py-0.5 rounded border transition" id="qtGrid" style="background:#1e293b;color:#94a3b8;border-color:#334155;"><i class="fa-solid fa-table-cells-large"></i></button>
+                <button onclick="state.showDimensions=!state.showDimensions;let cb=document.querySelector('input[onchange*=\'showDimensions\']');if(cb)cb.checked=state.showDimensions;window.draw();window.saveLocal();" title="Toggle Dimensions" class="text-[9px] font-black px-1.5 py-0.5 rounded border transition" id="qtDim" style="background:#1e293b;color:#94a3b8;border-color:#334155;"><i class="fa-solid fa-ruler-combined"></i></button>
+                <button onclick="state.showPlotDeities=!state.showPlotDeities;window.draw();window.saveLocal();" title="Toggle House Devathas" class="text-[9px] font-black px-1.5 py-0.5 rounded border transition" id="qtDev" style="background:#1e293b;color:#94a3b8;border-color:#334155;"><i class="fa-solid fa-om"></i></button>
+                <button onclick="state.xray=!state.xray;window.draw();window.saveLocal();" title="Toggle X-Ray Mode" class="text-[9px] font-black px-1.5 py-0.5 rounded border transition" id="qtXray" style="background:#1e293b;color:#94a3b8;border-color:#334155;"><i class="fa-solid fa-eye"></i></button>
+                <!-- Full View dropdown -->
+                <button onclick="document.getElementById('viewSettingsDropdown').classList.toggle('hidden');"
+                    class="top-btn bg-slate-800 text-slate-300 border border-slate-600 hover:bg-slate-700 flex items-center gap-1"
+                    title="More view options">
+                    <i class="fa-solid fa-sliders mr-1"></i><span class="hidden sm:inline text-[9px]">More</span>
+                    <i class="fa-solid fa-chevron-down text-[7px] opacity-60"></i>
+                </button>
+                <div id="viewSettingsDropdown" class="absolute left-0 top-full mt-2 w-60 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl p-3 hidden flex-col gap-2" style="z-index:9999;">
+                    <div class="border-b border-slate-800 pb-2 mb-1">
+                        <div class="text-[7px] text-slate-600 font-bold uppercase tracking-wider mb-1.5">Canvas Display</div>
+                        <label class="toggle-label text-emerald-300 w-full"><input type="checkbox" checked onchange="state.showDimensions = this.checked; window.draw(); window.saveLocal();"><span>📏 Dimensions</span></label>
+                        <label class="toggle-label text-blue-400 w-full"><input type="checkbox" id="showZoneLines" onchange="state.showZoneLines = this.checked; window.draw(); window.saveLocal();"><span>16 Zones Radials</span></label>
+                        <
+                        
+                        <label class="toggle-label text-emerald-400 w-full"><input type="checkbox" onchange="state.showSiteDeities = this.checked; window.draw(); window.saveLocal();"><span data-i18n="siteDevathas">Site Devathas</span></label>
+                        <label class="toggle-label text-indigo-400 w-full"><input type="checkbox" checked onchange="state.showPlotDeities = this.checked; window.draw(); window.saveLocal();"><span data-i18n="houseDevathas">House Devathas</span></label>
+                    <!-- Devata Alerts toggle -->
+<input type="checkbox" id="devataZoneToggle" checked
+       onchange="window.toggleDevataZoneMode(this.checked)">
+<span id="devataZoneModeLabel">Devata Alerts: ON</span>
+
+<!-- Canvas zone labels toggle -->
+<input type="checkbox" id="devataZoneNamesToggle"
+       onchange="window.toggleDevataZoneNames(this.checked)">
+<span>Devata Zone Labels</span>
+
+<label class="toggle-label text-emerald-300 w-full" style="margin-top:4px;">
+    <input type="checkbox" id="devataZoneLinesToggle"
+           onchange="window.toggleDevataZoneLines(this.checked)">
+    <span>Devata Zone Lines</span>
+</label>
+                    </div>
+                    <div class="border-b border-slate-800 pb-2 mb-1">
+                        <label class="toggle-label text-blue-300 w-full"><input type="checkbox" checked onchange="state.show16Zones = this.checked; window.draw(); window.saveLocal();"><span>16 Zone Colours</span></label>
+                        <label class="toggle-label text-amber-300 w-full"><input type="checkbox" checked onchange="state.showGrid = this.checked; let cb = document.querySelector('input[onchange*=\'showGrid\']'); if(cb) cb.checked = state.showGrid; window.draw(); window.saveLocal();"><span data-i18n="gridLines">Grid Lines</span></label>
+                        <label class="toggle-label text-cyan-300 w-full"><input type="checkbox" onchange="state.xray = this.checked; window.draw(); window.saveLocal();"><span>X-Ray Mode</span></label>
+                    </div>
+                    <div>
+                        <label class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-1.5 px-3 rounded-lg text-[9px] cursor-pointer flex items-center gap-2 w-full" title="Show/hide 16-zone colour overlay">
+                            <input type="checkbox" checked onchange="state.show16Zones=this.checked;window.draw();" class="hidden"> 🎨 Zone Overlay
+                        </label>
+                        <input type="range" min="0.1" max="1" step="0.1" value="0.4" class="w-full mt-2 cursor-pointer" title="Zone opacity" onchange="state.zoneOpacity=parseFloat(this.value);window.draw();">
+                    </div>
+                    <!-- Sun Path city selector removed from View menu — it lives in Site Tools dropdown -->
+                </div>
+            </div>
+
+
+                <!-- ── 🗑️ HEADER DELETE BUTTON — active only when object selected ── -->
+                <div style="display:flex;align-items:center;flex-shrink:0;margin-right:4px;">
+                    <button id="hdrDeleteBtn"
+                        onclick="window.hdrDeleteSelected();"
+                        disabled
+                        title="Delete selected object (select a Wall, Rect, or Text first)"
+                        style="height:26px;padding:0 10px;border-radius:5px;border:1px solid #334155;background:#1e293b;color:#475569;font-size:11px;font-weight:700;display:flex;align-items:center;gap:5px;cursor:not-allowed;transition:all 0.2s;opacity:0.45;flex-shrink:0;">
+                        <i class="fa-solid fa-trash-can"></i> <span>Delete</span>
+                    </button>
+                </div>
+
+                <!-- ── 📤 SAVE & SEND dropdown ── -->
+                <div style="position:relative;flex-shrink:0;" id="saveSendContainer">
+                    <button id="saveSendBtn"
+                        onclick="document.getElementById('saveSendDropdown').classList.toggle('hidden');document.getElementById('siteToolsDropdown').classList.add('hidden');document.getElementById('viewSettingsDropdown').classList.add('hidden');"
+                        class="top-btn flex items-center gap-1"
+                        style="background:rgba(5,150,105,0.2);color:#34d399;border:1px solid #065f46;font-size:11px;"
+                        title="Save & Share options">
+                        <i class="fa-solid fa-share-nodes"></i>
+                        <span>Save &amp; Send</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size:7px;opacity:0.7;"></i>
+                    </button>
+                    <div id="saveSendDropdown" class="hidden" style="position:absolute;right:0;top:calc(100% + 6px);min-width:180px;background:#0f172a;border:1px solid #334155;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.6);z-index:9999;overflow:hidden;">
+                        <div style="padding:6px 12px 4px;font-size:8px;color:#475569;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;border-bottom:1px solid #1e293b;">Save &amp; Share</div>
+                        <button onclick="window.exportProject();document.getElementById('saveSendDropdown').classList.add('hidden');"
+                            style="width:100%;display:flex;align-items:center;gap:10px;padding:9px 14px;background:none;border:none;color:#34d399;font-size:11px;font-weight:700;cursor:pointer;text-align:left;"
+                            onmouseover="this.style.background='#1e293b'" onmouseout="this.style.background='none'">
+                            <i class="fa-solid fa-floppy-disk" style="width:14px;"></i> Save File (.json)
+                        </button>
+                        <button onclick="window.shareViaWhatsApp();document.getElementById('saveSendDropdown').classList.add('hidden');"
+                            style="width:100%;display:flex;align-items:center;gap:10px;padding:9px 14px;background:none;border:none;color:#22c55e;font-size:11px;font-weight:700;cursor:pointer;text-align:left;"
+                            onmouseover="this.style.background='#1e293b'" onmouseout="this.style.background='none'">
+                            <i class="fa-brands fa-whatsapp" style="width:14px;"></i> WhatsApp
+                        </button>
+                        <button onclick="window.shareViaEmail();document.getElementById('saveSendDropdown').classList.add('hidden');"
+                            style="width:100%;display:flex;align-items:center;gap:10px;padding:9px 14px;background:none;border:none;color:#60a5fa;font-size:11px;font-weight:700;cursor:pointer;text-align:left;"
+                            onmouseover="this.style.background='#1e293b'" onmouseout="this.style.background='none'">
+                            <i class="fa-solid fa-envelope" style="width:14px;"></i> Email
+                        </button>
+                        <button onclick="window.copyProjectToClipboard();document.getElementById('saveSendDropdown').classList.add('hidden');"
+                            style="width:100%;display:flex;align-items:center;gap:10px;padding:9px 14px;background:none;border:none;color:#a78bfa;font-size:11px;font-weight:700;cursor:pointer;text-align:left;border-top:1px solid #1e293b;"
+                            onmouseover="this.style.background='#1e293b'" onmouseout="this.style.background='none'">
+                            <i class="fa-solid fa-copy" style="width:14px;"></i> Copy Summary
+                        </button>
+                        <button onclick="window.exportImage&&window.exportImage();document.getElementById('saveSendDropdown').classList.add('hidden');"
+                            style="width:100%;display:flex;align-items:center;gap:10px;padding:9px 14px;background:none;border:none;color:#fb923c;font-size:11px;font-weight:700;cursor:pointer;text-align:left;"
+                            onmouseover="this.style.background='#1e293b'" onmouseout="this.style.background='none'">
+                            <i class="fa-solid fa-image" style="width:14px;"></i> Export Image
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ── 🖼️ UPLOAD IMAGE (Blueprint Engine) ── -->
+                <button onclick="window.triggerBlueprintUpload();"
+                    class="top-btn border hover:brightness-110"
+                    style="background:rgba(99,102,241,0.18);color:#a5b4fc;border-color:rgba(99,102,241,0.5);font-size:11px;"
+                    title="Upload a JPG/PNG blueprint or site photo as a semi-transparent background tracing layer">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Upload Image</span>
+                </button>
+                <span style="font-size:9px;color:#64748b;font-weight:600;white-space:nowrap;letter-spacing:0.02em;margin-left:2px;line-height:1.3;display:inline-flex;align-items:center;gap:2px;" title="Accepted formats and size limit">JPG&nbsp;/&nbsp;PNG&nbsp;&middot;&nbsp;Max&nbsp;5MB</span>
+                <!-- Feedback + Contact remain standalone -->
+                <button onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdnadqSdmc3CDW_rWFq7kvgYebmQmQilYlvfyS8qg8nuw1Nvg/viewform','_blank')" class="top-btn border hover:brightness-110" style="background:rgba(234,179,8,0.15);color:#fbbf24;border-color:#92400e;font-size:11px;" title="Give feedback">
+                    <i class="fa-solid fa-star"></i>
+                </button>
+                <button onclick="var m=document.getElementById('contactModal');if(m)m.style.display='flex';" class="top-btn border hover:brightness-110" style="background:rgba(245,158,11,0.15);color:#fbbf24;border-color:rgba(245,158,11,0.5);font-size:11px;" title="Contact">
+                    <i class="fa-solid fa-handshake"></i>
+                </button>
+                </div>
+
+
+        </div>
+    </header>
+
+    <div class="flex flex-1 overflow-hidden relative">
+        <aside class="w-full md:w-80 bg-slate-900 border-r border-slate-800 flex flex-col z-10 shadow-2xl relative h-full">
+            <div class="p-4 pb-2 shrink-0" id="scoreBoxContainer" style="pointer-events:none;">
+                <div class="bg-slate-800/80 p-3 rounded-lg border border-green-500/30 shadow-inner mx-auto" style="max-width:320px;">
+                    <h3 class="text-[11px] font-black text-emerald-400 uppercase mb-2 text-center" data-i18n="vastuScore">Vastu Health Score</h3>
+                    <div class="flex items-center gap-3">
+                        <!-- SVG Ring Gauge -->
+                        <div class="relative flex-shrink-0" style="width:48px;height:48px;">
+                            <svg viewBox="0 0 64 64" style="width:48px;height:48px;">
+                                <circle cx="32" cy="32" r="26" fill="none" stroke="#1e293b" stroke-width="7"/>
+                                <circle id="scoreRing" cx="32" cy="32" r="26" fill="none" stroke="#22c55e" stroke-width="7" stroke-linecap="round"
+                                    stroke-dasharray="163.4" stroke-dashoffset="0" style="transition:stroke-dashoffset 0.8s ease,stroke 0.5s ease;"/>
+                            </svg>
+                            <div class="absolute inset-0 flex flex-col items-center justify-center">
+                                <span id="auditScore" class="text-[13px] font-black text-green-400 font-mono leading-none">100%</span>
+                            </div>
+                        </div>
+                        <!-- Badge column -->
+                        <div class="flex-1 space-y-1">
+                            <div id="scoreBadge" style="display:none;"></div>
+                            <div id="scoreTip" class="text-[9px] text-slate-400 leading-tight"></div>
+                        </div>
+                    </div>
+                    <!-- Hidden bar kept for compatibility -->
+                    <div style="display:none"><div id="scoreBar"></div></div>
+                </div>
+            </div>
+
+            <div class="flex-1 overflow-y-auto px-4 pb-4 space-y-4">
+                <div class="vastu-alert-box" id="vastuAlertsPanel">
+                    <h4 class="text-[10px] font-bold text-amber-400 uppercase mb-1"><i class="fa-solid fa-bell"></i> <span data-i18n="liveAlerts">Live Vastu Alerts</span></h4>
+                    <div id="vastuAlertsList" class="space-y-1 text-[10px] text-slate-300">Add rooms to see alerts...</div>
+                </div>
+
+                <div class="bg-slate-800/50 p-3 rounded-lg border border-slate-700 shadow-lg space-y-3">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-[10px] font-black text-emerald-400 uppercase" data-i18n="siteGeom">Site Geometry</h3>
+                        <div class="flex items-center gap-1 bg-slate-900 px-2 py-0.5 rounded border border-slate-700">
+                            <input type="number" inputmode="decimal" step="any" id="degreeInput" aria-label="True North degrees" value="0" class="w-10 h-6 bg-transparent border-none text-[10px] font-black text-amber-500 text-center outline-none" oninput="window.updateDegree(this.value)">
+                            <span class="text-[8px] text-slate-500">°N</span>
+                        </div>
+                    </div>
+                    <!-- Magnetic Declination -->
+                    <div class="mt-1.5 mb-1 bg-slate-900/50 rounded px-2 py-1.5 border border-slate-700/50">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-[8px] text-slate-400 font-bold uppercase" data-i18n="magDec">Mag. Declination</span>
+                            <button onclick="var _d=document.getElementById('declModal');_d.style.display=_d.style.display==='flex'?'none':'flex'" class="text-[8px] text-sky-400 hover:text-sky-300" title="What is magnetic declination?"><span data-i18n="whatIsThis">ℹ️ What is this?</span></button>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <select id="declCitySelect" onchange="window.applyDeclination(this.value)" class="flex-1 bg-slate-800 border border-slate-600 text-slate-300 text-[9px] rounded p-1 outline-none">
+                                <option value="0">Manual / Not needed (0°)</option>
+                                <option value="-0.51">Hyderabad (−0.51°)</option>
+                                <option value="-0.33">Chennai (−0.33°)</option>
+                                <option value="-0.84">Mumbai (−0.84°)</option>
+                                <option value="1.31">Delhi (+1.31°)</option>
+                                <option value="-0.55">Bangalore (−0.55°)</option>
+                                <option value="0.42">Kolkata (+0.42°)</option>
+                                <option value="-0.21">Ahmedabad (−0.21°)</option>
+                                <option value="-0.18">Visakhapatnam (−0.18°)</option>
+                                <option value="-0.28">Vijayawada (−0.28°)</option>
+                                <option value="-0.41">Tirupati (−0.41°)</option>
+                                <option value="-0.62">Kochi (−0.62°)</option>
+                                <option value="-0.48">Coimbatore (−0.48°)</option>
+                                <option value="-0.38">Pune (−0.38°)</option>
+                                <option value="0.65">Jaipur (+0.65°)</option>
+                                <option value="0.72">Lucknow (+0.72°)</option>
+                                <option value="custom">Enter manually →</option>
+                            </select>
+                            <input type="number" inputmode="decimal" step="any" id="declManual" aria-label="Declination degrees" value="0" class="w-12 h-6 bg-slate-800 border border-slate-600 text-[9px] text-sky-300 text-center rounded outline-none" onchange="window.applyDeclination(this.value)" placeholder="0.00">
+                            <span class="text-[8px] text-slate-500">°</span>
+                        </div>
+                        <div class="flex items-center justify-between mt-1">
+                            <span class="text-[8px] text-slate-500">Corrected True North:</span>
+                            <span id="correctedNorth" class="text-[8px] font-bold text-amber-400">0.00°N</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-1 border-b border-slate-700 pb-2 mb-2">
+                        <input type="text" id="clientName" aria-label="Client name" placeholder="Client Name" class="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-[10px] font-bold text-amber-400" onchange="state.clientName=this.value; window.saveLocal(); window.saveStateToHistory(); window.syncMobHeaderClientName&&window.syncMobHeaderClientName();">
+                        <div class="grid grid-cols-2 gap-1">
+                            <input type="text" id="clientPlace" aria-label="Client place" placeholder="Place" style="font-size:16px !important;" class="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-[10px]" onchange="state.clientPlace=this.value; window.saveLocal(); window.saveStateToHistory();">
+                            <input type="text" id="clientPhone" aria-label="Client phone" placeholder="Phone" style="font-size:16px !important;" class="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-[10px]" onchange="state.clientPhone=this.value; window.saveLocal(); window.saveStateToHistory();">
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-[9px] text-slate-400 font-bold uppercase block mb-1.5"><i class="fa-solid fa-border-all mr-1 opacity-60"></i>1. Outer Site Dimensions <span id="wt1" style="display:none;color:#4ade80;font-size:10px;">✓</span></span>
+                        <div class="grid grid-cols-2 gap-x-2 gap-y-1.5">
+                            <div class="fi-box"><span class="fi-label">N</span><input type="number" inputmode="decimal" step="any" id="siteN_F" aria-label="Site North feet" aria-label="Site North feet" aria-label="Site North feet" value="50" class="fi-input" onchange="window.updateFromInputs()"><span class="unit-label">FT</span><input type="number" inputmode="decimal" step="any" id="siteN_I" aria-label="Site North inches" value="0" max="11" class="fi-input" onchange="window.updateFromInputs()"><span class="unit-label">IN</span></div>
+                            <div class="fi-box"><span class="fi-label">S</span><input type="number" inputmode="decimal" step="any" id="siteS_F" aria-label="Site South feet" aria-label="Site South feet" aria-label="Site South feet" aria-label="Site South feet" aria-label="Site South feet" aria-label="Site South feet" aria-label="Site South feet" aria-label="Site South feet" aria-label="Site South feet" aria-label="Site South feet" aria-label="Site South feet" aria-label="Site South feet" aria-label="Site South feet" value="50" class="fi-input" onchange="window.updateFromInputs()"><span class="unit-label">FT</span><input type="number" inputmode="decimal" step="any" id="siteS_I" aria-label="Site South inches" value="0" max="11" class="fi-input" onchange="window.updateFromInputs()"><span class="unit-label">IN</span></div>
+                            <div class="fi-box"><span class="fi-label">E</span><input type="number" inputmode="decimal" step="any" id="siteE_F" aria-label="Site East feet" aria-label="Site East feet" aria-label="Site East feet" value="60" class="fi-input" onchange="window.updateFromInputs()"><span class="unit-label">FT</span><input type="number" inputmode="decimal" step="any" id="siteE_I" aria-label="Site East inches" value="0" max="11" class="fi-input" onchange="window.updateFromInputs()"><span class="unit-label">IN</span></div>
+                            <div class="fi-box"><span class="fi-label">W</span><input type="number" inputmode="decimal" step="any" id="siteW_F" aria-label="Site West feet" value="60" class="fi-input" onchange="window.updateFromInputs()"><span class="unit-label">FT</span><input type="number" inputmode="decimal" step="any" id="siteW_I" aria-label="Site West inches" value="0" max="11" class="fi-input" onchange="window.updateFromInputs()"><span class="unit-label">IN</span></div>
+                        </div>
+                        <!-- AREA DISPLAY — Site -->
+                        <div id="siteAreaDisplay" style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:5px;padding:4px 8px;margin-top:5px;">
+                          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2px;">
+                            <span style="font-size:8px;color:#6ee7b7;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;">Site Area</span>
+                            <div style="text-align:right;">
+                              <span id="siteAreaSqft" style="font-size:10px;color:#34d399;font-weight:700;">3000 sq.ft</span>
+                              <span style="font-size:9px;color:#6ee7b7;margin:0 4px;">·</span>
+                              <span id="siteAreaSqyd" style="font-size:9px;color:#6ee7b7;">333 yds</span>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="border-t border-slate-700 pt-2 mt-2">
+                         <span class="text-[9px] text-amber-400 font-bold uppercase block mb-1.5"><i class="fa-solid fa-road mr-1 opacity-60"></i>2. Road / Gate Provision <span id="wt2" style="display:none;color:#4ade80;font-size:10px;">✓</span></span>
+                         <div class="flex items-center gap-2 mb-1.5">
+                             <label class="text-[9px] text-white flex items-center gap-1.5 cursor-pointer">
+                                 <input type="checkbox" id="showRoadToggle" onchange="window.updateFromInputs()"> Show Road on Canvas
+                             </label>
+                         </div>
+                         <div class="grid grid-cols-2 gap-1.5 mb-1">
+                             <div class="flex flex-col gap-0.5">
+                                 <span class="text-[8px] text-slate-400 font-bold" data-i18n="roadDir">Road Direction</span>
+                                 <select id="roadDirSelect" class="bg-slate-900 border border-slate-700 text-slate-300 text-[10px] rounded p-1 w-full outline-none" onchange="window.updateFromInputs()">
+                                     <option value="East" data-i18n="eastRoad">East Road</option><option value="West" data-i18n="westRoad">West Road</option><option value="North" data-i18n="northRoad">North Road</option><option value="South" data-i18n="southRoad">South Road</option>
+                                 </select>
+                             </div>
+                             <div class="fi-box border-slate-700"><span class="fi-label text-slate-400 text-[7px]" data-i18n="roadWidth">Road Width</span><input type="number" inputmode="decimal" step="any" id="roadWidthInput" aria-label="Road width feet" value="30" class="fi-input" onchange="window.updateFromInputs()"><span class="unit-label">FT</span></div>
+                         </div>
+                     </div>
+                     <div class="border-t border-slate-700 pt-2 mt-2 space-y-1.5">
+                         <span class="text-[9px] text-slate-400 font-bold uppercase block mb-1">3. Setbacks (Clearance) <span id="wt3" style="display:none;color:#4ade80;font-size:10px;">✓</span></span>
+                        <div class="grid grid-cols-2 gap-x-2 gap-y-1.5">
+                            <div class="fi-box border-amber-900/50"><span class="fi-label text-amber-500">N</span><input type="number" inputmode="decimal" step="any" id="setN_F" value="10" class="fi-input" onchange="window.updateFromInputs()"><span class="unit-label">FT</span><input type="number" inputmode="decimal" step="any" id="setN_I" value="0" max="11" class="fi-input" onchange="window.updateFromInputs()"><span class="unit-label">IN</span></div>
+                            <div class="fi-box border-amber-900/50"><span class="fi-label text-amber-500">S</span><input type="number" inputmode="decimal" step="any" id="setS_F" value="5" class="fi-input" onchange="window.updateFromInputs()"><span class="unit-label">FT</span><input type="number" inputmode="decimal" step="any" id="setS_I" value="0" max="11" class="fi-input" onchange="window.updateFromInputs()"><span class="unit-label">IN</span></div>
+                            <div class="fi-box border-amber-900/50"><span class="fi-label text-amber-500">E</span><input type="number" inputmode="decimal" step="any" id="setE_F" value="8" class="fi-input" onchange="window.updateFromInputs()"><span class="unit-label">FT</span><input type="number" inputmode="decimal" step="any" id="setE_I" value="0" max="11" class="fi-input" onchange="window.updateFromInputs()"><span class="unit-label">IN</span></div>
+                            <div class="fi-box border-amber-900/50"><span class="fi-label text-amber-500">W</span><input type="number" inputmode="decimal" step="any" id="setW_F" value="5" class="fi-input" onchange="window.updateFromInputs()"><span class="unit-label">FT</span><input type="number" inputmode="decimal" step="any" id="setW_I" value="0" max="11" class="fi-input" onchange="window.updateFromInputs()"><span class="unit-label">IN</span></div>
+                        </div>
+                    </div>
+                    <div class="border-t border-slate-700 pt-2 mt-2">
+                        <span class="text-[9px] text-indigo-400 font-bold uppercase block mb-1">4. Built Area (House) <span id="wt4" style="display:none;color:#4ade80;font-size:10px;">✓</span></span>
+                        <!-- 2-input: EW input only, NS input only. Opposite side shown as read-only badge. -->
+                        <div class="mb-1" style="background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.2);border-radius:6px;padding:5px 7px;">
+                          <div class="flex items-center justify-between mb-1">
+                            <span class="text-[8px] text-indigo-300 font-bold">↔ E–W Width</span>
+                            <span class="text-[8px] text-slate-400">= N &amp; S wall</span>
+                          </div>
+                          <div class="flex items-center gap-2">
+                            <div class="fi-box border-indigo-700/60 flex-1"><span class="fi-label text-indigo-300">E→W</span><input type="number" inputmode="decimal" step="any" id="builtEW_F" value="47" class="fi-input text-indigo-100" onchange="window.updateFromInputs('builtEW')"><span class="unit-label">FT</span><input type="number" inputmode="decimal" step="any" id="builtEW_I" value="0" max="11" class="fi-input text-indigo-100" onchange="window.updateFromInputs('builtEW')"><span class="unit-label">IN</span></div>
+                            <div style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);border-radius:5px;padding:3px 7px;min-width:52px;text-align:center;">
+                              <div style="font-size:7px;color:#94a3b8;">N=S</div>
+                              <div id="builtN_display" style="font-size:10px;color:#a5b4fc;font-weight:700;">47'0"</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="mb-2" style="background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.2);border-radius:6px;padding:5px 7px;">
+                          <div class="flex items-center justify-between mb-1">
+                            <span class="text-[8px] text-indigo-300 font-bold">↕ N–S Depth</span>
+                            <span class="text-[8px] text-slate-400">= E &amp; W wall</span>
+                          </div>
+                          <div class="flex items-center gap-2">
+                            <div class="fi-box border-indigo-700/60 flex-1"><span class="fi-label text-indigo-300">N→S</span><input type="number" inputmode="decimal" step="any" id="builtNS_F" value="35" class="fi-input text-indigo-100" onchange="window.updateFromInputs('builtNS')"><span class="unit-label">FT</span><input type="number" inputmode="decimal" step="any" id="builtNS_I" value="0" max="11" class="fi-input text-indigo-100" onchange="window.updateFromInputs('builtNS')"><span class="unit-label">IN</span></div>
+                            <div style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);border-radius:5px;padding:3px 7px;min-width:52px;text-align:center;">
+                              <div style="font-size:7px;color:#94a3b8;">E=W</div>
+                              <div id="builtE_display" style="font-size:10px;color:#a5b4fc;font-weight:700;">35'0"</div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- hidden spans kept for syncBuiltDisplays compatibility -->
+                        <span id="builtS_display" style="display:none"></span>
+                        <span id="builtW_display" style="display:none"></span>
+                        <!-- Hidden legacy inputs kept for restore compatibility -->
+                        <input type="hidden" id="builtN_F" value="35"><input type="hidden" id="builtN_I" value="0">
+                        <input type="hidden" id="builtS_F" value="35"><input type="hidden" id="builtS_I" value="0">
+                        <input type="hidden" id="builtE_F" value="47"><input type="hidden" id="builtE_I" value="0">
+                        <input type="hidden" id="builtW_F" value="47"><input type="hidden" id="builtW_I" value="0">
+                        <!-- Madhya Sutra auto display -->
+                        <div class="mt-1 mb-2 bg-slate-900/60 rounded px-2 py-1.5 border border-indigo-900/30">
+                            <div class="flex justify-between items-center">
+                                <span class="text-[8px] text-slate-500 uppercase font-black" data-i18n="madhya">Madhya Sutra (auto)</span>
+                                <span class="text-[8px] text-amber-400 font-bold" id="madhyaSutraDisplay">EW: 46'3" · NS: 34'3"</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between gap-1">
+                            <span class="text-[8px] text-slate-400 uppercase font-black">Wall Deduction:</span>
+                            <select id="wallDeduction" class="bg-amber-900/30 text-amber-400 text-[9px] font-bold rounded outline-none border border-amber-900/50" onchange="state.wallDeduction=(parseFloat(this.value)/12); window.updateFromInputs('built'); window.updateFromInputs();">
+                                <option value="0">None (0")</option><option value="4.5" selected>4.5" (Each Side)</option><option value="9">9" (Each Side)</option>
+                            </select>
+                        </div>
+                        <!-- AREA DISPLAY — Built + Setback -->
+                        <div style="background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.25);border-radius:5px;padding:5px 8px;margin-top:6px;">
+                          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;">
+                            <span style="font-size:8px;color:#a5b4fc;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;">Built Area</span>
+                            <div>
+                              <span id="builtAreaSqft" style="font-size:10px;color:#818cf8;font-weight:700;">1645 sq.ft</span>
+                              <span style="font-size:9px;color:#a5b4fc;margin:0 4px;">·</span>
+                              <span id="builtAreaSqyd" style="font-size:9px;color:#a5b4fc;">183 sq.yds</span>
+                            </div>
+                          </div>
+                          <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(99,102,241,0.2);padding-top:3px;">
+                            <span style="font-size:8px;color:#94a3b8;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;">Setback Area</span>
+                            <div>
+                              <span id="setbackAreaSqft" style="font-size:10px;color:#94a3b8;font-weight:700;">1355 sq.ft</span>
+                              <span style="font-size:9px;color:#64748b;margin:0 4px;">·</span>
+                              <span id="setbackAreaSqyd" style="font-size:9px;color:#64748b;">151 sq.yds</span>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="border-t border-blue-900/50 bg-blue-900/10 p-2 rounded-lg mt-2">
+                        <span class="text-[9px] text-blue-400 font-bold uppercase block mb-1.5"><i class="fa-solid fa-calculator mr-1"></i> 5. Ayadi Shastra Logic <span id="wt5" style="display:none;color:#4ade80;font-size:10px;">✓</span></span>
+                        <div class="flex gap-3 mb-2">
+                            <label class="text-[10px] text-white flex items-center gap-1 font-bold cursor-pointer"><input type="radio" name="shastra" value="viswakarma" checked onchange="window.updateAyadiSettings('shastra', this.value)"> Viswakarma</label>
+                            <label class="text-[10px] text-white flex items-center gap-1 font-bold cursor-pointer"><input type="radio" name="shastra" value="mayamata" onchange="window.updateAyadiSettings('shastra', this.value)"> Mayamata</label>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <label class="text-[10px] text-slate-300 flex items-center gap-1 cursor-pointer"><input type="radio" name="ayUnit" value="feet" checked onchange="window.updateAyadiSettings('unit', this.value)"> Feet</label>
+                            <label class="text-[10px] text-slate-300 flex items-center gap-1 cursor-pointer"><input type="radio" name="ayUnit" value="yards" onchange="window.updateAyadiSettings('unit', this.value)"> Yards</label>
+                            <div id="divisorContainer" class="hidden flex items-center gap-1 ml-auto"><span class="text-[8px] text-slate-400 uppercase font-bold">Divisor:</span><input type="number" inputmode="decimal" step="any" id="ayDivisor" value="9" min="3" class="w-10 bg-slate-950 border border-blue-500 text-blue-300 text-[10px] font-bold text-center rounded h-5 outline-none" onchange="window.updateAyadiSettings('divisor', this.value)"></div>
+                        </div>
+                    </div>
+                    <div class="border-t border-slate-700 pt-2 mt-2">
+                        <span class="text-[9px] text-amber-400 font-bold uppercase block mb-1">6. Main Entrance (Dwara) <span id="wt6" style="display:none;color:#4ade80;font-size:10px;">✓</span></span><span id="sec6_btn" style="transition:transform 0.2s;display:inline-block;">▼</span></span>
+                        <select id="dwaraSelect" class="bg-slate-900 border border-amber-500/50 rounded text-amber-400 text-[10px] font-bold px-2 py-1.5 w-full outline-none" onchange="state.selectedDwara=this.value; window.draw(); window.saveLocal(); window.saveStateToHistory();">
+                            <option value="">-- Select Auspicious Dwara --</option>
+                            <option value="Jayanta">East - Jayanta (2) ★ Good</option><option value="Mahendra">East - Mahendra (3) ★ Good</option>
+                            <option value="Vitatha">South - Vitatha (10) ★ Good</option><option value="Gruhakshat">South - Gruhakshat (11) ★ Good</option>
+                            <option value="Sugriva">West - Sugriva (18) ★ Good</option><option value="Pushpadanta">West - Pushpadanta (19) ★ Good</option>
+                            <option value="Mukhya">North - Mukhya (26) ★ Good</option><option value="Bhallata">North - Bhallata (27) ★ Good</option>
+                        </select>
+                    </div>
+                    <!-- L-Shape UI hidden — code kept, UI disabled -->
+                </div>
+
+                <div class="bg-slate-800/50 p-3 rounded-lg border border-slate-700 flex flex-col">
+                    <div class="flex justify-between items-center mb-2">
+                        <h3 class="text-[10px] font-black text-slate-300 uppercase" data-i18n="constPlacement">Construction Placement</h3>
+                        <button onclick="window.resetOldData()" class="text-[8px] text-rose-400 hover:text-rose-300 border border-rose-800 px-1.5 py-0.5 rounded hover:bg-rose-900/30 transition" title="Clear old cached data and reload fresh">↺ Reset Data</button>
+                    </div>
+
+                    <!-- BATCH C: Floor Tabs -->
+                    <div class="flex gap-1 mb-2 bg-slate-900/60 p-1 rounded-lg border border-slate-700">
+                        <button id="floorTab0" onclick="window.switchFloor(0)" class="flex-1 text-[10px] font-black py-1.5 rounded transition bg-indigo-600 text-white shadow-lg border border-indigo-500">🏠 GF</button>
+                        <button id="floorTab1" onclick="window.switchFloor(1)" class="flex-1 text-[10px] font-black py-1.5 rounded transition bg-slate-800 text-slate-400 border border-slate-700 hover:bg-slate-700">🏢 1F</button>
+                    </div>
+                    <div class="text-[8px] text-center text-slate-500 font-mono mb-2" id="currentFloorLabel" data-i18n="gf">Ground Floor (GF)</div>
+                    <div class="flex gap-2 mb-2">
+                        <button onclick="window.autoLayout()" class="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-[10px] py-2 rounded text-white font-black hover:from-blue-500 transition shadow-lg">✨ Auto-Layout (Vastu)</button>
+                        <button onclick="window.clearRooms()" class="px-3 bg-red-900/80 text-red-300 text-[10px] py-2 rounded font-black hover:bg-red-800 transition" title="Clear All Rooms"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                    
+                    <span class="text-[8px] text-slate-500 font-bold uppercase mb-1" data-i18n="mainRooms">Main Rooms</span>
+                    <div class="grid grid-cols-3 gap-1 mb-1">
+                        <button onclick="window.addRoom('Master Bed')" class="bg-indigo-700 text-[9px] py-1.5 rounded font-bold shadow-sm hover:brightness-110">Master Bed</button>
+                        <button onclick="window.addRoom('Bedroom 2')" class="bg-slate-700 text-[9px] py-1.5 rounded font-bold shadow-sm hover:brightness-110">Bed Room</button>
+                        <button onclick="window.addRoom('Kitchen')" class="bg-orange-700 text-[9px] py-1.5 rounded font-bold shadow-sm hover:brightness-110">Kitchen</button>
+                        <button onclick="window.addRoom('Puja')" class="bg-yellow-700 text-[9px] py-1.5 rounded text-black font-black shadow-sm hover:brightness-110">Puja</button>
+                        <button onclick="window.addRoom('Toilet')" class="bg-red-900 text-[9px] py-1.5 rounded font-bold shadow-sm hover:brightness-110">Toilet</button>
+                        <button onclick="window.addRoom('Hall')" class="bg-teal-700 text-[9px] py-1.5 rounded font-bold shadow-sm hover:brightness-110">Hall</button>
+                    </div>
+                    <div class="grid grid-cols-3 gap-1 mb-1">
+                        <button onclick="window.addRoom('Dining')" class="bg-amber-600 text-[9px] py-1.5 rounded font-bold shadow-sm hover:brightness-110">Dining</button>
+                        <button onclick="window.addRoom('Staircase')" class="bg-slate-500 text-[9px] py-1.5 rounded font-bold shadow-sm hover:brightness-110">Staircase</button>
+                        <button onclick="window.addRoom('Dressing')" class="bg-violet-600 text-[9px] py-1.5 rounded font-bold shadow-sm hover:brightness-110 text-white">Dressing</button>
+                        <button onclick="window.addRoom('Store')" class="bg-stone-500 text-[9px] py-1.5 rounded font-bold shadow-sm hover:brightness-110 text-white">Store Room</button>
+                        <button onclick="window.addRoom('Bathroom Out')" class="bg-cyan-800 text-[9px] py-1.5 rounded font-bold shadow-sm hover:brightness-110 text-white" title="Bathroom outside main building">Bath(Out)</button>
+                        <button onclick="window.addRoom('Servant Room')" class="bg-slate-600 text-[9px] py-1.5 rounded font-bold shadow-sm hover:brightness-110 text-white">Servant</button>
+                    </div>
+                    <div class="grid grid-cols-3 gap-1 mb-2">
+                        <button onclick="window.addRoom('Watch Ward')" class="bg-zinc-700 text-[9px] py-1.5 rounded font-bold shadow-sm hover:brightness-110 text-white" title="Watch & Ward / Guard Room">Watch&Ward</button>
+                        <button onclick="window.addMarker('Borewell')" class="bg-blue-600 text-[9px] py-1.5 rounded font-bold shadow-sm hover:bg-blue-500 text-white">💧 Borewell</button>
+                        <button onclick="window.addMarker('Septic Tank')" class="bg-stone-600 text-[9px] py-1.5 rounded font-bold shadow-sm hover:bg-stone-500 text-white">🕳️ Septic</button>
+                        <button onclick="window.addMarker('Outside Staircase')" class="bg-slate-600 text-[9px] py-1.5 rounded font-bold shadow-sm hover:bg-slate-500 text-white" title="Outside staircase near compound wall">↑↓ Stair(Out)</button>
+                        <button onclick="window.addSiteGate()" class="bg-amber-700 text-[9px] py-1.5 rounded font-bold shadow-sm hover:bg-amber-600 text-white" title="Place main gate on compound wall — draggable, default 12ft wide">🚪 Main Gate</button>
+                    </div>
+                    
+                    <div class="border-t border-slate-700 pt-2 mb-2">
+                        <span class="text-[9px] text-slate-400 font-bold uppercase block mb-1" data-i18n="doorsWin">Doors & Windows (Architectural)</span>
+                        <div class="grid grid-cols-2 gap-1 mb-1">
+                            <button onclick="window.addFurniture('Main Door', 3.5, 7)" class="bg-amber-800/60 text-[9px] py-1 rounded text-amber-200 border border-amber-700 hover:bg-amber-700">Main Door 3'6"×7'</button>
+                            <button onclick="window.addFurniture('Bed Door', 3, 7)" class="bg-amber-800/60 text-[9px] py-1 rounded text-amber-200 border border-amber-700 hover:bg-amber-700">Bed Door 3'×7'</button>
+                            <button onclick="window.addFurniture('Kitchen Door', 2.5, 7)" class="bg-amber-800/60 text-[9px] py-1 rounded text-amber-200 border border-amber-700 hover:bg-amber-700">Kit. Door 2'6"×7'</button>
+                            <button onclick="window.addFurniture('Toilet Door', 2.5, 7)" class="bg-amber-800/60 text-[9px] py-1 rounded text-amber-200 border border-amber-700 hover:bg-amber-700">Toi. Door 2'6"×7'</button>
+                            <button onclick="window.addFurniture('Stair Door', 3, 7)" class="bg-amber-800/60 text-[9px] py-1 rounded text-amber-200 border border-amber-700 hover:bg-amber-700">Stair Door 3'×7'</button>
+                        </div>
+                        <div class="grid grid-cols-2 gap-1">
+                            <button onclick="window.addFurniture('Bed Window', 4, 4)" class="bg-sky-800/60 text-[9px] py-1 rounded text-sky-200 border border-sky-700 hover:bg-sky-700">Bed Win 4'×4'</button>
+                            <button onclick="window.addFurniture('Living Window', 5, 4)" class="bg-sky-800/60 text-[9px] py-1 rounded text-sky-200 border border-sky-700 hover:bg-sky-700">Liv Win 5'×4'</button>
+                            <button onclick="window.addFurniture('Kitchen Window', 4, 3)" class="bg-sky-800/60 text-[9px] py-1 rounded text-sky-200 border border-sky-700 hover:bg-sky-700">Kit. Win 4'×3'</button>
+                            <button onclick="window.addFurniture('Toilet Window', 2, 1.5)" class="bg-sky-800/60 text-[9px] py-1 rounded text-sky-200 border border-sky-700 hover:bg-sky-700">Toi. Win 2'×1'6"</button>
+                        </div>
+                    </div>
+                    
+                    <div id="itemList" class="space-y-2 mt-1"></div>
+                    <div id="shapeList" class="space-y-1 mt-1"></div>
+                </div>
+                <div class="h-32 w-full shrink-0" aria-hidden="true" style="min-height:128px;flex-shrink:0;display:block;"></div>
+            </div>
+        </aside>
+
+        <main class="flex-1 relative bg-white overflow-hidden" id="canvasContainer">
+             <div id="toolStatusBar" class="absolute top-0 left-0 right-0 z-20 flex items-center gap-2 px-3 py-1 pointer-events-none" style="background:rgba(15,23,42,0.75);border-bottom:1px solid rgba(51,65,85,0.5);">
+                    <span id="activeToolLabel" class="text-[9px] font-black text-amber-400 uppercase tracking-wider"><i class="fa-solid fa-arrow-pointer mr-1"></i>SELECT</span>
+                    <span class="text-slate-600 text-[9px]">|</span>
+                    <span id="snapLabel" class="text-[9px] text-slate-400"><i class="fa-solid fa-magnet mr-1"></i><span id="snapState">SNAP ON</span></span>
+                    <span class="text-slate-600 text-[9px]">|</span>
+                    <span id="gridLabel" class="text-[9px] text-slate-400"><i class="fa-solid fa-table-cells-large mr-1"></i><span id="gridState">GRID ON</span></span>
+                    <span class="text-slate-600 text-[9px]">|</span>
+                    <span id="floorLabel" class="text-[9px] text-slate-400">GF</span>
+                </div>
+                <!-- Strip 0: Live Ayam (Ayadi) details — in the gap above Road strip -->
+                <div id="ayamStrip" style="position:absolute;top:28px;left:0;right:0;z-index:26;background:transparent;padding:1px 12px;pointer-events:none;display:flex;align-items:center;gap:10px;min-height:18px;flex-wrap:nowrap;">
+                  <span id="canvasShastraLabel" style="font-size:8px;color:#a78bfa;font-weight:900;text-transform:uppercase;letter-spacing:0.07em;flex-shrink:0;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);margin-right:4px;">Navavargulu: Viswakarma</span>
+                  <span style="font-size:7px;color:#6d28d9;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">Yoni:</span><span id="ayamYoni" style="font-size:9px;color:#5b21b6;font-weight:900;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">-</span>
+                  <span style="color:#d1d5db;font-size:9px;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">&#9474;</span>
+                  <span style="font-size:7px;color:#0369a1;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">Aaya:</span><span id="ayamAaya" style="font-size:9px;color:#0c4a6e;font-weight:900;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">-</span>
+                  <span style="font-size:7px;color:#dc2626;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">Runam:</span><span id="ayamRunam" style="font-size:9px;color:#991b1b;font-weight:900;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">-</span>
+                  <span id="ayamStatus" style="font-size:8px;font-weight:900;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">-</span>
+                  <span style="color:#d1d5db;font-size:9px;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">&#9474;</span>
+                  <span style="font-size:7px;color:#0f766e;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">Star:</span><span id="ayamStar" style="font-size:9px;color:#134e4a;font-weight:700;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">-</span>
+                  <span style="color:#d1d5db;font-size:9px;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">&#9474;</span>
+                  <span style="font-size:7px;color:#b45309;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">Varam:</span><span id="ayamVaram" style="font-size:9px;color:#78350f;font-weight:700;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">-</span>
+                  <span style="color:#d1d5db;font-size:9px;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">&#9474;</span>
+                  <span style="font-size:7px;color:#be185d;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">Tithi:</span><span id="ayamTithi" style="font-size:9px;color:#831843;font-weight:700;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">-</span>
+                </div>
+                <!-- Strip 1: Road Devtha — transparent HUD overlay (pushed down by Ayam strip) -->
+                <div id="roadDevthaStrip" style="position:absolute;top:46px;left:0;right:0;z-index:25;background:transparent;padding:1px 12px;pointer-events:none;display:flex;align-items:center;gap:0;min-height:18px;">
+                  <span id="roadDevthaTitle" style="font-size:8px;font-weight:900;color:#f59e0b;text-transform:uppercase;letter-spacing:0.07em;margin-right:10px;flex-shrink:0;text-shadow:0 0 6px rgba(0,0,0,0.9),0 0 3px rgba(0,0,0,1);">East Road</span>
+                  <div id="roadDevthaList" style="font-size:9px;display:flex;gap:10px;align-items:center;flex-wrap:nowrap;overflow:hidden;"></div>
+                </div>
+                <!-- Strip 2: Area info — transparent HUD, colour-coded, tight gap -->
+                <div id="canvasAreaStrip" style="position:absolute;top:62px;left:0;right:0;z-index:24;background:transparent;padding:1px 12px;pointer-events:none;display:flex;align-items:center;gap:8px;min-height:18px;flex-wrap:nowrap;">
+                  <span style="font-size:7px;color:#059669;font-weight:900;text-transform:uppercase;letter-spacing:0.06em;flex-shrink:0;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">SITE</span>
+                  <span id="stripSiteSqft" style="font-size:9px;color:#065f46;font-weight:900;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">3,000 sq.ft</span>
+                  <span id="stripSiteSqyd" style="font-size:8px;color:#047857;font-weight:700;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">333 yds</span>
+                  <span style="color:#94a3b8;font-size:9px;margin:0 2px;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">&#9474;</span>
+                  <span style="font-size:7px;color:#1d4ed8;font-weight:900;text-transform:uppercase;letter-spacing:0.06em;flex-shrink:0;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">BUILT</span>
+                  <span id="stripBuiltSqft" style="font-size:9px;color:#1e3a8a;font-weight:900;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">1,645 sq.ft</span>
+                  <span id="stripBuiltSqyd" style="font-size:8px;color:#2563eb;font-weight:700;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">183 yds</span>
+                  <span style="color:#94a3b8;font-size:9px;margin:0 2px;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">&#9474;</span>
+                  <span style="font-size:7px;color:#b45309;font-weight:900;text-transform:uppercase;letter-spacing:0.06em;flex-shrink:0;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">SETBACK</span>
+                  <span id="stripSetbackSqft" style="font-size:9px;color:#92400e;font-weight:900;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">1,305 sq.ft</span>
+                  <span id="stripSetbackSqyd" style="font-size:8px;color:#d97706;font-weight:700;text-shadow:0 0 5px rgba(255,255,255,0.95),0 0 3px rgba(255,255,255,1);">145 yds</span>
+                </div>
+                <canvas id="vastuCanvas" class="w-full h-full block cursor-crosshair"></canvas>
+             <!-- ── Mobile floating Cancel Tool button — only visible when a tool is active ── -->
+             <div id="mobCancelToolBtn" style="display:none;position:absolute;top:12px;left:50%;transform:translateX(-50%);z-index:500;pointer-events:auto;">
+                 <button onclick="window.mobCancelActiveTool();" style="background:rgba(239,68,68,0.92);color:#fff;border:none;border-radius:24px;padding:8px 20px;font-size:13px;font-weight:900;box-shadow:0 4px 16px rgba(0,0,0,0.4);display:flex;align-items:center;gap:8px;cursor:pointer;touch-action:manipulation;letter-spacing:0.03em;">
+                     <i class="fa-solid fa-xmark"></i> Cancel Tool
+                 </button>
+             </div>
+             <!-- ── Mobile floating Delete button — visible only when an object is selected ── -->
+             <div id="mobDeleteBtn" style="display:none;position:absolute;bottom:70px;right:14px;z-index:510;pointer-events:auto;">
+                 <button onclick="window.mobDeleteSelected();" style="background:rgba(220,38,38,0.93);color:#fff;border:none;border-radius:50px;padding:10px 18px;font-size:15px;font-weight:900;box-shadow:0 4px 18px rgba(0,0,0,0.45);display:flex;align-items:center;gap:8px;cursor:pointer;touch-action:manipulation;letter-spacing:0.02em;">&#128465;&#65039; Delete</button>
+             </div>
+             <div id="compassContainer" class="absolute top-4 right-4 z-10 flex items-center gap-1.5 flex-wrap justify-end pointer-events-auto" style="display:none !important;">
+                <!-- Quick toggles moved to View group in tools row -->
+                <div class="text-xs font-bold text-slate-700 bg-white/90 px-2 py-1 rounded shadow-sm border border-slate-300 pointer-events-none" id="compassDeg">0° N</div>
+                <div id="floorIndicatorCanvas" class="text-[10px] font-black bg-indigo-600 text-white px-2 py-1 rounded shadow border border-indigo-500 pointer-events-none">GF</div>
+                <div id="compassOverlay" class="w-16 h-16 transition-transform duration-500">
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <circle cx="50" cy="50" r="45" fill="white" stroke="#1e293b" stroke-width="3"/>
+                        <polygon points="50,15 60,50 40,50" fill="#ef4444"/>
+                        <polygon points="50,85 60,50 40,50" fill="#1e293b"/>
+                        <text x="50" y="12" font-size="10" font-weight="900" text-anchor="middle" fill="#ef4444">N</text>
+                    </svg>
+                </div>
+             </div>
+             <!-- Zoom Controls -->
+             <div class="absolute bottom-4 right-4 z-[40] flex flex-col gap-1 pointer-events-auto">
+                <button onclick="state.scale=Math.min(state.scale*1.2,12);window.draw();" class="w-8 h-8 bg-slate-800/90 hover:bg-slate-700 text-white rounded-lg text-lg font-black flex items-center justify-center shadow border border-slate-600 leading-none" title="Zoom In (+)">+</button>
+                <button onclick="state.scale=0.8;state.offsetX=0;state.offsetY=0;window.draw();" class="w-8 h-8 bg-slate-800/90 hover:bg-slate-700 text-white rounded-lg text-[9px] font-black flex items-center justify-center shadow border border-slate-600" title="Reset View (0)">FIT</button>
+                <button onclick="state.scale=Math.max(state.scale*0.83,0.1);window.draw();" class="w-8 h-8 bg-slate-800/90 hover:bg-slate-700 text-white rounded-lg text-xl font-black flex items-center justify-center shadow border border-slate-600 leading-none" title="Zoom Out (-)">−</button>
+             </div>
+             <!-- Scale indicator -->
+             <div class="absolute bottom-4 left-4 z-20 flex items-center gap-1">
+                <button onclick="state.scale=Math.max(0.1,state.scale*0.87);window.draw();" title="Zoom Out" class="bg-slate-800/90 hover:bg-slate-700 text-slate-300 font-black text-sm px-2 py-0.5 rounded border border-slate-700 leading-none">−</button>
+                <div class="bg-slate-800/80 text-slate-300 text-[10px] font-mono px-2 py-1 rounded border border-slate-700 pointer-events-none" id="scaleIndicator">1x</div>
+                <button onclick="state.scale=Math.min(12,state.scale*1.15);window.draw();" title="Zoom In" class="bg-slate-800/90 hover:bg-slate-700 text-slate-300 font-black text-sm px-2 py-0.5 rounded border border-slate-700 leading-none">+</button>
+             </div>
+             <div id="navavarguluPanel" class="absolute right-4 top-24 bg-slate-900/95 border border-amber-500/50 rounded-lg p-3 shadow-2xl z-20 hidden backdrop-blur-sm w-72">
+                <div class="flex justify-between items-center mb-2 border-b border-slate-700 pb-2">
+                    <h3 id="panelTitle" class="text-[12px] font-black text-amber-400 uppercase">Navavargulu</h3>
+                    <button onclick="window.toggleNavavargulu()" class="text-slate-400 hover:text-red-400"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div id="navavarguluContent" class="space-y-1 text-[11px] text-slate-200"></div>
+             </div>
+             <div id="measureGuide" class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-amber-600 text-white px-4 py-2 rounded-full text-xs font-bold shadow-xl hidden z-40">
+                Measurement Tool Active: Click on canvas...
+             </div>
+        </main>
+    </div>
+
+
+
+<!-- PWA: Offline Banner -->
+<div id="networkBanner" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#b45309; color:white; padding:8px 16px; font-size:12px; font-weight:700; z-index:9999; align-items:center; justify-content:center; gap:8px;"></div>
+
+<!-- PWA: Install Button (shown only when browser supports install) -->
+<button id="pwaInstallBtn" style="display:none; position:fixed; bottom:48px; right:16px; background:linear-gradient(135deg,#f59e0b,#ea580c); color:white; border:none; border-radius:12px; padding:10px 18px; font-size:12px; font-weight:900; cursor:pointer; z-index:9999; box-shadow:0 4px 20px rgba(245,158,11,0.5); align-items:center; gap:8px;">
+    <i class="fa-solid fa-download"></i> Install App
+</button>
+
+
+    <!-- Declination Info Modal -->
+    <div id="declModal" class="fixed inset-0 z-[300] items-center justify-center" style="display:none;background:rgba(0,0,0,0.7);">
+        <div class="bg-slate-900 border border-slate-700 rounded-xl p-5 max-w-sm mx-4 shadow-2xl">
+            <div class="flex justify-between items-center mb-3">
+                <h3 class="text-[11px] font-black text-sky-400">📐 Magnetic Declination</h3>
+                <button onclick="document.getElementById('declModal').style.display='none'" class="text-slate-500 hover:text-white text-sm">✕</button>
+            </div>
+            <p class="text-[10px] text-slate-300 mb-2">Magnetic declination is the angle between Magnetic North (compass) and True North (astronomical).</p>
+            <p class="text-[10px] text-slate-300 mb-2">If you used a <b class="text-amber-400">compass</b> to measure your plot direction, enter your city's declination value here. The software will auto-correct to True North.</p>
+            <p class="text-[10px] text-slate-300 mb-3">If you used <b class="text-amber-400">Google Maps or satellite</b> — leave this at 0°. Satellite already gives True North.</p>
+            <div class="bg-slate-800 rounded p-2 mb-3 text-[9px] text-slate-400">
+                <b class="text-white">Formula:</b> True North = Compass Reading − Declination
+            </div>
+            <a href="https://www.magnetic-declination.com" target="_blank" class="block text-center text-[10px] text-sky-400 hover:text-sky-300 border border-sky-800 rounded py-1.5 mb-2">🔗 Check exact declination for your location</a>
+            <button onclick="document.getElementById('declModal').style.display='none'" class="w-full text-[10px] bg-slate-700 hover:bg-slate-600 text-white rounded py-1.5">Close</button>
+        </div>
+    </div>
+
+    <!-- ── MOBILE BOTTOM TAB BAR (Android) ── -->
+    <div id="mobileTabBar">
+        <button class="mob-tab active" id="mobTabCanvas" onclick="var _ov=document.getElementById('mobMenuOverlay');if(_ov)_ov.style.display='none';window.mobShowCanvas()">
+            <i class="fa-solid fa-drafting-compass"></i>
+            <span>Canvas</span>
+        </button>
+        <button class="mob-tab" id="mobTabInputs" onclick="var _ov=document.getElementById('mobMenuOverlay');if(_ov)_ov.style.display='none';window.mobShowInputs()">
+            <i class="fa-solid fa-sliders"></i>
+            <span>Inputs</span>
+        </button>
+        <button class="mob-tab" id="mobTabRooms" onclick="var _ov=document.getElementById('mobMenuOverlay');if(_ov)_ov.style.display='none';window.mobShowRooms()">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Rooms</span>
+        </button>
+        <button class="mob-tab" id="mobTabAlerts" onclick="var _ov=document.getElementById('mobMenuOverlay');if(_ov)_ov.style.display='none';typeof window.generateReport==='function'&&window.generateReport();">
+            <i class="fa-solid fa-print"></i>
+            <span>Report</span>
+        </button>
+    </div>
+
+<!-- ══════════════════════════════════════════════════════════
+     BLUEPRINT MODE OVERLAY — Full-screen, Desktop + Mobile
+     Shell only. Upload logic to be wired in next phase.
+══════════════════════════════════════════════════════════ -->
+<div id="blueprintOverlay" style="display:none;position:fixed;inset:0;z-index:99999;background:#0f172a;flex-direction:column;align-items:center;justify-content:center;gap:20px;">
+    <!-- Header bar -->
+    <div style="position:absolute;top:0;left:0;right:0;height:52px;background:#1e293b;border-bottom:1px solid #334155;display:flex;align-items:center;padding:0 16px;gap:12px;">
+        <i class="fa-solid fa-image" style="color:#818cf8;font-size:18px;"></i>
+        <span style="font-size:14px;font-weight:900;color:#a5b4fc;letter-spacing:0.05em;">BLUEPRINT MODE</span>
+        <span style="font-size:10px;color:#475569;font-weight:600;margin-left:4px;">— Upload & trace your site plan</span>
+        <button onclick="document.getElementById('blueprintOverlay').style.display='none';"
+            style="margin-left:auto;width:36px;height:36px;border-radius:8px;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.35);color:#f87171;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+    <!-- Coming Soon body -->
+    <div style="text-align:center;padding:32px;max-width:360px;">
+        <div style="font-size:56px;margin-bottom:16px;">📐</div>
+        <div style="font-size:20px;font-weight:900;color:#a5b4fc;margin-bottom:8px;">Blueprint Upload</div>
+        <div style="font-size:13px;color:#64748b;line-height:1.6;margin-bottom:24px;">Upload a site photograph or scanned plan as a semi-transparent background layer for precision tracing.</div>
+        <div style="background:rgba(99,102,241,0.1);border:1px dashed #4338ca;border-radius:12px;padding:32px 24px;color:#6366f1;font-size:12px;font-weight:700;letter-spacing:0.1em;">
+            <button onclick="window.triggerBlueprintUpload();document.getElementById('blueprintOverlay').style.display='none';"
+                style="background:linear-gradient(135deg,#4338ca,#6366f1);border:none;border-radius:10px;padding:14px 32px;color:#fff;font-size:14px;font-weight:900;cursor:pointer;display:flex;align-items:center;gap:10px;margin:0 auto;letter-spacing:0.04em;box-shadow:0 4px 16px rgba(99,102,241,0.4);">
+                <i class="fa-solid fa-upload"></i> Choose Image (JPG / PNG)
+            </button>
+            <div style="margin-top:14px;font-size:10px;color:#475569;font-weight:600;letter-spacing:0.06em;">Supports JPG and PNG · Max recommended: 10 MB</div>
+        </div>
+        <button onclick="document.getElementById('blueprintOverlay').style.display='none';"
+            style="margin-top:24px;background:#1e293b;border:1px solid #334155;color:#94a3b8;border-radius:8px;padding:10px 28px;font-size:13px;font-weight:700;cursor:pointer;">
+            ← Back to Canvas
+        </button>
+    </div>
+</div>
+
+<!-- ══ ADDITIONAL CSS: Mobile logo hide on canvas + mob tool active states ══ -->
+
+
+<!-- ══════════════════════════════════════════════
+     VASTU CALCULATOR MODAL
+══════════════════════════════════════════════ -->
+<div id="vastuCalcModal" style="display:none;position:fixed;inset:0;z-index:100000;background:rgba(0,0,0,0.55);align-items:center;justify-content:center;">
+    <div id="vastuCalcBox" style="background:#0f172a;border:1px solid #334155;border-radius:16px;box-shadow:0 24px 64px rgba(0,0,0,0.7);width:320px;max-width:96vw;user-select:none;cursor:default;" onmousedown="window._calcDragStart(event)">
+        <!-- Header -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px 8px;border-bottom:1px solid #1e293b;">
+            <span style="font-size:13px;font-weight:900;color:#a5b4fc;letter-spacing:0.05em;"><i class="fa-solid fa-calculator" style="margin-right:6px;"></i>Vastu Calculator</span>
+            <button onclick="document.getElementById('vastuCalcModal').style.display='none';" style="background:none;border:none;color:#64748b;font-size:16px;cursor:pointer;padding:2px 6px;border-radius:4px;" onmouseover="this.style.color='#f87171'" onmouseout="this.style.color='#64748b'"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <!-- Display -->
+        <div style="padding:10px 14px 6px;">
+            <div id="calcExpr" style="font-size:10px;color:#475569;min-height:16px;text-align:right;font-family:monospace;"></div>
+            <div id="calcDisplay" style="font-size:28px;font-weight:900;color:#f1f5f9;text-align:right;font-family:ui-monospace,monospace;min-height:40px;word-break:break-all;padding:4px 0;">0</div>
+        </div>
+        <!-- Standard buttons -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:6px 14px;">
+            <!-- Row 1 -->
+            <button class="calc-btn calc-fn" onclick="window._calcFn('clear')">AC</button>
+            <button class="calc-btn calc-fn" onclick="window._calcFn('sign')">+/−</button>
+            <button class="calc-btn calc-fn" onclick="window._calcFn('percent')">%</button>
+            <button class="calc-btn calc-op" onclick="window._calcFn('op','/')">÷</button>
+            <!-- Row 2 -->
+            <button class="calc-btn calc-num" onclick="window._calcFn('num','7')">7</button>
+            <button class="calc-btn calc-num" onclick="window._calcFn('num','8')">8</button>
+            <button class="calc-btn calc-num" onclick="window._calcFn('num','9')">9</button>
+            <button class="calc-btn calc-op" onclick="window._calcFn('op','*')">×</button>
+            <!-- Row 3 -->
+            <button class="calc-btn calc-num" onclick="window._calcFn('num','4')">4</button>
+            <button class="calc-btn calc-num" onclick="window._calcFn('num','5')">5</button>
+            <button class="calc-btn calc-num" onclick="window._calcFn('num','6')">6</button>
+            <button class="calc-btn calc-op" onclick="window._calcFn('op','-')">−</button>
+            <!-- Row 4 -->
+            <button class="calc-btn calc-num" onclick="window._calcFn('num','1')">1</button>
+            <button class="calc-btn calc-num" onclick="window._calcFn('num','2')">2</button>
+            <button class="calc-btn calc-num" onclick="window._calcFn('num','3')">3</button>
+            <button class="calc-btn calc-op" onclick="window._calcFn('op','+')">+</button>
+            <!-- Row 5 -->
+            <button class="calc-btn calc-num" style="grid-column:span 2;" onclick="window._calcFn('num','0')">0</button>
+            <button class="calc-btn calc-num" onclick="window._calcFn('dot')">.</button>
+            <button class="calc-btn calc-eq" onclick="window._calcFn('eq')">=</button>
+        </div>
+        <!-- Vastu conversion section -->
+        <div style="margin:6px 14px 14px;background:#1e293b;border-radius:10px;padding:10px 12px;border:1px solid #334155;">
+            <div style="font-size:9px;color:#f59e0b;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">📐 Ft &amp; In → Sq.Yards (Gajam)</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px;">
+                <div>
+                    <label style="font-size:9px;color:#64748b;font-weight:600;">Length (ft)</label>
+                    <input id="calcLenFt" type="number" inputmode="decimal" placeholder="0" style="width:100%;background:#0f172a;border:1px solid #475569;color:#f1f5f9;border-radius:6px;padding:6px 8px;font-size:15px;outline:none;margin-top:2px;">
+                </div>
+                <div>
+                    <label style="font-size:9px;color:#64748b;font-weight:600;">Length (in)</label>
+                    <input id="calcLenIn" type="number" inputmode="decimal" placeholder="0" style="width:100%;background:#0f172a;border:1px solid #475569;color:#f1f5f9;border-radius:6px;padding:6px 8px;font-size:15px;outline:none;margin-top:2px;">
+                </div>
+                <div>
+                    <label style="font-size:9px;color:#64748b;font-weight:600;">Width (ft)</label>
+                    <input id="calcWidFt" type="number" inputmode="decimal" placeholder="0" style="width:100%;background:#0f172a;border:1px solid #475569;color:#f1f5f9;border-radius:6px;padding:6px 8px;font-size:15px;outline:none;margin-top:2px;">
+                </div>
+                <div>
+                    <label style="font-size:9px;color:#64748b;font-weight:600;">Width (in)</label>
+                    <input id="calcWidIn" type="number" inputmode="decimal" placeholder="0" style="width:100%;background:#0f172a;border:1px solid #475569;color:#f1f5f9;border-radius:6px;padding:6px 8px;font-size:15px;outline:none;margin-top:2px;">
+                </div>
+            </div>
+            <button onclick="window._calcConvert();" style="width:100%;background:linear-gradient(90deg,#f59e0b,#d97706);color:#000;border:none;border-radius:7px;padding:8px;font-size:12px;font-weight:900;cursor:pointer;letter-spacing:0.04em;">
+                Calculate Sq.Yards (Gajam)
+            </button>
+            <div id="calcConvResult" style="margin-top:8px;font-size:12px;color:#34d399;font-weight:700;text-align:center;min-height:18px;"></div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SHARED BLUEPRINT FILE INPUT — wired to both Desktop & Mobile
+     ═══════════════════════════════════════════════════════════════ -->
+<input
+    type="file"
+    id="blueprintFileInput"
+    accept="image/png, image/jpeg, image/jpg"
+    style="display:none;"
+    onchange="window._handleBlueprintFileSelect(this.files[0]);"
+>
+
+
+<!-- ══ BLUEPRINT CONTROL PANEL — floating overlay, canvas-anchored ══ -->
+<div id="blueprintControlPanel"
+     onmousedown="event.stopPropagation();"
+     onmousemove="event.stopPropagation();"
+     onclick="event.stopPropagation();"
+     ontouchstart="event.stopPropagation();"
+     ontouchmove="event.stopPropagation();">
+
+    <div class="bp-title"><i class="fa-solid fa-image"></i> Blueprint Layer</div>
+
+    <!-- Opacity — slider only, no nudge needed -->
+    <div class="bp-row">
+        <span class="bp-label">Opacity</span>
+        <input type="range" class="bp-slider" id="blueprintOpacitySlider" min="0.05" max="1" step="0.05" value="0.4"
+            onmousedown="event.stopPropagation();" ontouchstart="event.stopPropagation();" ontouchmove="event.stopPropagation();"
+            oninput="window.blueprintOpacity=parseFloat(this.value);var v=document.getElementById('bpOpacityVal');if(v)v.textContent=Math.round(parseFloat(this.value)*100)+'%';window.draw();">
+        <span id="bpOpacityVal" class="bp-val">40%</span>
+    </div>
+
+    <!-- Scale — nudge ±0.01 -->
+    <div class="bp-row">
+        <span class="bp-label">Scale</span>
+        <button class="bp-nudge" onmousedown="event.stopPropagation();" ontouchstart="event.stopPropagation();" onclick="event.stopPropagation();window.bpNudge('scale',-0.01);">−</button>
+        <input type="range" class="bp-slider" id="bgScaleSlider" min="0.1" max="3.0" step="0.01" value="1"
+            onmousedown="event.stopPropagation();" ontouchstart="event.stopPropagation();" ontouchmove="event.stopPropagation();"
+            oninput="window.bgScale=parseFloat(this.value);var v=document.getElementById('bpScaleVal');if(v)v.textContent=parseFloat(this.value).toFixed(2)+'×';window.draw();">
+        <button class="bp-nudge" onmousedown="event.stopPropagation();" ontouchstart="event.stopPropagation();" onclick="event.stopPropagation();window.bpNudge('scale',+0.01);">+</button>
+        <span id="bpScaleVal" class="bp-val">1.00×</span>
+    </div>
+
+    <!-- Move X — nudge ±1 -->
+    <div class="bp-row">
+        <span class="bp-label">Move X</span>
+        <button class="bp-nudge" onmousedown="event.stopPropagation();" ontouchstart="event.stopPropagation();" onclick="event.stopPropagation();window.bpNudge('x',-1);">−</button>
+        <input type="range" class="bp-slider" id="bgOffsetXSlider" min="-500" max="500" step="1" value="0"
+            onmousedown="event.stopPropagation();" ontouchstart="event.stopPropagation();" ontouchmove="event.stopPropagation();"
+            oninput="window.bgOffsetX=parseFloat(this.value);var v=document.getElementById('bpOffsetXVal');if(v)v.textContent=(parseFloat(this.value)>=0?'+':'')+Math.round(parseFloat(this.value));window.draw();">
+        <button class="bp-nudge" onmousedown="event.stopPropagation();" ontouchstart="event.stopPropagation();" onclick="event.stopPropagation();window.bpNudge('x',+1);">+</button>
+        <span id="bpOffsetXVal" class="bp-val">0</span>
+    </div>
+
+    <!-- Move Y — nudge ±1 -->
+    <div class="bp-row">
+        <span class="bp-label">Move Y</span>
+        <button class="bp-nudge" onmousedown="event.stopPropagation();" ontouchstart="event.stopPropagation();" onclick="event.stopPropagation();window.bpNudge('y',-1);">−</button>
+        <input type="range" class="bp-slider" id="bgOffsetYSlider" min="-500" max="500" step="1" value="0"
+            onmousedown="event.stopPropagation();" ontouchstart="event.stopPropagation();" ontouchmove="event.stopPropagation();"
+            oninput="window.bgOffsetY=parseFloat(this.value);var v=document.getElementById('bpOffsetYVal');if(v)v.textContent=(parseFloat(this.value)>=0?'+':'')+Math.round(parseFloat(this.value));window.draw();">
+        <button class="bp-nudge" onmousedown="event.stopPropagation();" ontouchstart="event.stopPropagation();" onclick="event.stopPropagation();window.bpNudge('y',+1);">+</button>
+        <span id="bpOffsetYVal" class="bp-val">0</span>
+    </div>
+
+    <!-- Reset + Clear -->
+    <div style="display:flex;gap:6px;margin-top:2px;">
+        <button class="bp-action-btn bp-reset"
+            onmousedown="event.stopPropagation();" ontouchstart="event.stopPropagation();" onclick="event.stopPropagation();window.bpReset();">
+            <i class="fa-solid fa-rotate-left"></i> Reset
+        </button>
+        <button class="bp-action-btn bp-clear"
+            onmousedown="event.stopPropagation();" ontouchstart="event.stopPropagation();" onclick="event.stopPropagation();window.bpClear();">
+            <i class="fa-solid fa-xmark"></i> Clear
+        </button>
+    </div>
+</div>
+
+<!-- ══ BLUEPRINT ENGINE + UI POLISH CSS ══ -->
+<script src="app.js"></script>
+<script src="patches.js"></script>
+</body>
+</html>
