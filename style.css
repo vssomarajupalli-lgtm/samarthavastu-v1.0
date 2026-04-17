@@ -1,0 +1,1450 @@
+
+        /* Inter loaded via system font stack — no external dependency */
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #e2e8f0; margin: 0; padding: 0; overflow: hidden; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; } 
+        ::-webkit-scrollbar-track { background: #1e293b; border-radius: 10px; } 
+        ::-webkit-scrollbar-thumb { background: #475569; border-radius: 10px; }
+        .toast { position: fixed; top: 50px; left: 50%; transform: translateX(-50%); background: #10b981; color: white; padding: 10px 20px; border-radius: 30px; font-size: 14px; font-weight: 700; z-index: 1000; opacity: 0; transition: 0.3s; pointer-events: none; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+        input[type="number"], input[type="text"], select { background: #0f172a; border: 1px solid #334155; color: white; border-radius: 4px; padding: 4px 6px; font-size: 16px !important; width: 100%; outline: none; transition: border-color 0.2s; touch-action: manipulation; -webkit-user-select: text; user-select: text; }
+        /* ── MOBILE KEYPAD FIX: font-size ≥16px prevents iOS/Android auto-zoom on focus ── */
+        input[type="number"], input[type="text"], textarea, select { font-size: 16px !important; }
+        input:focus, select:focus { border-color: #6366f1; }
+        .top-btn { font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 6px 11px; border-radius: 6px; transition: 0.2s; display: flex; align-items: center; gap: 4px; cursor: pointer; min-height: 30px; }
+        .room-item { background: #1e293b; padding: 10px; border-radius: 8px; border: 1px solid #334155; margin-bottom: 8px; }
+        .fi-box { display: flex; align-items: center; background: #0f172a; border: 1px solid #334155; padding: 0 4px; border-radius: 4px; height: 44px; width: 100%; box-sizing: border-box; touch-action: manipulation; }
+        .fi-label { font-weight: 900; color: #64748b; font-size: 10px; width: 28px; text-align: center; border-right: 1px solid #334155; margin-right: 4px; }
+        .fi-input { width: 44px !important; background: transparent !important; text-align: center; color: white; font-weight: bold; font-size: 16px !important; border: none !important; padding: 0 !important; margin: 0 !important; touch-action: manipulation; -webkit-user-select: text; user-select: text; cursor: text; }
+        .unit-label { font-size: 9px; color: #475569; font-weight: bold; margin: 0 2px; }
+        .btn-active { background-color: #d97706 !important; color: white !important; border-color: #f59e0b !important; }
+        .vastu-alert-box { background: #1e293b; border-left: 4px solid #f59e0b; padding: 8px 12px; margin-top: 10px; border-radius: 0 8px 8px 0; font-size: 11px; }
+        .toggle-label { font-size: 10px; font-weight: 800; color: #cbd5e1; cursor: pointer; display: flex; align-items: center; gap: 6px; background: #1e293b; padding: 6px 10px; border-radius: 6px; border: 1px solid #334155; user-select: none; }
+    </style>
+
+    <style id="mobile-responsive">
+        /* ══ MOBILE ANDROID LAYOUT — ALL SIZES (360-412px) ══ */
+
+        /* ── Tab bar base (hidden on desktop) ── */
+        #mobileTabBar {
+            display: none;
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            height: 54px;
+            background: #0f172a;
+            border-top: 1px solid rgba(245,158,11,0.3);
+            z-index: 9999;
+            align-items: stretch;
+        }
+        .mob-tab {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: #475569;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 4px 0;
+            transition: all 0.15s;
+        }
+        .mob-tab.active { color: #f59e0b; background: rgba(245,158,11,0.10); }
+        .mob-tab i { font-size: 16px; }
+
+        /* ── Mobile menu overlay ── */
+        #mobMenuOverlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 8000;
+        }
+        /* ── NEW: #mobMenuPanel — flex column, no padding (sticky bar handles it) ── */
+        #mobMenuPanel {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            background: #0f172a;
+            border-bottom: 2px solid rgba(245,158,11,0.3);
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        /* Sticky Undo/Fit/Redo bar — always visible regardless of tab */
+        .mob-sticky-bar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 10px;
+            background: #0a1628;
+            border-bottom: 1px solid rgba(245,158,11,0.25);
+            flex-shrink: 0;
+        }
+        .mob-sticky-bar .msb-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            padding: 10px 6px;
+            border-radius: 7px;
+            border: 1px solid #334155;
+            background: #1e293b;
+            color: #cbd5e1;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            min-height: 40px;
+            touch-action: manipulation;
+        }
+        .mob-sticky-bar .msb-btn:active { opacity: 0.7; }
+        /* Tab pill navigation row */
+        .mob-tab-nav {
+            display: flex;
+            gap: 5px;
+            padding: 8px 10px 6px;
+            flex-shrink: 0;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+            border-bottom: 1px solid #1e293b;
+        }
+        .mob-tab-nav::-webkit-scrollbar { display: none; }
+        .mob-tab-pill {
+            flex-shrink: 0;
+            padding: 6px 13px;
+            border-radius: 20px;
+            border: 1px solid #334155;
+            background: transparent;
+            color: #94a3b8;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background 0.15s, color 0.15s, border-color 0.15s;
+            touch-action: manipulation;
+        }
+        .mob-tab-pill.mtab-active {
+            background: rgba(245,158,11,0.2);
+            border-color: rgba(245,158,11,0.6);
+            color: #f59e0b;
+        }
+        /* Scrollable tab content area */
+        .mob-tab-content {
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+            flex: 1;
+            padding: 10px 10px 80px;
+        }
+        /* Individual tab panels */
+        .mob-tab-panel { display: none; }
+        .mob-tab-panel.mtab-active { display: block; }
+        /* Section labels inside panels */
+        .mob-panel-section {
+            font-size: 9px;
+            color: #64748b;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin: 10px 0 5px;
+        }
+        .mob-panel-section:first-child { margin-top: 0; }
+        /* Button rows inside panels */
+        .mob-panel-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #1e293b;
+            margin-bottom: 2px;
+        }
+        .mob-panel-row:last-child { border-bottom: none; }
+        /* Generic panel button */
+        .mob-panel-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            border-radius: 7px;
+            border: 1px solid #334155;
+            background: #1e293b;
+            color: #cbd5e1;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            min-height: 36px;
+            touch-action: manipulation;
+        }
+        .mob-panel-btn:active { opacity: 0.7; }
+/* ── Bottom clearance: prevents phone nav bar from hiding last row ── */
+.mob-tab-content { padding-bottom: 120px !important; }
+/* ── Navavargulu compact 3-column grid ── */
+.mob-nava-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    margin: 0;
+}
+.mob-nava-cell {
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 6px;
+    padding: 5px 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+.mob-nava-cell.mob-nava-yoni {
+    border-color: rgba(34,197,94,0.4);
+    background: rgba(34,197,94,0.06);
+}
+.mob-nava-cell.mob-nava-bad {
+    border-color: rgba(239,68,68,0.35);
+    background: rgba(239,68,68,0.05);
+}
+.mob-nava-label {
+    font-size: 9px;
+    color: #475569;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1;
+}
+.mob-nava-value {
+    font-size: 12px;
+    font-weight: 900;
+    color: #e2e8f0;
+    font-family: ui-monospace, monospace;
+    line-height: 1.2;
+    word-break: break-word;
+}
+/* Area metrics strip */
+.mob-area-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+.mob-area-cell {
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 7px;
+    padding: 7px 10px;
+}
+.mob-area-label {
+    font-size: 9px;
+    color: #64748b;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.mob-area-value {
+    font-size: 11px;
+    font-weight: 900;
+    color: #34d399;
+    font-family: ui-monospace, monospace;
+}
+.mob-area-sub {
+    font-size: 9px;
+    color: #475569;
+}
+
+        @media (max-width: 767px) {
+        .bg-slate-700.h-2 { display: none !important; }
+
+            /* ── HEALTH BADGE — force hidden always ── */
+            #scoreBadge { display: none !important; visibility: hidden !important; }
+            #scoreTip { display: none !important; }
+
+            /* ── Hide entire desktop header on mobile ── */
+            header { display: none !important; }
+
+            /* ── Mobile header fixed at top ── */
+            #mobHeader {
+                display: flex !important;
+                align-items: center;
+                height: 44px;
+                background: #0f172a;
+                border-bottom: 1px solid #1e293b;
+                padding: 0 10px;
+                gap: 8px;
+                flex-shrink: 0;
+                isolation: isolate;
+                z-index: 99999 !important;
+                position: fixed !important;
+                top: 0; left: 0; right: 0;
+                pointer-events: auto !important;
+            }
+            #mobHeader button {
+                pointer-events: auto !important;
+                touch-action: manipulation !important;
+                -webkit-tap-highlight-color: rgba(0,0,0,0);
+                position: relative !important;
+                z-index: 100000 !important;
+                min-width: 44px;
+                min-height: 44px;
+            }
+
+            /* ── Body pushed down below fixed header ── */
+            body { padding-top: 44px !important; }
+
+            /* ── Main area fills remaining height ── */
+            .flex.flex-1.overflow-hidden.relative {
+                flex-direction: column !important;
+                height: calc(100dvh - 44px - 54px) !important;
+                position: relative;
+                margin-bottom: 54px;
+            }
+
+            /* ── Aside full screen, scrollable, with bottom padding for tab bar ── */
+            aside {
+                width: 100% !important;
+                height: 100% !important;
+                display: none !important;
+                overflow-y: auto !important;
+                overflow-x: hidden !important;
+                position: absolute !important;
+                top: 0; left: 0; right: 0; bottom: 0;
+                z-index: 50 !important;
+                padding-bottom: 140px !important;
+            }
+            aside.mob-active { display: flex !important; }
+
+            /* ── Canvas full screen ── */
+            #canvasContainer {
+                width: 100% !important;
+                height: 100% !important;
+                position: absolute !important;
+                top: 0; left: 0; right: 0; bottom: 0;
+            }
+            #canvasContainer.mob-hidden { display: none !important; }
+            /* ── Drawing tool active: canvas locked, no page scroll ── */
+            #vastuCanvas {
+                touch-action: pinch-zoom;
+            }
+            body.tool-active #vastuCanvas {
+                touch-action: none;
+            }
+
+            /* ── Hide canvas overlay strips on mobile (too small) ── */
+            #ayamStrip,
+            #roadDevthaStrip,
+            #canvasAreaStrip { display: none !important; }
+
+            /* ── Smaller compass on mobile — pushed below mobile top bar ── */
+            #compassContainer {
+                top: 130px !important;
+                right: 6px !important;
+                z-index: 1000 !important;
+                pointer-events: auto !important;
+            }
+            #compassOverlay { width: 36px !important; height: 36px !important; }
+            #compassDeg { font-size: 9px !important; padding: 1px 4px !important; }
+            #floorIndicatorCanvas { font-size: 8px !important; padding: 1px 4px !important; }
+            /* ── Zoom controls: ensure touchable on mobile ── */
+            #canvasContainer > div.absolute.bottom-4.right-4 {
+                z-index: 1000 !important;
+                pointer-events: auto !important;
+            }
+            #canvasContainer > div.absolute.bottom-4.left-4 {
+                z-index: 1000 !important;
+                pointer-events: auto !important;
+            }
+            /* ── toolStatusBar must NOT block touches on canvas ── */
+            #toolStatusBar {
+                pointer-events: none !important;
+            }
+            /* ── canvasContainer itself must pass through pointer events ── */
+            #canvasContainer {
+                pointer-events: auto !important;
+            }
+
+            /* ── Bottom tab bar visible ── */
+            #mobileTabBar { display: flex !important; }
+
+            /* ── Navavargulu panel full width on mobile ── */
+            #navavarguluPanel {
+                left: 8px !important;
+                right: 8px !important;
+                width: auto !important;
+            }
+            #scoreBoxContainer {
+                display: none !important;
+                pointer-events: none !important;
+                height: 0 !important;
+                overflow: hidden !important;
+            }
+        }
+
+        /* ══ GLOBAL INPUT PROTECTION — no parent can block keyboard ══ */
+        input, select, textarea {
+            pointer-events: auto !important;
+            user-select: auto !important;
+            -webkit-user-select: auto !important;
+            touch-action: auto !important;
+        }
+        /* ══ Desktop Header Center: hidden on mobile, revealed on desktop ══ */
+        #desktopHeaderCenter { display: none !important; }
+        /* ══ Score Strip: hidden until project starts (prevents cover-page bleed on desktop) ══ */
+        body:not(.app-ready) #scoreStrip { display: none !important; }
+
+        @media (min-width: 768px) {
+    #desktopHeaderCenter { display: flex !important; }
+    /* ── Hide all mobile-only elements ── */
+    #mobileTabBar   { display: none !important; }
+    #mobHeader      { display: none !important; }
+    #mobMenuOverlay { display: none !important; }
+
+    /* ── Bulletproof aside + main layout ── */
+    aside {
+        width: 350px !important;
+        max-width: 350px !important;
+        flex-shrink: 0 !important;
+        overflow-y: auto !important;
+        padding-left: 16px !important;
+    }
+    main, #appContainer main {
+        flex: 1 !important;
+        min-width: 0 !important;
+        width: calc(100% - 350px) !important;
+        padding-right: 16px !important;
+    }
+
+    /* ── Header breathing room from screen edges ── */
+    header {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    /* ── DESKTOP SCORE: hide bulky aside box, show compact header strip ── */
+    #scoreBoxContainer { display: none !important; }
+    #scoreStrip        { display: flex !important; flex-shrink: 0 !important; }
+
+    /* ══════════════════════════════════════════════
+       TWO-LINE HEADER — Double Decker Architecture
+       Row 1: Logo + Aaya + File/Export/Draw tools
+       Row 2: View toggles + Share + Language
+       Dropdowns always bleed below via overflow:visible
+    ══════════════════════════════════════════════ */
+
+    /* 1. Header element: auto height, breathing room at bottom, dropdowns escape */
+    header {
+        height: auto !important;
+        padding-bottom: 10px !important;
+        overflow: visible !important;
+    }
+
+    /* 2. Main flex container: WRAP into two rows, sensible gaps */
+    header > div:first-child {
+        flex-wrap: wrap !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        row-gap: 12px !important;
+        column-gap: 12px !important;
+        overflow: visible !important;
+    }
+
+    /* 3. Left logo/score group — Row 1 anchor, never shrinks */
+    #desktopHeaderLeft {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        flex-shrink: 0 !important;
+        flex-wrap: nowrap !important;
+        gap: 6px !important;
+    }
+    #desktopHeaderLeft > * { flex-shrink: 0 !important; }
+
+    /* 4. Right-side tool wrapper: wraps freely, visible for dropdowns */
+    header > div:first-child > div.flex.items-center.gap-1\.5.flex-wrap {
+        flex-wrap: wrap !important;
+        flex-shrink: 1 !important;
+        min-width: 0 !important;
+        overflow: visible !important;
+        gap: 8px !important;
+        align-items: center !important;
+    }
+
+    /* 5. Every dropdown parent: overflow:visible so menus escape the header */
+    #fileMenuContainer, #exportMenuContainer, #resourcesMenuContainer,
+    #viewSettingsContainer, #modeMenuContainer, header .relative {
+        overflow: visible !important;
+    }
+
+    /* 6. Compact top-btn sizing — readable but not bloated */
+    .top-btn {
+        padding: 4px 7px !important;
+        font-size: 10px !important;
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+    }
+    .top-btn i    { margin-right: 3px !important; }
+    .top-btn span { font-size: 10px !important; }
+
+    /* 7. Quick-toggle icon buttons in the VIEW group */
+    #viewSettingsContainer button[id^="qt"] {
+        padding: 3px 6px !important;
+        font-size: 10px !important;
+    }
+
+    /* 8. Dividers: slim vertical rules between button groups */
+    header > div:first-child > div[style*="width:2px"] {
+        margin: 0 2px !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* 9. Language select: compact */
+    #globalLangSelect {
+        font-size: 10px !important;
+        padding: 1px 3px !important;
+        height: 26px !important;
+    }
+
+    /* 10. Score strip: shrinkable so it doesn't crowd Row 1 */
+    #scoreStrip {
+        flex-shrink: 1 !important;
+        gap: 6px !important;
+    }
+}
+
+        @media print {
+            #mobileTabBar, #mobHeader, #mobMenuOverlay,
+            header, .top-btn, #compassContainer,
+            #toolStatusBar, #ayamStrip, #roadDevthaStrip, #canvasAreaStrip,
+            #pwaInstallBtn, #networkBanner, #declModal,
+            #shortcutsModal, #customModal, #projectManagerModal { display: none !important; }
+            #canvasContainer {
+                display: block !important;
+                visibility: visible !important;
+                position: static !important;
+                width: 100% !important;
+                height: auto !important;
+            }
+            #vastuCanvas {
+                display: block !important;
+                visibility: visible !important;
+                max-width: 100% !important;
+                height: auto !important;
+                page-break-inside: avoid;
+            }
+            aside { display: block !important; width: 100% !important; overflow: visible !important; }
+            body { background: white !important; }
+        }
+    </style>
+</head>
+<body class="h-screen flex flex-col overflow-hidden relative">
+
+    <!-- ══ SAMARTHA VASTU — WELCOME SCREEN ══ -->
+    <div id="passwordOverlay" class="fixed inset-0 z-[200] flex flex-col items-center justify-center overflow-y-auto"
+         style="background-color:#0a0a0c;background-image:radial-gradient(circle at center,#1a1500 0%,#0a0a0c 70%);">
+
+        <!-- Gold ring mandala background -->
+        <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(80vw,80vh);height:min(80vw,80vh);opacity:0.08;pointer-events:none;z-index:0;display:flex;align-items:center;justify-content:center;">
+            <div style="width:100%;height:100%;border:1px solid #c59b3d;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                <div style="width:80%;height:80%;border:1px solid #c59b3d;border-radius:50%;transform:rotate(45deg);"></div>
+            </div>
+        </div>
+
+        <!-- Splash fonts — preconnect for fast loading, system fallbacks for offline -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Noto+Sans+Telugu&display=swap" crossorigin>
+        <style>
+            .splash-serif { font-family: 'Cinzel', 'Palatino Linotype', 'Palatino', 'Book Antiqua', 'Georgia', serif; }
+            .splash-telugu { font-family: 'Noto Sans Telugu', 'Gautami', 'Vani', 'Arial Unicode MS', sans-serif; }
+            .splash-gold-text { background:linear-gradient(to bottom,#fde08b,#c59b3d); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+            .splash-btn { display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border-radius:12px;background:#151515;cursor:pointer;transition:all 0.2s;text-align:left;width:100%; }
+            .splash-btn:hover { background:#1c1c1c; }
+        </style>
+
+        <!-- Main Card -->
+        <div class="relative z-10 w-full mx-auto py-6 px-4" style="max-width:420px;">
+
+            <!-- Icon -->
+            <div style="display:flex;flex-direction:column;align-items:center;position:relative;z-index:10;padding-top:16px;">
+                <div style="width:80px;height:80px;border-radius:14px;background:linear-gradient(135deg,#2a220b,#110e05);border:1px solid rgba(197,155,61,0.5);display:flex;align-items:center;justify-content:center;margin-bottom:20px;position:relative;">
+                    <i class="fa-regular fa-compass" style="color:#d4af37;font-size:26px;position:absolute;left:12px;top:12px;"></i>
+                    <i class="fa-solid fa-scroll" style="color:#d4af37;font-size:20px;position:absolute;right:12px;bottom:12px;"></i>
+                </div>
+
+                <!-- Title -->
+                <h1 class="splash-serif splash-gold-text" style="font-size:26px;font-weight:700;letter-spacing:0.18em;text-align:center;margin:0 0 4px;">SAMARTHA VASTU</h1>
+                <p class="splash-telugu" style="color:#c59b3d;font-size:16px;margin:0 0 4px;text-align:center;">సమర్థ వాస్తు</p>
+                <p style="font-size:9px;letter-spacing:0.22em;color:#a38032;text-transform:uppercase;text-align:center;font-weight:600;margin:0 0 16px;">Viswakarma Padavinyasa &bull; Architect Edition v34</p>
+
+                <!-- Sanskrit sloka -->
+                <div style="text-align:center;margin-bottom:4px;">
+                    <p style="color:#d4af37;font-size:18px;font-weight:500;font-family:serif;margin:0 0 4px;">यत्र वास्तु तत्र लक्ष्मी</p>
+                    <p style="font-size:10px;color:#6b7280;font-style:italic;margin:0;">"Where Vastu is, Lakshmi resides"</p>
+                </div>
+            </div>
+
+            <!-- Splash loading panel -->
+            <div id="splashPanel" style="padding:20px 0;text-align:center;">
+                <div style="display:inline-flex;align-items:center;gap:8px;font-size:10px;color:#4b5563;">
+                    <span style="width:6px;height:6px;border-radius:50%;background:#c59b3d;display:inline-block;animation:pulse 1.5s infinite;"></span>
+                    Loading Padavinyasa Engine...
+                </div>
+                <style>@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}</style>
+/* ════ CSS Block: lines 51–71 from original index.html ════ */
+        /* Inter loaded via system font stack — no external dependency */
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #e2e8f0; margin: 0; padding: 0; overflow: hidden; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; } 
+        ::-webkit-scrollbar-track { background: #1e293b; border-radius: 10px; } 
+        ::-webkit-scrollbar-thumb { background: #475569; border-radius: 10px; }
+        .toast { position: fixed; top: 50px; left: 50%; transform: translateX(-50%); background: #10b981; color: white; padding: 10px 20px; border-radius: 30px; font-size: 14px; font-weight: 700; z-index: 1000; opacity: 0; transition: 0.3s; pointer-events: none; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+        input[type="number"], input[type="text"], select { background: #0f172a; border: 1px solid #334155; color: white; border-radius: 4px; padding: 4px 6px; font-size: 16px !important; width: 100%; outline: none; transition: border-color 0.2s; touch-action: manipulation; -webkit-user-select: text; user-select: text; }
+        /* ── MOBILE KEYPAD FIX: font-size ≥16px prevents iOS/Android auto-zoom on focus ── */
+        input[type="number"], input[type="text"], textarea, select { font-size: 16px !important; }
+        input:focus, select:focus { border-color: #6366f1; }
+        .top-btn { font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 6px 11px; border-radius: 6px; transition: 0.2s; display: flex; align-items: center; gap: 4px; cursor: pointer; min-height: 30px; }
+        .room-item { background: #1e293b; padding: 10px; border-radius: 8px; border: 1px solid #334155; margin-bottom: 8px; }
+        .fi-box { display: flex; align-items: center; background: #0f172a; border: 1px solid #334155; padding: 0 4px; border-radius: 4px; height: 44px; width: 100%; box-sizing: border-box; touch-action: manipulation; }
+        .fi-label { font-weight: 900; color: #64748b; font-size: 10px; width: 28px; text-align: center; border-right: 1px solid #334155; margin-right: 4px; }
+        .fi-input { width: 44px !important; background: transparent !important; text-align: center; color: white; font-weight: bold; font-size: 16px !important; border: none !important; padding: 0 !important; margin: 0 !important; touch-action: manipulation; -webkit-user-select: text; user-select: text; cursor: text; }
+        .unit-label { font-size: 9px; color: #475569; font-weight: bold; margin: 0 2px; }
+        .btn-active { background-color: #d97706 !important; color: white !important; border-color: #f59e0b !important; }
+        .vastu-alert-box { background: #1e293b; border-left: 4px solid #f59e0b; padding: 8px 12px; margin-top: 10px; border-radius: 0 8px 8px 0; font-size: 11px; }
+        .toggle-label { font-size: 10px; font-weight: 800; color: #cbd5e1; cursor: pointer; display: flex; align-items: center; gap: 6px; background: #1e293b; padding: 6px 10px; border-radius: 6px; border: 1px solid #334155; user-select: none; }
+
+/* ════ CSS Block: lines 73–593 from original index.html ════ */
+        /* ══ MOBILE ANDROID LAYOUT — ALL SIZES (360-412px) ══ */
+
+        /* ── Tab bar base (hidden on desktop) ── */
+        #mobileTabBar {
+            display: none;
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            height: 54px;
+            background: #0f172a;
+            border-top: 1px solid rgba(245,158,11,0.3);
+            z-index: 9999;
+            align-items: stretch;
+        }
+        .mob-tab {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: #475569;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 4px 0;
+            transition: all 0.15s;
+        }
+        .mob-tab.active { color: #f59e0b; background: rgba(245,158,11,0.10); }
+        .mob-tab i { font-size: 16px; }
+
+        /* ── Mobile menu overlay ── */
+        #mobMenuOverlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 8000;
+        }
+        /* ── NEW: #mobMenuPanel — flex column, no padding (sticky bar handles it) ── */
+        #mobMenuPanel {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            background: #0f172a;
+            border-bottom: 2px solid rgba(245,158,11,0.3);
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        /* Sticky Undo/Fit/Redo bar — always visible regardless of tab */
+        .mob-sticky-bar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 10px;
+            background: #0a1628;
+            border-bottom: 1px solid rgba(245,158,11,0.25);
+            flex-shrink: 0;
+        }
+        .mob-sticky-bar .msb-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            padding: 10px 6px;
+            border-radius: 7px;
+            border: 1px solid #334155;
+            background: #1e293b;
+            color: #cbd5e1;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            min-height: 40px;
+            touch-action: manipulation;
+        }
+        .mob-sticky-bar .msb-btn:active { opacity: 0.7; }
+        /* Tab pill navigation row */
+        .mob-tab-nav {
+            display: flex;
+            gap: 5px;
+            padding: 8px 10px 6px;
+            flex-shrink: 0;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+            border-bottom: 1px solid #1e293b;
+        }
+        .mob-tab-nav::-webkit-scrollbar { display: none; }
+        .mob-tab-pill {
+            flex-shrink: 0;
+            padding: 6px 13px;
+            border-radius: 20px;
+            border: 1px solid #334155;
+            background: transparent;
+            color: #94a3b8;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background 0.15s, color 0.15s, border-color 0.15s;
+            touch-action: manipulation;
+        }
+        .mob-tab-pill.mtab-active {
+            background: rgba(245,158,11,0.2);
+            border-color: rgba(245,158,11,0.6);
+            color: #f59e0b;
+        }
+        /* Scrollable tab content area */
+        .mob-tab-content {
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+            flex: 1;
+            padding: 10px 10px 80px;
+        }
+        /* Individual tab panels */
+        .mob-tab-panel { display: none; }
+        .mob-tab-panel.mtab-active { display: block; }
+        /* Section labels inside panels */
+        .mob-panel-section {
+            font-size: 9px;
+            color: #64748b;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin: 10px 0 5px;
+        }
+        .mob-panel-section:first-child { margin-top: 0; }
+        /* Button rows inside panels */
+        .mob-panel-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #1e293b;
+            margin-bottom: 2px;
+        }
+        .mob-panel-row:last-child { border-bottom: none; }
+        /* Generic panel button */
+        .mob-panel-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            border-radius: 7px;
+            border: 1px solid #334155;
+            background: #1e293b;
+            color: #cbd5e1;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            min-height: 36px;
+            touch-action: manipulation;
+        }
+        .mob-panel-btn:active { opacity: 0.7; }
+/* ── Bottom clearance: prevents phone nav bar from hiding last row ── */
+.mob-tab-content { padding-bottom: 120px !important; }
+/* ── Navavargulu compact 3-column grid ── */
+.mob-nava-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    margin: 0;
+}
+.mob-nava-cell {
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 6px;
+    padding: 5px 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+.mob-nava-cell.mob-nava-yoni {
+    border-color: rgba(34,197,94,0.4);
+    background: rgba(34,197,94,0.06);
+}
+.mob-nava-cell.mob-nava-bad {
+    border-color: rgba(239,68,68,0.35);
+    background: rgba(239,68,68,0.05);
+}
+.mob-nava-label {
+    font-size: 9px;
+    color: #475569;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1;
+}
+.mob-nava-value {
+    font-size: 12px;
+    font-weight: 900;
+    color: #e2e8f0;
+    font-family: ui-monospace, monospace;
+    line-height: 1.2;
+    word-break: break-word;
+}
+/* Area metrics strip */
+.mob-area-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+.mob-area-cell {
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 7px;
+    padding: 7px 10px;
+}
+.mob-area-label {
+    font-size: 9px;
+    color: #64748b;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.mob-area-value {
+    font-size: 11px;
+    font-weight: 900;
+    color: #34d399;
+    font-family: ui-monospace, monospace;
+}
+.mob-area-sub {
+    font-size: 9px;
+    color: #475569;
+}
+
+        @media (max-width: 767px) {
+        .bg-slate-700.h-2 { display: none !important; }
+
+            /* ── HEALTH BADGE — force hidden always ── */
+            #scoreBadge { display: none !important; visibility: hidden !important; }
+            #scoreTip { display: none !important; }
+
+            /* ── Hide entire desktop header on mobile ── */
+            header { display: none !important; }
+
+            /* ── Mobile header fixed at top ── */
+            #mobHeader {
+                display: flex !important;
+                align-items: center;
+                height: 44px;
+                background: #0f172a;
+                border-bottom: 1px solid #1e293b;
+                padding: 0 10px;
+                gap: 8px;
+                flex-shrink: 0;
+                isolation: isolate;
+                z-index: 99999 !important;
+                position: fixed !important;
+                top: 0; left: 0; right: 0;
+                pointer-events: auto !important;
+            }
+            #mobHeader button {
+                pointer-events: auto !important;
+                touch-action: manipulation !important;
+                -webkit-tap-highlight-color: rgba(0,0,0,0);
+                position: relative !important;
+                z-index: 100000 !important;
+                min-width: 44px;
+                min-height: 44px;
+            }
+
+            /* ── Body pushed down below fixed header ── */
+            body { padding-top: 44px !important; }
+
+            /* ── Main area fills remaining height ── */
+            .flex.flex-1.overflow-hidden.relative {
+                flex-direction: column !important;
+                height: calc(100dvh - 44px - 54px) !important;
+                position: relative;
+                margin-bottom: 54px;
+            }
+
+            /* ── Aside full screen, scrollable, with bottom padding for tab bar ── */
+            aside {
+                width: 100% !important;
+                height: 100% !important;
+                display: none !important;
+                overflow-y: auto !important;
+                overflow-x: hidden !important;
+                position: absolute !important;
+                top: 0; left: 0; right: 0; bottom: 0;
+                z-index: 50 !important;
+                padding-bottom: 140px !important;
+            }
+            aside.mob-active { display: flex !important; }
+
+            /* ── Canvas full screen ── */
+            #canvasContainer {
+                width: 100% !important;
+                height: 100% !important;
+                position: absolute !important;
+                top: 0; left: 0; right: 0; bottom: 0;
+            }
+            #canvasContainer.mob-hidden { display: none !important; }
+            /* ── Drawing tool active: canvas locked, no page scroll ── */
+            #vastuCanvas {
+                touch-action: pinch-zoom;
+            }
+            body.tool-active #vastuCanvas {
+                touch-action: none;
+            }
+
+            /* ── Hide canvas overlay strips on mobile (too small) ── */
+            #ayamStrip,
+            #roadDevthaStrip,
+            #canvasAreaStrip { display: none !important; }
+
+            /* ── Smaller compass on mobile — pushed below mobile top bar ── */
+            #compassContainer {
+                top: 130px !important;
+                right: 6px !important;
+                z-index: 1000 !important;
+                pointer-events: auto !important;
+            }
+            #compassOverlay { width: 36px !important; height: 36px !important; }
+            #compassDeg { font-size: 9px !important; padding: 1px 4px !important; }
+            #floorIndicatorCanvas { font-size: 8px !important; padding: 1px 4px !important; }
+            /* ── Zoom controls: ensure touchable on mobile ── */
+            #canvasContainer > div.absolute.bottom-4.right-4 {
+                z-index: 1000 !important;
+                pointer-events: auto !important;
+            }
+            #canvasContainer > div.absolute.bottom-4.left-4 {
+                z-index: 1000 !important;
+                pointer-events: auto !important;
+            }
+            /* ── toolStatusBar must NOT block touches on canvas ── */
+            #toolStatusBar {
+                pointer-events: none !important;
+            }
+            /* ── canvasContainer itself must pass through pointer events ── */
+            #canvasContainer {
+                pointer-events: auto !important;
+            }
+
+            /* ── Bottom tab bar visible ── */
+            #mobileTabBar { display: flex !important; }
+
+            /* ── Navavargulu panel full width on mobile ── */
+            #navavarguluPanel {
+                left: 8px !important;
+                right: 8px !important;
+                width: auto !important;
+            }
+            #scoreBoxContainer {
+                display: none !important;
+                pointer-events: none !important;
+                height: 0 !important;
+                overflow: hidden !important;
+            }
+        }
+
+        /* ══ GLOBAL INPUT PROTECTION — no parent can block keyboard ══ */
+        input, select, textarea {
+            pointer-events: auto !important;
+            user-select: auto !important;
+            -webkit-user-select: auto !important;
+            touch-action: auto !important;
+        }
+        /* ══ Desktop Header Center: hidden on mobile, revealed on desktop ══ */
+        #desktopHeaderCenter { display: none !important; }
+        /* ══ Score Strip: hidden until project starts (prevents cover-page bleed on desktop) ══ */
+        body:not(.app-ready) #scoreStrip { display: none !important; }
+
+        @media (min-width: 768px) {
+    #desktopHeaderCenter { display: flex !important; }
+    /* ── Hide all mobile-only elements ── */
+    #mobileTabBar   { display: none !important; }
+    #mobHeader      { display: none !important; }
+    #mobMenuOverlay { display: none !important; }
+
+    /* ── Bulletproof aside + main layout ── */
+    aside {
+        width: 350px !important;
+        max-width: 350px !important;
+        flex-shrink: 0 !important;
+        overflow-y: auto !important;
+        padding-left: 16px !important;
+    }
+    main, #appContainer main {
+        flex: 1 !important;
+        min-width: 0 !important;
+        width: calc(100% - 350px) !important;
+        padding-right: 16px !important;
+    }
+
+    /* ── Header breathing room from screen edges ── */
+    header {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    /* ── DESKTOP SCORE: hide bulky aside box, show compact header strip ── */
+    #scoreBoxContainer { display: none !important; }
+    #scoreStrip        { display: flex !important; flex-shrink: 0 !important; }
+
+    /* ══════════════════════════════════════════════
+       TWO-LINE HEADER — Double Decker Architecture
+       Row 1: Logo + Aaya + File/Export/Draw tools
+       Row 2: View toggles + Share + Language
+       Dropdowns always bleed below via overflow:visible
+    ══════════════════════════════════════════════ */
+
+    /* 1. Header element: auto height, breathing room at bottom, dropdowns escape */
+    header {
+        height: auto !important;
+        padding-bottom: 10px !important;
+        overflow: visible !important;
+    }
+
+    /* 2. Main flex container: WRAP into two rows, sensible gaps */
+    header > div:first-child {
+        flex-wrap: wrap !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        row-gap: 12px !important;
+        column-gap: 12px !important;
+        overflow: visible !important;
+    }
+
+    /* 3. Left logo/score group — Row 1 anchor, never shrinks */
+    #desktopHeaderLeft {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        flex-shrink: 0 !important;
+        flex-wrap: nowrap !important;
+        gap: 6px !important;
+    }
+    #desktopHeaderLeft > * { flex-shrink: 0 !important; }
+
+    /* 4. Right-side tool wrapper: wraps freely, visible for dropdowns */
+    header > div:first-child > div.flex.items-center.gap-1\.5.flex-wrap {
+        flex-wrap: wrap !important;
+        flex-shrink: 1 !important;
+        min-width: 0 !important;
+        overflow: visible !important;
+        gap: 8px !important;
+        align-items: center !important;
+    }
+
+    /* 5. Every dropdown parent: overflow:visible so menus escape the header */
+    #fileMenuContainer, #exportMenuContainer, #resourcesMenuContainer,
+    #viewSettingsContainer, #modeMenuContainer, header .relative {
+        overflow: visible !important;
+    }
+
+    /* 6. Compact top-btn sizing — readable but not bloated */
+    .top-btn {
+        padding: 4px 7px !important;
+        font-size: 10px !important;
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+    }
+    .top-btn i    { margin-right: 3px !important; }
+    .top-btn span { font-size: 10px !important; }
+
+    /* 7. Quick-toggle icon buttons in the VIEW group */
+    #viewSettingsContainer button[id^="qt"] {
+        padding: 3px 6px !important;
+        font-size: 10px !important;
+    }
+
+    /* 8. Dividers: slim vertical rules between button groups */
+    header > div:first-child > div[style*="width:2px"] {
+        margin: 0 2px !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* 9. Language select: compact */
+    #globalLangSelect {
+        font-size: 10px !important;
+        padding: 1px 3px !important;
+        height: 26px !important;
+    }
+
+    /* 10. Score strip: shrinkable so it doesn't crowd Row 1 */
+    #scoreStrip {
+        flex-shrink: 1 !important;
+        gap: 6px !important;
+    }
+}
+
+        @media print {
+            #mobileTabBar, #mobHeader, #mobMenuOverlay,
+            header, .top-btn, #compassContainer,
+            #toolStatusBar, #ayamStrip, #roadDevthaStrip, #canvasAreaStrip,
+            #pwaInstallBtn, #networkBanner, #declModal,
+            #shortcutsModal, #customModal, #projectManagerModal { display: none !important; }
+            #canvasContainer {
+                display: block !important;
+                visibility: visible !important;
+                position: static !important;
+                width: 100% !important;
+                height: auto !important;
+            }
+            #vastuCanvas {
+                display: block !important;
+                visibility: visible !important;
+                max-width: 100% !important;
+                height: auto !important;
+                page-break-inside: avoid;
+            }
+            aside { display: block !important; width: 100% !important; overflow: visible !important; }
+            body { background: white !important; }
+        }
+
+/* ════ CSS Block: lines 7677–7701 from original index.html ════ */
+/* Hide app logo+name on mobile canvas view to maximise drawing space */
+@media (max-width: 767px) {
+    #mobHeader .mob-logo-icon,
+    #mobHeader .mob-title-block {
+        display: none !important;
+    }
+    /* Mobile draw tool active highlight */
+    .mob-tool-active {
+        background: #d97706 !important;
+        color: #fff !important;
+        border-color: #f59e0b !important;
+        box-shadow: 0 0 0 2px rgba(245,158,11,0.4) !important;
+    }
+}
+/* Close Site Tools dropdown when clicking outside */
+#siteToolsDropdown { transition: opacity 0.1s; }
+/* Desktop active tool button ring */
+.btn-active {
+    background-color: #d97706 !important;
+    color: white !important;
+    border-color: #f59e0b !important;
+    box-shadow: 0 0 0 2px rgba(245,158,11,0.3) !important;
+}
+
+/* ════ CSS Block: lines 7839–7855 from original index.html ════ */
+.calc-btn {
+    padding: 12px 6px;
+    border: none;
+    border-radius: 9px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: filter 0.1s, transform 0.08s;
+    touch-action: manipulation;
+}
+.calc-btn:active { transform: scale(0.93); filter: brightness(1.3); }
+.calc-num { background: #1e293b; color: #f1f5f9; }
+.calc-fn  { background: #334155; color: #f1f5f9; }
+.calc-op  { background: #f59e0b; color: #000; }
+.calc-eq  { background: #f59e0b; color: #000; }
+
+/* ════ CSS Block: lines 8240–8507 from original index.html ════ */
+/* ── Blueprint Control Panel — anchored to canvas bottom-left, never bleeds into right panel ── */
+#blueprintControlPanel {
+    position: fixed;
+    bottom: 70px;
+    left: 16px;
+    right: auto;
+    z-index: 8500;
+    max-width: 300px;
+    width: 300px;
+    background: rgba(15,23,42,0.97);
+    border: 1px solid rgba(99,102,241,0.55);
+    border-radius: 14px;
+    padding: 12px 14px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.7), 0 0 0 1px rgba(99,102,241,0.12);
+    display: none;
+    flex-direction: column;
+    gap: 9px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    cursor: default;
+    user-select: none;
+    /* Keep clear of mobile tab bar on small screens */
+    pointer-events: auto;
+}
+@media (max-width: 767px) {
+    #blueprintControlPanel {
+        left: 8px;
+        right: 8px;
+        width: auto;
+        max-width: calc(100vw - 16px);
+        bottom: 62px;
+    }
+}
+#blueprintControlPanel .bp-title {
+    font-size: 9px;
+    font-weight: 900;
+    color: #818cf8;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid rgba(99,102,241,0.22);
+    padding-bottom: 8px;
+    margin-bottom: 1px;
+}
+#blueprintControlPanel .bp-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+#blueprintControlPanel .bp-label {
+    font-size: 9px;
+    color: #64748b;
+    font-weight: 700;
+    width: 46px;
+    flex-shrink: 0;
+}
+.bp-slider {
+    flex: 1;
+    min-width: 0;
+    accent-color: #6366f1;
+    cursor: ew-resize;
+    height: 4px;
+    border-radius: 4px;
+}
+.bp-val {
+    font-size: 9px;
+    color: #a5b4fc;
+    font-weight: 700;
+    width: 36px;
+    text-align: right;
+    flex-shrink: 0;
+}
+/* Nudge ± buttons */
+.bp-nudge {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    background: rgba(99,102,241,0.15);
+    border: 1px solid rgba(99,102,241,0.35);
+    border-radius: 5px;
+    color: #a5b4fc;
+    font-size: 13px;
+    font-weight: 900;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+    touch-action: manipulation;
+}
+.bp-nudge:hover  { background: rgba(99,102,241,0.32); }
+.bp-nudge:active { transform: scale(0.88); background: rgba(99,102,241,0.48); }
+/* ══════════════════════════════════════════════════════════════════
+   PREMIUM DESKTOP HOVER SYSTEM  —  UI Polish v2
+   Scoped to (hover:hover)+(pointer:fine) = true pointer devices only.
+   Touch screens (pointer:coarse) are completely unaffected.
+   Tap-to-open onclick handlers on buttons remain fully intact.
+   ══════════════════════════════════════════════════════════════════ */
+@media (hover: hover) and (pointer: fine) {
+
+    /* ── 1. Global top-bar button glow ── */
+    .top-btn:hover {
+        filter: brightness(1.18);
+        box-shadow: 0 0 10px rgba(245,158,11,0.18), 0 2px 8px rgba(0,0,0,0.35);
+        transition: filter 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    /* ── 2. Site Tools — hover-open ── */
+    #siteToolsContainer:hover > #siteToolsDropdown {
+        display: block !important;
+        opacity: 1;
+        pointer-events: auto;
+        animation: sv-dd-in 0.13s ease forwards;
+    }
+    #siteToolsDropdown { transition: opacity 0.12s ease; }
+
+    /* ── 3. View "More" — hover-open ── */
+    #viewSettingsContainer:hover > #viewSettingsDropdown {
+        display: block !important;
+        opacity: 1;
+        pointer-events: auto;
+        animation: sv-dd-in 0.13s ease forwards;
+    }
+    #viewSettingsDropdown { transition: opacity 0.12s ease; }
+
+    /* ── 4. File dropdown — hover-open ── */
+    #fileMenuContainer:hover > #fileDropdown {
+        display: block !important;
+        opacity: 1;
+        pointer-events: auto;
+        animation: sv-dd-in 0.13s ease forwards;
+    }
+
+    /* ── 5. Export dropdown — hover-open ── */
+    #exportMenuContainer:hover > #exportDropdown {
+        display: block !important;
+        opacity: 1;
+        pointer-events: auto;
+        animation: sv-dd-in 0.13s ease forwards;
+    }
+
+    /* ── 6. Resources dropdown — hover-open ── */
+    #resourcesMenuContainer:hover > #resourcesDropdown {
+        display: block !important;
+        opacity: 1;
+        pointer-events: auto;
+        animation: sv-dd-in 0.13s ease forwards;
+    }
+
+    /* ── Smooth slide-down entry keyframe ── */
+    @keyframes sv-dd-in {
+        from { opacity: 0; transform: translateY(-6px); }
+        to   { opacity: 1; transform: translateY(0);    }
+    }
+}
+
+/* ── Mobile / touch guard ─────────────────────────────────────────
+   (hover:none) fires on touch screens.
+   (pointer:coarse) covers Android devices that misreport hover.
+   Belt-and-suspenders: both conditions covered.
+   ────────────────────────────────────────────────────────────────── */
+@media (hover: none), (pointer: coarse) {
+    .top-btn:hover,
+    button:hover {
+        filter: none !important;
+        box-shadow: none !important;
+    }
+    #siteToolsDropdown,
+    #viewSettingsDropdown,
+    #resourcesDropdown,
+    #fileDropdown,
+    #exportDropdown,
+    #saveSendDropdown {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+/* Reset / Clear action buttons */
+.bp-action-btn {
+    flex: 1;
+    padding: 7px 8px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+    touch-action: manipulation;
+}
+.bp-action-btn:active { transform: scale(0.94); }
+.bp-reset {
+    background: rgba(99,102,241,0.12);
+    border: 1px solid rgba(99,102,241,0.38);
+    color: #818cf8;
+}
+.bp-reset:hover { background: rgba(99,102,241,0.24); }
+.bp-clear {
+    background: rgba(239,68,68,0.12);
+    border: 1px solid rgba(239,68,68,0.38);
+    color: #f87171;
+}
+.bp-clear:hover  { background: rgba(239,68,68,0.25); }
+.bp-clear:active { box-shadow: 0 0 10px rgba(239,68,68,0.35); }
+
+/* ── UI Polish: smooth transitions on toolbar buttons ── */
+.top-btn {
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease, border-color 0.2s ease !important;
+}
+.top-btn:active {
+    transform: scale(0.95) !important;
+    box-shadow: 0 0 10px rgba(245,158,11,0.32) !important;
+}
+.mob-panel-btn {
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+.mob-panel-btn:active {
+    transform: scale(0.95) !important;
+    box-shadow: 0 0 8px rgba(99,102,241,0.3) !important;
+    opacity: 1 !important;
+}
+
+/* ── Active tool glow (desktop) ── */
+.btn-active {
+    background: linear-gradient(135deg,#b45309,#d97706) !important;
+    color: #fff !important;
+    border-color: #f59e0b !important;
+    box-shadow: 0 0 14px rgba(245,158,11,0.5), 0 0 5px rgba(245,158,11,0.2) !important;
+}
+/* ── Active tool glow (mobile) ── */
+.mob-tool-active {
+    background: rgba(234,88,12,0.35) !important;
+    border-color: #f97316 !important;
+    color: #fed7aa !important;
+    box-shadow: 0 0 12px rgba(249,115,22,0.42) !important;
+}
+
+/* ── Mobile overflow fix: RMRC + all accordion panels ── */
+#mobMenuPanel { overflow-x: hidden !important; }
+#mob-rmrc-panel,
+#mob-rmrc-panel > div {
+    overflow-x: hidden;
+    max-width: 100%;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+.mob-panel-row {
+    overflow-x: hidden;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* ── Context-aware cursors ── */
+button, label[onclick], select,
+.mob-panel-btn, .top-btn, .mob-tab, .toggle-label {
+    cursor: pointer;
+}
+input[type="number"], input[type="text"], textarea { cursor: text !important; }
+input[type="range"] { cursor: ew-resize; }
+#vastuCanvas { cursor: crosshair; }
+            
